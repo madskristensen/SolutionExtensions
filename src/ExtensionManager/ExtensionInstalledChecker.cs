@@ -79,7 +79,7 @@ namespace SolutionExtensions
             return await Task.Run(() =>
             {
                 List<ExtensionModel> models = new List<ExtensionModel>();
-                var installedExtensions = _manager.GetInstalledExtensions().Where(e => !e.Header.SystemComponent);
+                var installedExtensions = GetInstalledExtensions();
 
                 var extensions = model.Extensions.SelectMany(e => e.Value);
 
@@ -93,6 +93,11 @@ namespace SolutionExtensions
 
                 return models;
             });
+        }
+
+        public IEnumerable<IInstalledExtension> GetInstalledExtensions()
+        {
+            return _manager.GetInstalledExtensions().Where(e => !e.Header.SystemComponent);
         }
 
         private void OnInstallComplete(InstallerProgressEventArgs e)

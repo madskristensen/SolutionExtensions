@@ -1,0 +1,24 @@
+﻿{
+  "extensions": {
+    "mandatory": [
+      {
+        "name": "Web Compiler",
+        "productId": "148ffa77-d70a-407f-892b-9ee542346862"
+      },
+      {
+        "name": "Open Command Line",
+        "productId": "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbbNOOOOOO"
+      }
+    ],
+    "optional": [
+      {
+        "name": "Yaml Editor",
+        "productId": "YamlDotNetEditor..074a7b74-655b-409c-b5ac-a028f12d6e89"
+      },
+      {
+        "name": "Glyphfriend",
+        "productId": "950d05f7-bb25-43ce-b682-44b377b5307d"
+      }
+    ]
+  }
+}

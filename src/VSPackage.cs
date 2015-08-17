@@ -17,18 +17,21 @@ namespace SolutionExtensions
     public sealed class VSPackage : Package
     {
         public const string Version = "1.0";
-        private static DTE2 _dte;
         private int _errorCount;
+
+        private static DTE2 DTE { get; set; }
 
         protected override void Initialize()
         {
-            _dte = GetService(typeof(DTE)) as DTE2;
+            // Initialize shared components
+            DTE = GetService(typeof(DTE)) as DTE2;
+            Logger.Initialize(this, Constants.VSIX_NAME);
+            Settings.Initialize(this);
+            SolutionHandler.Initialize(DTE);
 
+            // Initialize other components
             var repository = (IVsExtensionRepository)GetService(typeof(SVsExtensionRepository));
             var manager = (IVsExtensionManager)GetService(typeof(SVsExtensionManager));
-
-            Settings.Initialize(this);
-            SolutionHandler.Initialize(_dte);
             ExtensionInstalledChecker.Initialize(repository, manager);
             ExtensionInstalledChecker.Instance.InstallProgress += ShowInstallProgress;
             ShowDialogCommand.Initialize(this);
@@ -38,10 +41,10 @@ namespace SolutionExtensions
 
         public static string GetSolution()
         {
-            if (_dte.Solution == null)
+            if (DTE.Solution == null)
                 return null;
 
-            return _dte.Solution.FullName;
+            return DTE.Solution.FullName;
         }
 
         private void ShowInstallProgress(object sender, InstallerProgressEventArgs e)
@@ -55,14 +58,15 @@ namespace SolutionExtensions
             else if (e.Error != null)
             {
                 _errorCount += 1;
+                Logger.Log(e.Error);
                 message = $"Error installing {e.Name}";
             }
 
-            _dte.StatusBar.Progress(true, message, e.AmountInstalled + 1, e.Total + 1);
+            DTE.StatusBar.Progress(true, message, e.AmountInstalled + 1, e.Total + 1);
 
             if (e.AmountInstalled == e.Total)
             {
-                _dte.StatusBar.Progress(false);
+                DTE.StatusBar.Progress(false);
 
                 // Only prompt for restart if at least one extension was installed.
                 if (_errorCount != e.AmountInstalled)
@@ -77,8 +81,8 @@ namespace SolutionExtensions
 
             if (result == DialogResult.Yes)
             {
-                System.Diagnostics.Process.Start($"\"{_dte.FullName}\"", $"\"{_dte.Solution.FullName}\"");
-                _dte.ExecuteCommand("File.Exit");
+                System.Diagnostics.Process.Start($"\"{DTE.FullName}\"", $"\"{DTE.Solution.FullName}\"");
+                DTE.ExecuteCommand("File.Exit");
             }
         }
     }

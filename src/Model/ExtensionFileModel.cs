@@ -7,6 +7,7 @@ namespace SolutionExtensions
 {
     public class ExtensionFileModel
     {
+        [JsonProperty("extensions")]
         public Dictionary<string, IEnumerable<ExtensionModel>> Extensions { get; set; }
 
         [JsonIgnore]
