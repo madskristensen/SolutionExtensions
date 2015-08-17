@@ -1,0 +1,42 @@
+﻿<Window x:Class="SolutionExtensions.InstallerDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Suggested extensions" Height="350" Width="500" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" Topmost="True" ResizeMode="NoResize" BorderBrush="Black">
+    <Grid Background="#FFF0F0F0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Margin="10 10">
+            <TextBlock TextWrapping="WrapWithOverflow">
+                The author of this solution suggests that you install these additional extensions.
+            </TextBlock>
+        </Label>
+
+        <Border Grid.Row="1" Margin="10,0" BorderBrush="Black" BorderThickness="1">
+        <ScrollViewer Background="White" VerticalScrollBarVisibility="Auto">
+            <StackPanel Name="panel" />
+        </ScrollViewer>
+        </Border>
+
+        <CheckBox Name="nevershow" Grid.Row="2" Margin="0 10 10 10" FlowDirection="RightToLeft">
+            <TextBlock Text="Never ask again for this solution" />
+        </CheckBox>
+
+        <Grid Grid.Row="3" HorizontalAlignment="Right" Grid.ColumnSpan="3" Margin="0 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnInstall" Grid.Column="1" Content="Install" HorizontalAlignment="Right" Margin="10 0" VerticalAlignment="Bottom" Width="75" IsDefault="True" Click="btnInstall_Click" />
+            <Button x:Name="btnCancel" Grid.Column="2" Content="Cancel" HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Bottom" Width="75" IsCancel="True" />
+        </Grid>
+    </Grid>
+</Window>
