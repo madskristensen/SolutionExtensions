@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace SolutionExtensions
@@ -20,12 +21,18 @@ namespace SolutionExtensions
             File.WriteAllText(fileName, json, new UTF8Encoding(false));
         }
 
-        public static ExtensionFileModel FromFile(string fileName)
+        public async static Task<ExtensionFileModel> FromFile(string fileName)
         {
             if (!File.Exists(fileName))
                 return null;
 
-            string fileContent = File.ReadAllText(fileName);
+            string fileContent = null;
+
+            using (TextReader file = File.OpenText(fileName))
+            {
+                fileContent = await file.ReadToEndAsync();
+            }
+
             var fileModel = JsonConvert.DeserializeObject<ExtensionFileModel>(fileContent);
             fileModel.FileName = fileName;
 

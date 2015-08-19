@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using EnvDTE;
 using EnvDTE80;
 
@@ -25,7 +26,20 @@ namespace SolutionExtensions
             Instance = new SolutionHandler(dte);
         }
 
-        public ExtensionFileModel GetCurrentFileModel()
+        private async void OnSolutionOpened()
+        {
+            if (ExtensionFileFound != null)
+            {
+                ExtensionFileModel model = await GetCurrentFileModel();
+
+                if (model != null)
+                {
+                    ExtensionFileFound(this, new ExtensionFileEventArgs(model));
+                }
+            }
+        }
+
+        public async Task<ExtensionFileModel> GetCurrentFileModel()
         {
             if (_dte.Solution == null || string.IsNullOrEmpty(_dte.Solution.FullName))
                 return null;
@@ -33,20 +47,7 @@ namespace SolutionExtensions
             string solutionFolder = Path.GetDirectoryName(_dte.Solution.FullName);
             string configPath = Path.Combine(solutionFolder, Constants.FILENAME);
 
-            return ExtensionFileModel.FromFile(configPath);
-        }
-
-        private void OnSolutionOpened()
-        {
-            if (ExtensionFileFound != null)
-            {
-                ExtensionFileModel model = GetCurrentFileModel();
-
-                if (model != null)
-                {
-                    ExtensionFileFound(this, new ExtensionFileEventArgs(model));
-                }
-            }
+            return await ExtensionFileModel.FromFile(configPath);
         }
 
         private void OnSolutionClosed()

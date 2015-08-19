@@ -39,6 +39,10 @@ namespace SolutionExtensions
         public async Task ShowDialog(ExtensionFileModel model)
         {
             var missingExtensions = await GetMissingExtensions(model);
+
+            if (!missingExtensions.Any())
+                return;
+
             InstallerDialog dialog = new InstallerDialog(model, missingExtensions);
             dialog.NeverShowAgainForSolution = Settings.IsSolutionIgnored();
 
@@ -60,7 +64,7 @@ namespace SolutionExtensions
                 List<ExtensionModel> models = new List<ExtensionModel>();
                 var installedExtensions = GetInstalledExtensions();
 
-                var extensions = model.Extensions.SelectMany(e => e.Value);
+                var extensions = model.Extensions.Where(cat => cat.Key == "mandatory").SelectMany(e => e.Value);
 
                 foreach (var extension in extensions)
                 {

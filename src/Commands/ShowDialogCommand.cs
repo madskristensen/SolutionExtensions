@@ -54,7 +54,7 @@ namespace SolutionExtensions
 
         private async void ShowDialog(object sender, EventArgs e)
         {
-            ExtensionFileModel fileModel = SolutionHandler.Instance.GetCurrentFileModel();
+            ExtensionFileModel fileModel = await SolutionHandler.Instance.GetCurrentFileModel();
 
             if (fileModel != null)
             {
