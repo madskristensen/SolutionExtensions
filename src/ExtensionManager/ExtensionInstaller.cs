@@ -38,9 +38,16 @@ namespace SolutionExtensions
                                                                  .AsEnumerable()
                                                                  .FirstOrDefault();
 
+                        if (!_progress.IsVisible)
+                            break;
+
                         if (entry != null)
                         {
                             IInstallableExtension installable = _repository.Download(entry);
+
+                            if (!_progress.IsVisible)
+                                break;
+
                             _manager.Install(installable, false);
                             hasInstalled = true;
                         }
@@ -52,8 +59,11 @@ namespace SolutionExtensions
                 }
             });
 
-            _progress.Close();
-            _progress = null;
+            if (_progress.IsVisible)
+            {
+                _progress.Close();
+                _progress = null;
+            }
 
             if (hasInstalled)
                 PromptForRestart();
