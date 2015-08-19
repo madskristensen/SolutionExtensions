@@ -10,7 +10,6 @@ namespace SolutionExtensions
     {
         private IVsExtensionRepository _repository;
         private IVsExtensionManager _manager;
-        private int _total, _amountInstalled;
 
         private ExtensionInstalledChecker(IVsExtensionRepository repository, IVsExtensionManager manager)
         {
@@ -49,29 +48,9 @@ namespace SolutionExtensions
 
             if (!result.HasValue || !result.Value)
                 return;
-
-            _amountInstalled = 0;
-            _total = dialog.SelectedExtensions.Count();
-
-            OnInstallComplete(new InstallerProgressEventArgs(null, _total, _amountInstalled));
-
+           
             ExtensionInstaller installer = new ExtensionInstaller(_repository, _manager);
-            installer.InstallExtensions(dialog.SelectedExtensions);
-            installer.InstallComplete += Installer_InstallComplete;
-        }
-
-        private void Installer_InstallComplete(object sender, InstallCompletedEventArgs e)
-        {
-            _amountInstalled += 1;
-
-            if (_total == _amountInstalled)
-            {
-                ExtensionInstaller installer = (ExtensionInstaller)sender;
-                installer.InstallComplete -= Installer_InstallComplete;
-            }
-
-            var evt = new InstallerProgressEventArgs(e, _total, _amountInstalled);
-            OnInstallComplete(evt);
+            await installer.InstallExtensions(dialog.SelectedExtensions);
         }
 
         private async Task<IEnumerable<ExtensionModel>> GetMissingExtensions(ExtensionFileModel model)
@@ -99,15 +78,5 @@ namespace SolutionExtensions
         {
             return _manager.GetInstalledExtensions().Where(e => !e.Header.SystemComponent);
         }
-
-        private void OnInstallComplete(InstallerProgressEventArgs e)
-        {
-            if (InstallProgress != null)
-            {
-                InstallProgress(this, e);
-            }
-        }
-
-        public event EventHandler<InstallerProgressEventArgs> InstallProgress;
     }
 }

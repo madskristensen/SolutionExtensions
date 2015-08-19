@@ -57,6 +57,9 @@
     <Compile Include="ExtensionManager\ExtensionInstalledChecker.cs" />
     <Compile Include="ExtensionManager\ExtensionInstaller.cs" />
     <Compile Include="ExtensionManager\GalleryEntry.cs" />
+    <Compile Include="ExtensionManager\InstallerProgress.xaml.cs">
+      <DependentUpon>InstallerProgress.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExtensionManager\InstallerDialog.xaml.cs">
       <DependentUpon>InstallerDialog.xaml</DependentUpon>
     </Compile>
@@ -272,6 +275,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ExtensionManager\InstallerProgress.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ExtensionManager\InstallerDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
 using Microsoft.VisualStudio.ExtensionManager;
 
 namespace SolutionExtensions
@@ -9,62 +11,64 @@ namespace SolutionExtensions
     {
         private IVsExtensionRepository _repository;
         private IVsExtensionManager _manager;
+        private InstallerProgress _progress;
 
         public ExtensionInstaller(IVsExtensionRepository repository, IVsExtensionManager manager)
         {
             _repository = repository;
             _manager = manager;
-
-            _repository.DownloadCompleted += DownloadCompleted;
-            _manager.InstallCompleted += InstallCompleted;
         }
 
-        public void InstallExtensions(IEnumerable<ExtensionModel> extensionModels)
+        public async Task InstallExtensions(IEnumerable<ExtensionModel> extensionModels)
         {
-            foreach (ExtensionModel model in extensionModels)
-            {
-                GalleryEntry entry = _repository.CreateQuery<GalleryEntry>(includeTypeInQuery: false, includeSkuInQuery: true, searchSource: "ExtensionManagerUpdate")
-                                                        .Where(e => e.VsixID == model.ProductId)
-                                                        .AsEnumerable()
-                                                        .FirstOrDefault();
+            bool hasInstalled = false;
+            int count = extensionModels.Count();
 
-                if (entry != null)
+            _progress = new InstallerProgress(count, $"Downloading and installing {count} extension(s)...");
+            _progress.Show();
+
+            await Task.Run(() =>
+            {
+                foreach (ExtensionModel model in extensionModels)
                 {
-                    _repository.DownloadAsync(entry);
+                    try
+                    {
+                        GalleryEntry entry = _repository.CreateQuery<GalleryEntry>(includeTypeInQuery: false, includeSkuInQuery: true, searchSource: "ExtensionManagerUpdate")
+                                                                 .Where(e => e.VsixID == model.ProductId)
+                                                                 .AsEnumerable()
+                                                                 .FirstOrDefault();
+
+                        if (entry != null)
+                        {
+                            IInstallableExtension installable = _repository.Download(entry);
+                            _manager.Install(installable, false);
+                            hasInstalled = true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Log(ex);
+                    }
                 }
-            }
+            });
+
+            _progress.Close();
+            _progress = null;
+
+            if (hasInstalled)
+                PromptForRestart();
         }
 
-        private void DownloadCompleted(object sender, DownloadCompletedEventArgs e)
+        private static void PromptForRestart()
         {
-            OnDownloadComplete(e);
-            _manager.InstallAsync(e.Payload, false);
-        }
+            string prompt = "You must restart Visual Studio for the extensions to be loaded.\r\rRestart now?";
+            var result = MessageBox.Show(prompt, Constants.VSIX_NAME, MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-        private void InstallCompleted(object sender, InstallCompletedEventArgs e)
-        {
-            OnInstallComplete(e);
-            //_manager.Uninstall(e.Extension);
-        }
-
-        private void OnDownloadComplete(DownloadCompletedEventArgs e)
-        {
-            if (DownloadComplete != null)
+            if (result == MessageBoxResult.Yes)
             {
-                DownloadComplete(this, e);
+                System.Diagnostics.Process.Start($"\"{VSPackage.DTE.FullName}\"", $"\"{VSPackage.DTE.Solution.FullName}\"");
+                VSPackage.DTE.ExecuteCommand("File.Exit");
             }
         }
-
-        private void OnInstallComplete(InstallCompletedEventArgs e)
-        {
-            if (InstallComplete != null)
-            {
-                InstallComplete(this, e);
-            }
-        }
-
-        public event EventHandler<DownloadCompletedEventArgs> DownloadComplete;
-        public event EventHandler<InstallCompletedEventArgs> InstallComplete;
-
     }
 }
