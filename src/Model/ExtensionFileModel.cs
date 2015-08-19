@@ -22,6 +22,9 @@ namespace SolutionExtensions
 
         public static ExtensionFileModel FromFile(string fileName)
         {
+            if (!File.Exists(fileName))
+                return null;
+
             string fileContent = File.ReadAllText(fileName);
             var fileModel = JsonConvert.DeserializeObject<ExtensionFileModel>(fileContent);
             fileModel.FileName = fileName;
