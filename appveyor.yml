@@ -9,8 +9,7 @@ before_build:
   - ps: Vsix-TokenReplacement src\VSPackage.cs 'Version = "([0-9\\.]+)"' 'Version = "{version}"'
 
 build_script:
-  - echo Restoring NuGet packages
-  - nuget restore > nul
+  - nuget restore
   - msbuild /p:configuration=Release /p:DeployExtension=false /p:ZipPackageCompressionLevel=normal /v:m
 
 after_test:
