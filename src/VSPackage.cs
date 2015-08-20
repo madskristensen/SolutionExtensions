@@ -2,7 +2,9 @@
 using System.Runtime.InteropServices;
 using EnvDTE;
 using EnvDTE80;
+using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.ExtensionManager;
+using Microsoft.VisualStudio.Imaging;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
@@ -26,12 +28,14 @@ namespace SolutionExtensions
             Logger.Initialize(this, Constants.VSIX_NAME);
             Settings.Initialize(this);
             SolutionHandler.Initialize(DTE);
+            SuggestionHandler.Initialize();
 
             // Initialize other components
             var repository = (IVsExtensionRepository)GetService(typeof(SVsExtensionRepository));
             var manager = (IVsExtensionManager)GetService(typeof(SVsExtensionManager));
             ExtensionInstalledChecker.Initialize(repository, manager);
             ShowDialogCommand.Initialize(this);
+            InfoBarService.Initialize(this);
 
             base.Initialize();
         }

@@ -13,6 +13,10 @@
           "type": "string",
           "description": "The friendly name of the extension. This is displayed in the Suggested Extensions dialog."
         },
+        "description": {
+          "type": "string",
+          "default": "The description of the extension as specified in their '.vsixmanifest' file."
+        },
         "productId": {
           "type": "string",
           "default": "This is the ID of the extension as specified in their '.vsixmanifest' file."

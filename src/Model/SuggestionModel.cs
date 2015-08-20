@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace SolutionExtensions
 {
-    public class ExtensionModel
+    public class SuggestionModel
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -13,8 +14,8 @@ namespace SolutionExtensions
         [JsonProperty("productId")]
         public string ProductId { get; set; }
 
-        [JsonIgnore]
-        public string Category { get; set; }
+        [JsonProperty("fileTypes")]
+        public IEnumerable<string> FileTypes { get; set; }
 
         public override string ToString()
         {

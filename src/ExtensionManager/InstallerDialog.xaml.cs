@@ -63,6 +63,7 @@ namespace SolutionExtensions
                     box.Tag = model;
                     box.Margin = new Thickness(10, 0, 0, 5);
                     box.IsChecked = true;
+                    box.ToolTip = model.Description;
                     box.IsEnabled = _missingExtensions.Contains(model);
 
                     if (!box.IsEnabled)

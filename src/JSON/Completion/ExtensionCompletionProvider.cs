@@ -68,6 +68,10 @@ namespace SolutionExtensions
                 {
                     yield return new SimpleCompletionEntry(extension.Header.Name, extension.Header.Name, glyph, context.Session);
                 }
+                else if (property == "description")
+                {
+                    yield return new SimpleCompletionEntry(extension.Header.Description, extension.Header.Name, glyph, context.Session);
+                }
             }
         }
 

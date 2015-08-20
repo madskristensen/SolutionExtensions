@@ -10,6 +10,7 @@ namespace SolutionExtensions
     {
         private IVsExtensionRepository _repository;
         private IVsExtensionManager _manager;
+        private static IEnumerable<IInstalledExtension> _cache;
 
         private ExtensionInstalledChecker(IVsExtensionRepository repository, IVsExtensionManager manager)
         {
@@ -77,10 +78,15 @@ namespace SolutionExtensions
                 return models;
             });
         }
-
+        
         public IEnumerable<IInstalledExtension> GetInstalledExtensions()
         {
-            return _manager.GetInstalledExtensions().Where(e => !e.Header.SystemComponent);
+            if (_cache == null)
+            {
+                _cache = _manager.GetInstalledExtensions().Where(e => !e.Header.SystemComponent);
+            }
+
+            return _cache;
         }
     }
 }
