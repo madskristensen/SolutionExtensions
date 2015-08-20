@@ -12,6 +12,7 @@ using Microsoft.VisualStudio.Utilities;
 namespace SolutionExtensions
 {
     [Export(typeof(IVsTextViewCreationListener))]
+    [ContentType("text")]
     [ContentType("plaintext")]
     [TextViewRole(PredefinedTextViewRoles.Document)]
     class SourceFileCreationListener : IVsTextViewCreationListener
@@ -27,8 +28,8 @@ namespace SolutionExtensions
             IWpfTextView textView = EditorAdaptersFactoryService.GetWpfTextView(textViewAdapter);
 
             // Check that the content type isn't already registered for this file type.
-            if (textView.TextBuffer.ContentType.DisplayName != "plaintext")
-                return;
+            //if (textView.TextBuffer.ContentType.DisplayName != "plaintext")
+            //    return;
 
             ITextDocument document;
 
@@ -50,7 +51,7 @@ namespace SolutionExtensions
 
             if (count > 0)
             {
-                InfoBarService.Instance.ShowInfoBar(count);
+                InfoBarService.Instance.ShowInfoBar(count, fileType);
             }
         }
     }

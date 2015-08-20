@@ -26,7 +26,7 @@
         </Border>
 
         <CheckBox Name="nevershow" Grid.Row="2" Margin="0 10 10 10" FlowDirection="RightToLeft">
-            <TextBlock Text="Never ask again for this solution" />
+            <TextBlock Name="txtNever" Text="Never ask again for this solution" />
         </CheckBox>
 
         <Grid Grid.Row="3" HorizontalAlignment="Right" Grid.ColumnSpan="3" Margin="0 10">

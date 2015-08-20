@@ -2,7 +2,7 @@
 
 namespace SolutionExtensions
 {
-    public class ExtensionModel
+    public class ExtensionModel : IExtensionModel
     {
         [JsonProperty("name")]
         public string Name { get; set; }

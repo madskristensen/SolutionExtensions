@@ -1,29 +1,66 @@
 ﻿using System;
 using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.ExtensionManager;
 using Microsoft.VisualStudio.Imaging;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
 namespace SolutionExtensions
 {
-    class InfoBarService
+    class InfoBarService : IVsInfoBarUIEvents
     {
+        private IVsExtensionRepository _repository;
+        private IVsExtensionManager _manager;
         private IServiceProvider _serviceProvider;
+        private uint _cookie;
+        private string _fileType;
 
-        private InfoBarService(IServiceProvider serviceProvider)
+        private InfoBarService(IServiceProvider serviceProvider, IVsExtensionRepository repository, IVsExtensionManager manager)
         {
             _serviceProvider = serviceProvider;
+            _repository = repository;
+            _manager = manager;
         }
 
         public static InfoBarService Instance { get; private set; }
 
-        public static void Initialize(IServiceProvider serviceProvider)
+        public static void Initialize(IServiceProvider serviceProvider, IVsExtensionRepository repository, IVsExtensionManager manager)
         {
-            Instance = new InfoBarService(serviceProvider);
+            Instance = new InfoBarService(serviceProvider, repository, manager);
         }
 
-        public void ShowInfoBar(int suggestions)
+        public async void OnActionItemClicked(IVsInfoBarUIElement infoBarUIElement, IVsInfoBarActionItem actionItem)
         {
+            string context = actionItem.ActionContext;
+
+            if (context == "install")
+            {
+                var extensions = await SuggestionHandler.Instance.GetSuggestions(_fileType);
+                InstallerDialog dialog = new InstallerDialog(extensions);
+                var result = dialog.ShowDialog();
+
+                if (!result.HasValue || !result.Value)
+                    return;
+
+                ExtensionInstaller installer = new ExtensionInstaller(_repository, _manager);
+                await installer.InstallExtensions(dialog.SelectedExtensions);
+            }
+            else if (context == "ignore")
+            {
+                Settings.IgnoreFileType(_fileType, true);
+            }
+        }
+
+        public void OnClosed(IVsInfoBarUIElement infoBarUIElement)
+        {
+            infoBarUIElement.Unadvise(_cookie);
+        }
+
+        public void ShowInfoBar(int suggestions, string fileType)
+        {
+            if (Settings.IsFileTypeIgnored(fileType))
+                return;
+
             var host = GetInfoBarHost();
 
             if (host != null)
@@ -33,6 +70,7 @@ namespace SolutionExtensions
                 if (suggestions == 1)
                     message = $"{suggestions} extension supporting this file type is found";
 
+                _fileType = fileType;
                 CreateInfoBar(host, message);
             }
         }
@@ -49,6 +87,7 @@ namespace SolutionExtensions
 
             var factory = _serviceProvider.GetService(typeof(SVsInfoBarUIFactory)) as IVsInfoBarUIFactory;
             IVsInfoBarUIElement element = factory.CreateInfoBar(infoBarModel);
+            element.Advise(this, out _cookie);
             host.AddInfoBar(element);
         }
 

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace SolutionExtensions
 {
-    public class SuggestionModel
+    public class SuggestionModel : IExtensionModel
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -16,6 +16,9 @@ namespace SolutionExtensions
 
         [JsonProperty("fileTypes")]
         public IEnumerable<string> FileTypes { get; set; }
+
+        [JsonIgnore]
+        public string Category { get;  }
 
         public override string ToString()
         {

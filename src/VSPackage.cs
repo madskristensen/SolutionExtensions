@@ -35,7 +35,7 @@ namespace SolutionExtensions
             var manager = (IVsExtensionManager)GetService(typeof(SVsExtensionManager));
             ExtensionInstalledChecker.Initialize(repository, manager);
             ShowDialogCommand.Initialize(this);
-            InfoBarService.Initialize(this);
+            InfoBarService.Initialize(this, repository, manager);
 
             base.Initialize();
         }

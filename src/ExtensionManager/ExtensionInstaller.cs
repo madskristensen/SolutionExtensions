@@ -19,7 +19,7 @@ namespace SolutionExtensions
             _manager = manager;
         }
 
-        public async Task InstallExtensions(IEnumerable<ExtensionModel> extensionModels)
+        public async Task InstallExtensions(IEnumerable<IExtensionModel> extensionModels)
         {
             bool hasInstalled = false;
             int count = extensionModels.Count();
@@ -29,7 +29,7 @@ namespace SolutionExtensions
 
             await Task.Run(() =>
             {
-                foreach (ExtensionModel model in extensionModels)
+                foreach (IExtensionModel model in extensionModels)
                 {
                     try
                     {

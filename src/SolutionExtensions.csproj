@@ -64,6 +64,7 @@
       <DependentUpon>InstallerDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExtensionManager\InstallProgressEventAgs.cs" />
+    <Compile Include="Model\IExtensionModel.cs" />
     <Compile Include="Model\SuggestionModel.cs" />
     <Compile Include="Model\SuggestionFileModel.cs" />
     <Compile Include="Suggestions\FileCreationListener.cs" />

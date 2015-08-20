@@ -39,6 +39,25 @@ namespace SolutionExtensions
             }
         }
 
+        public static void IgnoreFileType(string fileType, bool ignore)
+        {
+            WritableSettingsStore wstore = _settings.GetWritableSettingsStore(SettingsScope.UserSettings);
+
+            if (!wstore.CollectionExists(Constants.VSIX_NAME))
+                wstore.CreateCollection(Constants.VSIX_NAME);
+
+            string property = fileType.ToLowerInvariant();
+
+            if (ignore)
+            {
+                wstore.SetInt32(Constants.VSIX_NAME, property, 1);
+            }
+            else
+            {
+                wstore.DeleteProperty(Constants.VSIX_NAME, property);
+            }
+        }
+
         public static bool IsSolutionIgnored()
         {
             SettingsStore store = _settings.GetReadOnlySettingsStore(SettingsScope.UserSettings);
@@ -51,6 +70,13 @@ namespace SolutionExtensions
             string property = GetPropertyName(solution);
 
             return store.PropertyExists(Constants.VSIX_NAME, property);
+        }
+
+        public static bool IsFileTypeIgnored(string fileType)
+        {
+            SettingsStore store = _settings.GetReadOnlySettingsStore(SettingsScope.UserSettings);
+
+            return store.PropertyExists(Constants.VSIX_NAME, fileType.ToLowerInvariant());
         }
 
         private static string GetPropertyName(string solution)
