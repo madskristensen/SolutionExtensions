@@ -21,15 +21,23 @@ namespace SolutionExtensions
             Instance = new SuggestionHandler();
         }
 
-        public async Task<IEnumerable<SuggestionModel>> GetSuggestions(string fileType)
+        public async Task<SuggestionResult> GetSuggestions(string fileType)
         {
             var fileModel = await GetCurrentFileModel();
-            var suggestions = GetSuggestedExtensions(fileModel, fileType);
+            IEnumerable<string> fileTypes;
+            var suggestions = GetSuggestedExtensions(fileModel, fileType, out fileTypes);
 
             if (!suggestions.Any())
-                return Enumerable.Empty<SuggestionModel>();
+                return null;
 
-            return await GetMissingExtensions(suggestions);
+            var extensions = await GetMissingExtensions(suggestions);
+
+            SuggestionResult result = new SuggestionResult {
+                Extensions = extensions,
+                Matches = fileTypes
+            };
+
+            return result;
         }
 
         public async Task<SuggestionFileModel> GetCurrentFileModel()
@@ -38,7 +46,7 @@ namespace SolutionExtensions
             {
                 string assembly = Assembly.GetExecutingAssembly().Location;
                 string folder = Path.GetDirectoryName(assembly);
-                string fileName = Path.Combine(folder, "Suggestions\\suggestions.json");
+                string fileName = Path.Combine(folder, "JSON\\Schema\\", Constants.SUGGESTIONS_FILENAME);
 
                 _model = await SuggestionFileModel.FromFile(fileName);
             }
@@ -46,13 +54,24 @@ namespace SolutionExtensions
             return _model;
         }
 
-        private static IEnumerable<SuggestionModel> GetSuggestedExtensions(SuggestionFileModel fileModel, string fileType)
+        private static IEnumerable<SuggestionModel> GetSuggestedExtensions(SuggestionFileModel fileModel, string fileType, out IEnumerable<string> hits)
         {
+            List<SuggestionModel> list = new List<SuggestionModel>();
+            List<string> matches = new List<string>();
+
             foreach (SuggestionModel model in fileModel.Extensions)
             {
-                if (model.FileTypes.Any(ft => fileType.EndsWith(ft, StringComparison.Ordinal)))
-                    yield return model;
+                string match = model.FileTypes.FirstOrDefault(ft => fileType.EndsWith(ft, StringComparison.Ordinal));
+
+                if (!string.IsNullOrEmpty(match))
+                {
+                    matches.Add(match);
+                    list.Add(model);
+                }
             }
+
+            hits = matches;
+            return list;
         }
 
         private async Task<IEnumerable<SuggestionModel>> GetMissingExtensions(IEnumerable<SuggestionModel> suggestedExtensions)

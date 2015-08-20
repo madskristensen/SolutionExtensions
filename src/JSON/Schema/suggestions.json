@@ -1,0 +1,46 @@
+﻿{
+  "extensions": [
+    {
+      "name": "Web Essentials",
+      "productId": "5fb7364d-2e8c-44a4-95eb-2a382e30fec9",
+      "description": "Intellisense and colorizing for robots.txt",
+      "fileTypes": [ ".vtt", ".appcache", "robots.txt", "gulpfile.js", "gruntfile.js" ]
+    },
+    {
+      "name": "Web Compiler",
+      "description": "The easiest and most powerful way to compile LESS, Scss and CoffeeScript files directly within Visual Studio or through MSBuild.",
+      "productId": "148ffa77-d70a-407f-892b-9ee542346862",
+      "fileTypes": [ ".less", ".scss", ".coffee", ".litcoffee", ".iced" ]
+    },
+    {
+      "name": "Yaml Editor",
+      "description": "Provides a complete YAML editing experience in Visual Studio, including: - Syntax highlightning - Syntax error detection - Comment / uncomment selection - Format document",
+      "productId": "YamlDotNetEditor..074a7b74-655b-409c-b5ac-a028f12d6e89",
+      "fileTypes": [ ".yml", ".yaml" ]
+    },
+    {
+      "name": "Extensibility Tools",
+      "description": "An extension for making it easier to write Visual Studio extensions",
+      "productId": "f8330d54-0469-43a7-8fc0-7f19febeb897",
+      "fileTypes": [ ".pkgdef", ".vsct" ]
+    },
+    {
+      "name": "Open Command Line",
+      "description": "Opens a command line at the root of the project. Support for all consoles such as CMD, PowerShell, Bash etc. Provides syntax highlighting, Intellisense and execution of .cmd and .bat files.",
+      "productId": "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbb",
+      "fileTypes": [ ".cmd", ".bat" ]
+    },
+    {
+      "name": "Broccoli Task Runner",
+      "description": "Adds support for Broccoli brocfile.js files as well as Ember-CLI's ember-cli-build.js build scripts based on Broccoli.",
+      "productId": "e4f68b58-9df0-4878-8e7f-cba51b236f94",
+      "fileTypes": [ "brocfile.js" ]
+    },
+    {
+      "name": "EditorConfig",
+      "description": "Loads editor options such as indentation sizes from standard, cross-platform .editorconfig files.",
+      "productId": "EditorConfig..5cd8e6a2-be43-4fcc-a345-40f6cc1e9c9f",
+      "fileTypes": [ ".editorconfig" ]
+    }
+  ]
+}

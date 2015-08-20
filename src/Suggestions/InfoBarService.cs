@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.ExtensionManager;
 using Microsoft.VisualStudio.Imaging;
@@ -13,7 +15,7 @@ namespace SolutionExtensions
         private IVsExtensionManager _manager;
         private IServiceProvider _serviceProvider;
         private uint _cookie;
-        private string _fileType;
+        private SuggestionResult _suggestionResult;
 
         private InfoBarService(IServiceProvider serviceProvider, IVsExtensionRepository repository, IVsExtensionManager manager)
         {
@@ -35,8 +37,7 @@ namespace SolutionExtensions
 
             if (context == "install")
             {
-                var extensions = await SuggestionHandler.Instance.GetSuggestions(_fileType);
-                InstallerDialog dialog = new InstallerDialog(extensions);
+                InstallerDialog dialog = new InstallerDialog(_suggestionResult.Extensions);
                 var result = dialog.ShowDialog();
 
                 if (!result.HasValue || !result.Value)
@@ -47,7 +48,7 @@ namespace SolutionExtensions
             }
             else if (context == "ignore")
             {
-                Settings.IgnoreFileType(_fileType, true);
+                Settings.IgnoreFileType(_suggestionResult.Matches, true);
             }
         }
 
@@ -56,21 +57,22 @@ namespace SolutionExtensions
             infoBarUIElement.Unadvise(_cookie);
         }
 
-        public void ShowInfoBar(int suggestions, string fileType)
+        public void ShowInfoBar(SuggestionResult result)
         {
-            if (Settings.IsFileTypeIgnored(fileType))
+            if (Settings.IsFileTypeIgnored(result.Matches))
                 return;
 
             var host = GetInfoBarHost();
 
             if (host != null)
             {
-                string message = $"{suggestions} extensions supporting this file type are found";
+                string matches = string.Join(", ", result.Matches);
+                string message = $"{result.Extensions.Count()} extensions supporting {matches} files are found";
 
-                if (suggestions == 1)
-                    message = $"{suggestions} extension supporting this file type is found";
-
-                _fileType = fileType;
+                if (result.Extensions.Count() == 1)
+                    message = $"{result.Extensions.Count()} extension supporting {matches} files is found";
+                
+                _suggestionResult = result;
                 CreateInfoBar(host, message);
             }
         }

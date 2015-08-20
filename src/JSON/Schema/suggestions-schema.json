@@ -1,0 +1,45 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "Schema for bundleconfig.json files",
+
+  "type": "object",
+
+  "definitions": {
+    "extension": {
+      "type": "object",
+
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The friendly name of the extension. This is displayed in the Suggested Extensions dialog."
+        },
+        "description": {
+          "type": "string",
+          "default": "The description of the extension as specified in their '.vsixmanifest' file."
+        },
+        "productId": {
+          "type": "string",
+          "default": "This is the ID of the extension as specified in their '.vsixmanifest' file."
+        },
+        "fileTypes": {
+          "type": "array",
+          "default": "The file types (extensions or file names) that is supported by the extension.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+
+  "properties": {
+    "extensions": {
+      "type": "array",
+      "description": "A list of extensions",
+
+      "items": {
+        "$ref": "#/definitions/extension"
+      }
+    }
+  }
+}

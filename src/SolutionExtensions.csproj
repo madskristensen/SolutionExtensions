@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="ExtensionManager\InstallProgressEventAgs.cs" />
     <Compile Include="Model\IExtensionModel.cs" />
+    <Compile Include="Model\SuggestionResult.cs" />
     <Compile Include="Model\SuggestionModel.cs" />
     <Compile Include="Model\SuggestionFileModel.cs" />
     <Compile Include="Suggestions\FileCreationListener.cs" />
@@ -96,12 +97,15 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="app.config" />
+    <Content Include="JSON\Schema\suggestions-schema.json">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="JSON\Schema\extensions.json" />
     <None Include="packages.config" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Suggestions\suggestions.json">
+    <Content Include="JSON\Schema\suggestions.json">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
   </ItemGroup>
@@ -313,7 +317,11 @@
     <Error Condition="!Exists('..\packages\Microsoft.VSSDK.BuildTools.14.0.23107\build\Microsoft.VSSDK.BuildTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VSSDK.BuildTools.14.0.23107\build\Microsoft.VSSDK.BuildTools.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.VSSDK.BuildTools.14.0.23107\build\Microsoft.VSSDK.BuildTools.targets" Condition="Exists('..\packages\Microsoft.VSSDK.BuildTools.14.0.23107\build\Microsoft.VSSDK.BuildTools.targets')" />
-  <ProjectExtensions />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties JSON_4Schema_4suggestions_1json__JSONSchema="suggestions-schema.json" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

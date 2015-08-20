@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.VisualStudio.Settings;
@@ -39,22 +40,25 @@ namespace SolutionExtensions
             }
         }
 
-        public static void IgnoreFileType(string fileType, bool ignore)
+        public static void IgnoreFileType(IEnumerable<string> fileTypes, bool ignore)
         {
             WritableSettingsStore wstore = _settings.GetWritableSettingsStore(SettingsScope.UserSettings);
 
             if (!wstore.CollectionExists(Constants.VSIX_NAME))
                 wstore.CreateCollection(Constants.VSIX_NAME);
 
-            string property = fileType.ToLowerInvariant();
+            foreach (string fileType in fileTypes)
+            {
+                string property = fileType.ToLowerInvariant();
 
-            if (ignore)
-            {
-                wstore.SetInt32(Constants.VSIX_NAME, property, 1);
-            }
-            else
-            {
-                wstore.DeleteProperty(Constants.VSIX_NAME, property);
+                if (ignore)
+                {
+                    wstore.SetInt32(Constants.VSIX_NAME, property, 1);
+                }
+                else
+                {
+                    wstore.DeleteProperty(Constants.VSIX_NAME, property);
+                }
             }
         }
 
@@ -72,11 +76,17 @@ namespace SolutionExtensions
             return store.PropertyExists(Constants.VSIX_NAME, property);
         }
 
-        public static bool IsFileTypeIgnored(string fileType)
+        public static bool IsFileTypeIgnored(IEnumerable<string> fileTypes)
         {
             SettingsStore store = _settings.GetReadOnlySettingsStore(SettingsScope.UserSettings);
 
-            return store.PropertyExists(Constants.VSIX_NAME, fileType.ToLowerInvariant());
+            foreach (string fileType in fileTypes)
+            {
+                if (store.PropertyExists(Constants.VSIX_NAME, fileType.ToLowerInvariant()))
+                    return true;
+            }
+
+            return false;
         }
 
         private static string GetPropertyName(string solution)

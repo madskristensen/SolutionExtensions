@@ -21,7 +21,7 @@ namespace SolutionExtensions
     [Name("ProductIdCompletionProvider")]
     internal class LicenseCompletionProvider : IJSONCompletionListProvider
     {
-        private static string[] _supported = new string[] { "productid", "name" };
+        private static string[] _supported = new string[] { "productid", "name", "description" };
 
         [Import]
         public ITextDocumentFactoryService TextDocumentFactoryService { get; set; }
@@ -38,7 +38,7 @@ namespace SolutionExtensions
             {
                 string fileName = Path.GetFileName(document.FilePath).ToLowerInvariant();
 
-                if (string.IsNullOrEmpty(fileName) || fileName != Constants.FILENAME)
+                if (string.IsNullOrEmpty(fileName) || (fileName != Constants.EXTENSIONS_FILENAME && fileName != Constants.SUGGESTIONS_FILENAME))
                     yield break;
             }
             else
@@ -70,7 +70,7 @@ namespace SolutionExtensions
                 }
                 else if (property == "description")
                 {
-                    yield return new SimpleCompletionEntry(extension.Header.Description, extension.Header.Name, glyph, context.Session);
+                    yield return new SimpleCompletionEntry(extension.Header.Name, extension.Header.Description, glyph, context.Session);
                 }
             }
         }

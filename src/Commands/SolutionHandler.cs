@@ -45,7 +45,7 @@ namespace SolutionExtensions
                 return null;
 
             string solutionFolder = Path.GetDirectoryName(_dte.Solution.FullName);
-            string configPath = Path.Combine(solutionFolder, Constants.FILENAME);
+            string configPath = Path.Combine(solutionFolder, Constants.EXTENSIONS_FILENAME);
 
             return await ExtensionFileModel.FromFile(configPath);
         }

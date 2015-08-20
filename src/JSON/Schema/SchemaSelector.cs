@@ -23,12 +23,23 @@ namespace SolutionExtensions
         {
             string fileName = Path.GetFileName(fileLocation);
 
-            if (!fileName.Equals(Constants.FILENAME, StringComparison.OrdinalIgnoreCase))
-                return null;
+            if (fileName.Equals(Constants.EXTENSIONS_FILENAME, StringComparison.OrdinalIgnoreCase))
+            {
+                return GetSchemaFileName("json\\schema\\extensions-schema.json");
+            }
+            else if(fileName.Equals(Constants.SUGGESTIONS_FILENAME, StringComparison.OrdinalIgnoreCase))
+            {
+                return GetSchemaFileName("json\\schema\\suggestions-schema.json");
+            }
 
+            return null;
+        }
+
+        private static string GetSchemaFileName(string relativePath)
+        {
             string assembly = Assembly.GetExecutingAssembly().Location;
             string folder = Path.GetDirectoryName(assembly);
-            return Path.Combine(folder, "json\\schema\\extensions-schema.json");
+            return Path.Combine(folder, relativePath);
         }
     }
 }

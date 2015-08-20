@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using System.IO;
-using System.Linq;
 using System.Windows.Threading;
 using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.Text;
@@ -46,13 +45,10 @@ namespace SolutionExtensions
         private static async System.Threading.Tasks.Task HandleSuggestions(ITextDocument document)
         {
             string fileType = Path.GetFileName(document.FilePath);
-            var extensions = await SuggestionHandler.Instance.GetSuggestions(fileType);
-            int count = extensions.Count();
+            var result = await SuggestionHandler.Instance.GetSuggestions(fileType);
 
-            if (count > 0)
-            {
-                InfoBarService.Instance.ShowInfoBar(count, fileType);
-            }
+            if (result != null)
+                InfoBarService.Instance.ShowInfoBar(result);
         }
     }
 }
