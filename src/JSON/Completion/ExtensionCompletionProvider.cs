@@ -38,7 +38,7 @@ namespace SolutionExtensions
             {
                 string fileName = Path.GetFileName(document.FilePath).ToLowerInvariant();
 
-                if (string.IsNullOrEmpty(fileName) || (fileName != Constants.EXTENSIONS_FILENAME && fileName != Constants.SUGGESTIONS_FILENAME))
+                if (string.IsNullOrEmpty(fileName) || (Path.GetExtension(fileName) != Constants.EXTENSION && fileName != Constants.SUGGESTIONS_FILENAME))
                     yield break;
             }
             else

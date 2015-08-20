@@ -44,8 +44,7 @@ namespace SolutionExtensions
             if (_dte.Solution == null || string.IsNullOrEmpty(_dte.Solution.FullName))
                 return null;
 
-            string solutionFolder = Path.GetDirectoryName(_dte.Solution.FullName);
-            string configPath = Path.Combine(solutionFolder, Constants.EXTENSIONS_FILENAME);
+            string configPath = Path.ChangeExtension(_dte.Solution.FullName, Constants.EXTENSION);
 
             return await ExtensionFileModel.FromFile(configPath);
         }

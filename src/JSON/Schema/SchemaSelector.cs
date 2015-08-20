@@ -23,7 +23,7 @@ namespace SolutionExtensions
         {
             string fileName = Path.GetFileName(fileLocation);
 
-            if (fileName.Equals(Constants.EXTENSIONS_FILENAME, StringComparison.OrdinalIgnoreCase))
+            if (Path.GetExtension(fileName).Equals(Constants.EXTENSION, StringComparison.OrdinalIgnoreCase))
             {
                 return GetSchemaFileName("json\\schema\\extensions-schema.json");
             }
