@@ -10,7 +10,7 @@
       "name": "Web Compiler",
       "description": "The easiest and most powerful way to compile LESS, Scss and CoffeeScript files directly within Visual Studio or through MSBuild.",
       "productId": "148ffa77-d70a-407f-892b-9ee542346862",
-      "fileTypes": [ ".less", ".scss", ".coffee", ".litcoffee", ".iced" ]
+      "fileTypes": [ ".less", ".scss", ".coffee", ".litcoffee", ".iced", "compilerconfig.json", "compilerconfig.json.defaults" ]
     },
     {
       "name": "Yaml Editor",
@@ -41,6 +41,42 @@
       "description": "Loads editor options such as indentation sizes from standard, cross-platform .editorconfig files.",
       "productId": "EditorConfig..5cd8e6a2-be43-4fcc-a345-40f6cc1e9c9f",
       "fileTypes": [ ".editorconfig" ]
+    },
+    {
+      "name": "DartVS",
+      "description": "Some support for coding Dart in Visual Studio.",
+      "productId": "d4032879-2378-4ea2-abc4-cb0fa4b9941e",
+      "fileTypes": [ ".dart" ]
+    },
+    {
+      "name": "Go Language Support",
+      "description": "Basic support for the Go programming language.",
+      "productId": "Tvl.VisualStudio.Language.Go.c837d3e9-5ae2-4455-a608-f6a4ae016688",
+      "fileTypes": [ ".go" ]
+    },
+    {
+      "name": "PHP Language Support",
+      "description": "Basic support for the PHP programming language.",
+      "productId": "Tvl.VisualStudio.Language.Php.ece72f50-0b6f-4363-9986-e38af13f6aa5",
+      "fileTypes": [ ".php" ]
+    },
+    {
+      "name": "Alloy Language Support",
+      "description": "Basic support for the Alloy modeling language.",
+      "productId": "Tvl.VisualStudio.Language.Alloy.b3393cfb-8f68-44c2-b4d7-c3210467bb9d",
+      "fileTypes": [ ".als" ]
+    },
+    {
+      "name": "Package Installer",
+      "description": "Makes it easier, faster and more convenient than ever to install Bower, npm and JSPM packages to any project.",
+      "productId": "fdd64809-376e-4542-92ce-808a8df06bcc",
+      "fileTypes": [ "package.json", "bower.json" ]
+    },
+    {
+      "name": "Bundler & Minifier",
+      "description": "Adds support for bundling and minifying JavaScript, CSS and HTML files in any project.",
+      "productId": "a0ae318b-4f07-4f71-93cb-f21d3f03c6d3",
+      "fileTypes": [ "bundleconfig.json" ]
     }
   ]
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Collections.Generic;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.ExtensionManager;
 using Microsoft.VisualStudio.Imaging;
@@ -120,7 +119,6 @@ namespace SolutionExtensions
 
                         if (obj != null)
                         {
-                            //IVsWindowFrame windowFrame = (IVsWindowFrame5)obj;
                             return (IVsInfoBarHost)obj;
                         }
                     }
