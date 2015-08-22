@@ -7,12 +7,9 @@
   "definitions": {
     "extension": {
       "type": "object",
+      "required": ["productId", "description", "fileTypes"],
 
       "properties": {
-        "name": {
-          "type": "string",
-          "description": "The friendly name of the extension. This is displayed in the Suggested Extensions dialog."
-        },
         "description": {
           "type": "string",
           "default": "The description of the extension as specified in their '.vsixmanifest' file."
@@ -34,10 +31,10 @@
 
   "properties": {
     "extensions": {
-      "type": "array",
+      "type": "object",
       "description": "A list of extensions",
 
-      "items": {
+      "additionalProperties": {
         "$ref": "#/definitions/extension"
       }
     }

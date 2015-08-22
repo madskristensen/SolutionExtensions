@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace SolutionExtensions
 {
@@ -22,7 +24,23 @@ namespace SolutionExtensions
                 fileContent = await file.ReadToEndAsync();
             }
 
-            return JsonConvert.DeserializeObject<SuggestionFileModel>(fileContent);
+            var obj = JObject.Parse(fileContent);
+            SuggestionFileModel fileModel = new SuggestionFileModel { Extensions = new List<SuggestionModel>() };
+
+            foreach (var ext in obj["extensions"])
+            {
+                SuggestionModel model = new SuggestionModel
+                {
+                    Name = ((JProperty)ext).Name,
+                    ProductId = ext.FirstOrDefault()?["productId"].ToString(),
+                    Description = ext.FirstOrDefault()?["description"].ToString(),
+                    FileTypes = ext.FirstOrDefault()?["fileTypes"].Values<string>().ToArray(),
+                };
+
+                fileModel.Extensions.Add(model);
+            }
+
+            return fileModel;
         }
     }
 }

@@ -6,9 +6,6 @@ using System.Windows.Controls;
 
 namespace SolutionExtensions
 {
-    /// <summary>
-    /// Interaction logic for InstallerDialog.xaml
-    /// </summary>
     public partial class InstallerDialog : Window
     {
         private IEnumerable<IExtensionModel> _missingExtensions;
@@ -46,7 +43,7 @@ namespace SolutionExtensions
             {
                 AddExtensionModels();
             }
-            else 
+            else
             {
                 AddSuggestionModels();
             }
@@ -85,6 +82,13 @@ namespace SolutionExtensions
         private void AddSuggestionModels()
         {
             txtNever.Text = "Never show again for this file type";
+            lblHeadline.Text = "These extensions provide features for the file type";
+
+            Label label = new Label();
+            label.Content = "Extensions";
+            label.FontWeight = FontWeights.Bold;
+            label.HorizontalAlignment = HorizontalAlignment.Stretch;
+            panel.Children.Add(label);
 
             foreach (IExtensionModel model in _missingExtensions)
             {

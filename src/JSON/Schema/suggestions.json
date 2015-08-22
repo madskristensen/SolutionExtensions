@@ -1,94 +1,79 @@
 ﻿{
-  "extensions": [
-    {
-      "name": "Web Essentials",
-      "productId": "5fb7364d-2e8c-44a4-95eb-2a382e30fec9",
-      "description": "Intellisense and colorizing for robots.txt",
-      "fileTypes": [ ".vtt", ".appcache", "robots.txt", "gulpfile.js", "gruntfile.js" ]
-    },
-    {
-      "name": "Web Compiler",
-      "description": "The easiest and most powerful way to compile LESS, Scss and CoffeeScript files directly within Visual Studio or through MSBuild.",
-      "productId": "148ffa77-d70a-407f-892b-9ee542346862",
-      "fileTypes": [ ".less", ".scss", ".coffee", ".litcoffee", ".iced", "compilerconfig.json", "compilerconfig.json.defaults" ]
-    },
-    {
-      "name": "Yaml Editor",
-      "description": "Provides a complete YAML editing experience in Visual Studio, including: - Syntax highlightning - Syntax error detection - Comment / uncomment selection - Format document",
-      "productId": "YamlDotNetEditor..074a7b74-655b-409c-b5ac-a028f12d6e89",
-      "fileTypes": [ ".yml", ".yaml" ]
-    },
-    {
-      "name": "Extensibility Tools",
-      "description": "An extension for making it easier to write Visual Studio extensions",
-      "productId": "f8330d54-0469-43a7-8fc0-7f19febeb897",
-      "fileTypes": [ ".pkgdef", ".vsct" ]
-    },
-    {
-      "name": "Open Command Line",
-      "description": "Opens a command line at the root of the project. Support for all consoles such as CMD, PowerShell, Bash etc. Provides syntax highlighting, Intellisense and execution of .cmd and .bat files.",
-      "productId": "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbb",
-      "fileTypes": [ ".cmd", ".bat" ]
-    },
-    {
-      "name": "Broccoli Task Runner",
-      "description": "Adds support for Broccoli brocfile.js files as well as Ember-CLI's ember-cli-build.js build scripts based on Broccoli.",
-      "productId": "e4f68b58-9df0-4878-8e7f-cba51b236f94",
-      "fileTypes": [ "brocfile.js" ]
-    },
-    {
-      "name": "EditorConfig",
-      "description": "Loads editor options such as indentation sizes from standard, cross-platform .editorconfig files.",
-      "productId": "EditorConfig..5cd8e6a2-be43-4fcc-a345-40f6cc1e9c9f",
-      "fileTypes": [ ".editorconfig" ]
-    },
-    {
-      "name": "DartVS",
-      "description": "Some support for coding Dart in Visual Studio.",
-      "productId": "d4032879-2378-4ea2-abc4-cb0fa4b9941e",
-      "fileTypes": [ ".dart" ]
-    },
-    {
-      "name": "Go Language Support",
-      "description": "Basic support for the Go programming language.",
-      "productId": "Tvl.VisualStudio.Language.Go.c837d3e9-5ae2-4455-a608-f6a4ae016688",
-      "fileTypes": [ ".go" ]
-    },
-    {
-      "name": "PHP Language Support",
-      "description": "Basic support for the PHP programming language.",
-      "productId": "Tvl.VisualStudio.Language.Php.ece72f50-0b6f-4363-9986-e38af13f6aa5",
-      "fileTypes": [ ".php" ]
-    },
-    {
-      "name": "Alloy Language Support",
+  "extensions": {
+    "Alloy Language Support": {
       "description": "Basic support for the Alloy modeling language.",
       "productId": "Tvl.VisualStudio.Language.Alloy.b3393cfb-8f68-44c2-b4d7-c3210467bb9d",
       "fileTypes": [ ".als" ]
     },
-    {
-      "name": "Package Installer",
-      "description": "Makes it easier, faster and more convenient than ever to install Bower, npm and JSPM packages to any project.",
-      "productId": "fdd64809-376e-4542-92ce-808a8df06bcc",
-      "fileTypes": [ "package.json", "bower.json" ]
+    "Broccoli Task Runner": {
+      "description": "Adds support for Broccoli brocfile.js files as well as Ember-CLI's ember-cli-build.js build scripts based on Broccoli.",
+      "productId": "e4f68b58-9df0-4878-8e7f-cba51b236f94",
+      "fileTypes": [ "brocfile.js" ]
     },
-    {
-      "name": "Bundler & Minifier",
+    "Bundler & Minifier": {
       "description": "Adds support for bundling and minifying JavaScript, CSS and HTML files in any project.",
       "productId": "a0ae318b-4f07-4f71-93cb-f21d3f03c6d3",
       "fileTypes": [ "bundleconfig.json" ]
     },
-    {
-      "name": "Humans.txt Language Service",
+    "DartVS": {
+      "description": "Some support for coding Dart in Visual Studio.",
+      "productId": "d4032879-2378-4ea2-abc4-cb0fa4b9941e",
+      "fileTypes": [ ".dart" ]
+    },
+    "EditorConfig": {
+      "description": "Loads editor options such as indentation sizes from standard, cross-platform .editorconfig files.",
+      "productId": "EditorConfig..5cd8e6a2-be43-4fcc-a345-40f6cc1e9c9f",
+      "fileTypes": [ ".editorconfig" ]
+    },
+    "Extensibility Tools": {
+      "description": "An extension for making it easier to write Visual Studio extensions",
+      "productId": "f8330d54-0469-43a7-8fc0-7f19febeb897",
+      "fileTypes": [ ".pkgdef", ".vsct" ]
+    },
+    "Go Language Support": {
+      "description": "Basic support for the Go programming language.",
+      "productId": "Tvl.VisualStudio.Language.Go.c837d3e9-5ae2-4455-a608-f6a4ae016688",
+      "fileTypes": [ ".go" ]
+    },
+    "Humans.txt Language Service": {
       "description": "Language service for humans.txt files.",
       "productId": "HumansTxtLanguageService.Juhász Péter.14515d35-d738-42e5-b9aa-cb9630f8a9bc",
       "fileTypes": [ "humans.txt" ]
     },
-    {
-      "name": "Robots.txt Language Service",
+    "Open Command Line": {
+      "description": "Opens a command line at the root of the project. Support for all consoles such as CMD, PowerShell, Bash etc. Provides syntax highlighting, Intellisense and execution of .cmd and .bat files.",
+      "productId": "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbb",
+      "fileTypes": [ ".cmd", ".bat" ]
+    },
+    "Package Installer": {
+      "description": "Makes it easier, faster and more convenient than ever to install Bower, npm and JSPM packages to any project.",
+      "productId": "fdd64809-376e-4542-92ce-808a8df06bcc",
+      "fileTypes": [ "package.json", "bower.json" ]
+    },
+    "PHP Language Support": {
+      "description": "Basic support for the PHP programming language.",
+      "productId": "Tvl.VisualStudio.Language.Php.ece72f50-0b6f-4363-9986-e38af13f6aa5",
+      "fileTypes": [ ".php" ]
+    },
+    "Robots.txt Language Service": {
       "description": "Language service for robots.txt files.",
       "productId": "RobotsTxtLanguageService.Juhász Péter.d18b7383-8b42-4044-be51-414b20e67575",
       "fileTypes": [ "robots.txt" ]
+    },
+    "Web Compiler": {
+      "description": "The easiest and most powerful way to compile LESS, Scss and CoffeeScript files directly within Visual Studio or through MSBuild.",
+      "productId": "148ffa77-d70a-407f-892b-9ee542346862",
+      "fileTypes": [ ".less", ".scss", ".coffee", ".litcoffee", ".iced", "compilerconfig.json", "compilerconfig.json.defaults" ]
+    },
+    "Web Essentials 2015": {
+      "productId": "5fb7364d-2e8c-44a4-95eb-2a382e30fec9",
+      "description": "Intellisense and colorizing for robots.txt",
+      "fileTypes": [ ".vtt", ".appcache", "robots.txt", "gulpfile.js", "gruntfile.js" ]
+    },
+    "Yaml Editor": {
+      "description": "Provides a complete YAML editing experience in Visual Studio, including: - Syntax highlightning - Syntax error detection - Comment / uncomment selection - Format document",
+      "productId": "YamlDotNetEditor..074a7b74-655b-409c-b5ac-a028f12d6e89",
+      "fileTypes": [ ".yml", ".yaml" ]
     }
-  ]
+  }
 }
