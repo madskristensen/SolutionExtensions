@@ -77,6 +77,18 @@
       "description": "Adds support for bundling and minifying JavaScript, CSS and HTML files in any project.",
       "productId": "a0ae318b-4f07-4f71-93cb-f21d3f03c6d3",
       "fileTypes": [ "bundleconfig.json" ]
+    },
+    {
+      "name": "Humans.txt Language Service",
+      "description": "Language service for humans.txt files.",
+      "productId": "HumansTxtLanguageService.Juhász Péter.14515d35-d738-42e5-b9aa-cb9630f8a9bc",
+      "fileTypes": [ "humans.txt" ]
+    },
+    {
+      "name": "Robots.txt Language Service",
+      "description": "Language service for robots.txt files.",
+      "productId": "RobotsTxtLanguageService.Juhász Péter.d18b7383-8b42-4044-be51-414b20e67575",
+      "fileTypes": [ "robots.txt" ]
     }
   ]
 }
