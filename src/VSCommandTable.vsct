@@ -1,45 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <Extern href="stdidcmd.h"/>
-    <Extern href="vsshlids.h"/>
-    <Include href="KnownImageIds.vsct"/>
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Include href="KnownImageIds.vsct"/>
 
-    <Commands package="guidVSPackage">
-        <Groups>
-            <Group guid="guidExtensionCmdSet" id="MyMenuGroup" priority="0x1000">
-                <Parent guid="guidSHLMainMenu" id="IDM_VS_TOOL_STANDARD"/>
-            </Group>
-        </Groups>
+  <Commands package="guidVSPackage">
+    <Menus>
+      <Menu guid="guidExtensionCmdSet" id="MyMenu" priority="0x0200" type="MenuController">
+        <Parent guid="guidExtensionCmdSet" id="MyMenuGroup"/>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>NotInTBList</CommandFlag>
+        <Strings>
+          <ButtonText>My menu</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
 
-        <Buttons>
-            <Button guid="guidExtensionCmdSet" id="cmdShowDialog" priority="0x0100" type="Button">
-                <Parent guid="guidExtensionCmdSet" id="MyMenuGroup" />
-                <Icon guid="ImageCatalogGuid" id="ExtensionApplication" />
-                <CommandFlag>IconIsMoniker</CommandFlag>
-                <CommandFlag>DefaultDisabled</CommandFlag>
-                <CommandFlag>DynamicVisibility</CommandFlag>
-                <CommandFlag>DefaultInvisible</CommandFlag>
-                <Strings>
-                    <ButtonText>Show Suggested Extensions...</ButtonText>
-                    <ToolTipText>Show Suggested Extensions Dialog</ToolTipText>
-                </Strings>
-            </Button>
-        </Buttons>
-    </Commands>
+    <Groups>
+      <Group guid="guidExtensionCmdSet" id="MyMenuGroup" priority="0x1000">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_TOOL_STANDARD"/>
+      </Group>
+      <Group guid="guidExtensionCmdSet" id="MyMenuItemGroup" priority="0x1000">
+        <Parent guid="guidExtensionCmdSet" id="MyMenu"/>
+      </Group>
+    </Groups>
 
-    <CommandPlacements>
-        <CommandPlacement guid="guidExtensionCmdSet" id="cmdShowDialog" priority="0x9000">
-            <Parent guid="guidSHLMainMenu" id="IDG_VS_TOOLS_OTHER2"/>
-        </CommandPlacement>
-    </CommandPlacements>
+    <Buttons>
+      <Button guid="guidExtensionCmdSet" id="cmdShowDialog" priority="0x0100" type="Button">
+        <Parent guid="guidExtensionCmdSet" id="MyMenuItemGroup" />
+        <Icon guid="ImageCatalogGuid" id="ExtensionApplication" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Show missing extensions</ButtonText>
+          <ToolTipText>Show Suggested Extensions Dialog</ToolTipText>
+        </Strings>
+      </Button>
+      <Button guid="guidExtensionCmdSet" id="cmdShowSuggestions" priority="0x0100" type="Button">
+        <Parent guid="guidExtensionCmdSet" id="MyMenuItemGroup" />
+        <Icon guid="ImageCatalogGuid" id="VisualStudioFeedback" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Show Suggested Extensions...</ButtonText>
+          <ToolTipText>Show Suggested Extensions Dialog</ToolTipText>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
 
-    <Symbols>
-        <GuidSymbol name="guidVSPackage" value="{b8f5f6a7-06c9-4303-9f98-f80c74c26614}" />
+  <CommandPlacements>
+    <CommandPlacement guid="guidExtensionCmdSet" id="cmdShowDialog" priority="0x9000">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_TOOLS_OTHER2"/>
+    </CommandPlacement>
+  </CommandPlacements>
 
-        <GuidSymbol name="guidExtensionCmdSet" value="{b66e17f2-a296-460f-8f86-021c91ccdc5d}">
-            <IDSymbol name="MyMenuGroup" value="0x1020" />
-            <IDSymbol name="cmdShowDialog" value="0x0100" />
-        </GuidSymbol>
-    </Symbols>
+  <Symbols>
+    <GuidSymbol name="guidVSPackage" value="{b8f5f6a7-06c9-4303-9f98-f80c74c26614}" />
+
+    <GuidSymbol name="guidExtensionCmdSet" value="{b66e17f2-a296-460f-8f86-021c91ccdc5d}">
+      <IDSymbol name="MyMenu" value="0x1010" />
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="MyMenuItemGroup" value="0x1030" />
+      
+      <IDSymbol name="cmdShowDialog" value="0x0100" />
+      <IDSymbol name="cmdShowSuggestions" value="0x0200" />
+    </GuidSymbol>
+  </Symbols>
 </CommandTable>

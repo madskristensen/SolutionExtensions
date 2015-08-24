@@ -60,6 +60,11 @@
       "productId": "RobotsTxtLanguageService.Juhász Péter.d18b7383-8b42-4044-be51-414b20e67575",
       "fileTypes": [ "robots.txt" ]
     },
+    "TypeWriter": {
+      "description": "Automatic TypeScript Template generation from C# files.",
+      "productId": "45b6b392-ce2f-409c-a39f-bbf90b34349e",
+      "fileTypes": [ ".ts", ".tst" ]
+    },
     "Web Compiler": {
       "description": "The easiest and most powerful way to compile LESS, Scss and CoffeeScript files directly within Visual Studio or through MSBuild.",
       "productId": "148ffa77-d70a-407f-892b-9ee542346862",

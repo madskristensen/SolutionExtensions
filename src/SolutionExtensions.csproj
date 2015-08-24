@@ -52,6 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\ShowSuggestionsCommand.cs" />
     <Compile Include="Commands\ShowDialogCommand.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ExtensionManager\ExtensionInstalledChecker.cs" />

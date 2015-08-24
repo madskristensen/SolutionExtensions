@@ -20,8 +20,16 @@ namespace SolutionExtensions
             {
                 var menuCommandID = new CommandID(GuidList.guidExtensionCmdSet, PackageCommands.cmdShowDialog);
                 _button = new OleMenuCommand(ShowDialog, menuCommandID);
+                _button.BeforeQueryStatus += _button_BeforeQueryStatus;
                 commandService.AddCommand(_button);
             }
+        }
+
+        private void _button_BeforeQueryStatus(object sender, EventArgs e)
+        {
+            var button = (OleMenuCommand)sender;
+
+            button.Enabled = SolutionHandler.Instance.GetCurrentFileModel() != null;
         }
 
         private void SolutionClosed(object sender, EventArgs e)

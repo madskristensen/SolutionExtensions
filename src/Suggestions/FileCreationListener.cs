@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.ComponentModel.Composition;
 using System.IO;
 using System.Windows.Threading;
@@ -47,7 +48,7 @@ namespace SolutionExtensions
             string fileType = Path.GetFileName(document.FilePath);
             var result = await SuggestionHandler.Instance.GetSuggestions(fileType);
 
-            if (result != null)
+            if (result != null && result.Extensions.Any())
                 InfoBarService.Instance.ShowInfoBar(result);
         }
     }
