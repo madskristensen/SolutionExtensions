@@ -5,6 +5,11 @@
       "productId": "Tvl.VisualStudio.Language.Alloy.b3393cfb-8f68-44c2-b4d7-c3210467bb9d",
       "fileTypes": [ ".als" ]
     },
+    "ASP.NET 5 Scripts Task Runner": {
+      "description": "Adds support for project.json's scripts in the Task Runner Explorer",
+      "productId": "ec768980-f2de-4db0-a6e2-5e57fa612ad5",
+      "fileTypes": [ "project.json" ]
+    },
     "Broccoli Task Runner": {
       "description": "Adds support for Broccoli brocfile.js files as well as Ember-CLI's ember-cli-build.js build scripts based on Broccoli.",
       "productId": "e4f68b58-9df0-4878-8e7f-cba51b236f94",
@@ -14,6 +19,11 @@
       "description": "Adds support for bundling and minifying JavaScript, CSS and HTML files in any project.",
       "productId": "a0ae318b-4f07-4f71-93cb-f21d3f03c6d3",
       "fileTypes": [ "bundleconfig.json" ]
+    },
+    "Command Task Runner": {
+      "description": "Adds support for command line batch files in Visual Studio 2015's Task Runner Explorer. Supports .cmd, .bat, .ps1 and .psm1 files.",
+      "productId": "fc1aafb2-321e-41bd-ac37-03b09ea8ef31",
+      "fileTypes": [ ".cmd", ".bat", ".ps1", ".psm1" ]
     },
     "DartVS": {
       "description": "Some support for coding Dart in Visual Studio.",
