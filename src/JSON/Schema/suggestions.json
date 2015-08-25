@@ -35,10 +35,15 @@
       "productId": "EditorConfig..5cd8e6a2-be43-4fcc-a345-40f6cc1e9c9f",
       "fileTypes": [ ".editorconfig" ]
     },
-    "Extensibility Tools": {
-      "description": "An extension for making it easier to write Visual Studio extensions",
-      "productId": "f8330d54-0469-43a7-8fc0-7f19febeb897",
-      "fileTypes": [ ".pkgdef", ".vsct" ]
+		"Extensibility Tools": {
+			"description": "An extension for making it easier to write Visual Studio extensions",
+			"productId": "f8330d54-0469-43a7-8fc0-7f19febeb897",
+			"fileTypes": [ ".pkgdef", ".vsct" ]
+		},
+		"Flatten Packages": {
+      "description": "Flattens the node_modules folder hierarchy by using the 'flatten-packages' npm package behind the scenes. Works with long paths. Requires Node.js installed on the machine",
+      "productId": "96559c66-f326-40e2-95c1-449a80387524",
+      "fileTypes": [ "package.json" ]
     },
     "Go Language Support": {
       "description": "Basic support for the Go programming language.",
@@ -91,10 +96,26 @@
       "fileTypes": [ ".yml", ".yaml" ]
     }
   },
-  "general": {
-    "Add New File": {
-      "productId": "27dd9dea-6dd2-403e-929d-3ff20d896c5e",
-      "description": "The fastest and easiest way to add new files to any project - including files that start with a dot."
-    }
-  }
+	"general": {
+		"Add New File": {
+			"productId": "27dd9dea-6dd2-403e-929d-3ff20d896c5e",
+			"description": "The fastest and easiest way to add new files to any project - including files that start with a dot."
+		},
+		"File Nesting": {
+			"productId": "6c799bc4-0d4c-4172-98bc-5d464b612dca",
+			"description": "Automatically nest files based on file name and enables developers to nest and unnest any file manually"
+		},
+		"Trailing Whitespace Visualizer": {
+			"productId": "4c1a78e6-e7b8-4aa9-8812-4836e051ff6d",
+			"description": "Makes it easier than ever to identify and remove trailing whitespace in any code file"
+		},
+		"Image Optimizer": {
+			"productId": "bf95754f-93d3-42ff-bfe3-e05d23188b08",
+			"description": "Lossless optimization of JPEG, PNG and Gifs - including animated Gifs"
+		},
+		"MultiEditing": {
+			"productId": "MultiEdit..c6fb8e57-fde0-4987-8e7a-5ca9b4beddcb",
+			"description": "Simultaneously edit in more than one location in the editor\n\nIf you've ever ran into a case where you wanted to quickly change variable names or multiple loop conditions - you can use Multi-Edit to set virtual carets that all behave the same."
+		}
+	}
 }

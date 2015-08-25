@@ -66,13 +66,21 @@ namespace SolutionExtensions
                 }
                 else if (property == "name")
                 {
-                    yield return new SimpleCompletionEntry(extension.Header.Name, extension.Header.Name, glyph, context.Session);
+                    yield return new SimpleCompletionEntry(extension.Header.Name, Normalize(extension.Header.Name), glyph, context.Session);
                 }
                 else if (property == "description")
                 {
-                    yield return new SimpleCompletionEntry(extension.Header.Name, extension.Header.Description, glyph, context.Session);
+                    yield return new SimpleCompletionEntry(extension.Header.Name, Normalize(extension.Header.Description), glyph, context.Session);
                 }
             }
+        }
+
+        private static string Normalize(string text)
+        {
+            return text
+                       .Replace("\r", "\\r")
+                       .Replace("\n", "\\n")
+                       .Replace('"', '\'');
         }
 
         private static ImageSource GetExtensionIcon(IInstalledExtension extension)
