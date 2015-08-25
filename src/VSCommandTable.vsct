@@ -54,8 +54,6 @@
         <Icon guid="ImageCatalogGuid" id="VisualStudioFeedback" />
         <CommandFlag>IconIsMoniker</CommandFlag>
         <CommandFlag>FixMenuController</CommandFlag>
-        <CommandFlag>DefaultDisabled</CommandFlag>
-        <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>Show Suggested Extensions</ButtonText>
           <ToolTipText>Show Suggested Extensions Dialog</ToolTipText>

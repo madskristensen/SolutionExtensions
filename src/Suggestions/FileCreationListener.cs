@@ -49,9 +49,10 @@ namespace SolutionExtensions
             string fileType = Path.GetFileName(document.FilePath);
             IEnumerable<string> fileTypes;
             var result = SuggestionHandler.Instance.GetSuggestions(fileType, out fileTypes);
+            result.Extensions = result.Extensions.Where(e => e.Category != SuggestionFileModel.GENERAL);
             var missing = SuggestionHandler.Instance.GetMissingExtensions(result.Extensions);
 
-            if (missing.Any() && result.Extensions.Any(e => e.Category != "General"))
+            if (missing.Any() && result.Extensions.Any())
                 InfoBarService.Instance.ShowInfoBar(result, fileType);
         }
     }

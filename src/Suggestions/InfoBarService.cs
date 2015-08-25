@@ -66,7 +66,7 @@ namespace SolutionExtensions
                 return;
 
             _fileType = fileType;
-            int count = result.Extensions.Count(e => e.Category != "General");
+            int count = result.Extensions.Count(e => e.Category != SuggestionFileModel.GENERAL);
 
             var host = GetInfoBarHost();
 

@@ -61,7 +61,7 @@ namespace SolutionExtensions
                 {
                     string match = model?.FileTypes?.FirstOrDefault(ft => fileType.EndsWith(ft, StringComparison.Ordinal));
 
-                    if (!string.IsNullOrEmpty(match) || model.Category == "General")
+                    if (!string.IsNullOrEmpty(match) || model.Category == SuggestionFileModel.GENERAL)
                     {
                         matches.Add(match);
                         list.Add(model);

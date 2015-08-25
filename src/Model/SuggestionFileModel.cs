@@ -7,6 +7,9 @@ namespace SolutionExtensions
 {
     public class SuggestionFileModel
     {
+        public const string GENERAL = "General";
+        public const string FILE_BASED = "File based";
+
         public Dictionary<string, IEnumerable<IExtensionModel>> Extensions { get; set; }
 
         public static SuggestionFileModel FromFile(string fileName)
@@ -32,13 +35,13 @@ namespace SolutionExtensions
                     ProductId = ext.FirstOrDefault()?["productId"].ToString(),
                     Description = ext.FirstOrDefault()?["description"].ToString(),
                     FileTypes = ext.FirstOrDefault()?["fileTypes"].Values<string>().ToArray(),
-                    Category = "File based"
+                    Category = FILE_BASED
                 };
 
                 fileBased.Add(model);
             }
 
-            fileModel.Extensions.Add("File Based", fileBased);
+            fileModel.Extensions.Add(FILE_BASED, fileBased);
 
             var general = new List<IExtensionModel>();
 
@@ -49,13 +52,13 @@ namespace SolutionExtensions
                     Name = ((JProperty)ext).Name,
                     ProductId = ext.FirstOrDefault()?["productId"].ToString(),
                     Description = ext.FirstOrDefault()?["description"].ToString(),
-                    Category = "General"
+                    Category = GENERAL
                 };
 
                 general.Add(model);
             }
 
-            fileModel.Extensions.Add("General", general);
+            fileModel.Extensions.Add(GENERAL, general);
 
             return fileModel;
         }

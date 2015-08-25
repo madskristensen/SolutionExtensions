@@ -29,6 +29,13 @@ namespace SolutionExtensions
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             btnInstall.Focus();
+
+            if (_missingExtensions.FirstOrDefault() is SuggestionModel)
+            {
+                txtNever.Text = "Never show again for this file type";
+                lblHeadline.Text = "These extensions provide features for the file type";
+            }
+
             AddExtensionModels();
         }
 

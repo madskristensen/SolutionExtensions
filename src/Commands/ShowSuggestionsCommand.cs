@@ -28,7 +28,7 @@ namespace SolutionExtensions
             {
                 var menuCommandID = new CommandID(GuidList.guidExtensionCmdSet, PackageCommands.cmdShowSuggestions);
                 var button = new OleMenuCommand(async (s, e) => await ShowSuggestions(s, e), menuCommandID);
-                button.BeforeQueryStatus += BeforeQueryStatus;
+                //button.BeforeQueryStatus += BeforeQueryStatus;
                 commandService.AddCommand(button);
             }
         }
@@ -45,24 +45,37 @@ namespace SolutionExtensions
             Instance = new ShowSuggestionsCommand(package, repository, manager);
         }
 
-        private void BeforeQueryStatus(object sender, EventArgs e)
-        {
-            var button = (OleMenuCommand)sender;
-            button.Enabled = true;
-        }
+        //private void BeforeQueryStatus(object sender, EventArgs e)
+        //{
+        //    var button = (OleMenuCommand)sender;
+        //    button.Enabled = true;
+        //}
 
         private async System.Threading.Tasks.Task ShowSuggestions(object sender, EventArgs e)
         {
             var dte = ServiceProvider.GetService(typeof(DTE)) as DTE2;
-            if (dte.ActiveDocument == null || string.IsNullOrEmpty(dte.ActiveDocument.FullName))
-            {
-                MessageBox.Show("No file is open that has any suggested extensions", Constants.VSIX_NAME, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            //if (dte.ActiveDocument == null || string.IsNullOrEmpty(dte.ActiveDocument.FullName))
+            //{
+            //    MessageBox.Show("No file is open that has any suggested extensions", Constants.VSIX_NAME, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return;
+            //}
 
-            string fileName = Path.GetFileName(dte.ActiveDocument.FullName);
-            IEnumerable<string> fileTypes;
-            var result = SuggestionHandler.Instance.GetSuggestions(fileName, out fileTypes);
+            SuggestionResult result;
+
+            if (dte.ActiveDocument != null && !string.IsNullOrEmpty(dte.ActiveDocument.FullName))
+            {
+                string fileName = Path.GetFileName(dte.ActiveDocument.FullName);
+                IEnumerable<string> fileTypes;
+                result = SuggestionHandler.Instance.GetSuggestions(fileName, out fileTypes);
+            }
+            else
+            {
+                result = new SuggestionResult
+                {
+                    Extensions = SuggestionHandler.Instance.GetCurrentFileModel().Extensions[SuggestionFileModel.GENERAL],
+                    Matches = new string[0]
+                };
+            }
 
             if (result != null)
             {
