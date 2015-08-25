@@ -34,7 +34,8 @@ namespace SolutionExtensions
             var repository = (IVsExtensionRepository)GetService(typeof(SVsExtensionRepository));
             var manager = (IVsExtensionManager)GetService(typeof(SVsExtensionManager));
             ExtensionInstalledChecker.Initialize(repository, manager);
-            ShowDialogCommand.Initialize(this);
+            ShowMissingCommand.Initialize(this);
+            ModifyMissingCommand.Initialize(this);
             ShowSuggestionsCommand.Initialize(this, repository, manager);
             InfoBarService.Initialize(this, repository, manager);
 

@@ -52,8 +52,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\ModifyMissingCommand.cs" />
     <Compile Include="Commands\ShowSuggestionsCommand.cs" />
-    <Compile Include="Commands\ShowDialogCommand.cs" />
+    <Compile Include="Commands\ShowMissingCommand.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ExtensionManager\ExtensionInstalledChecker.cs" />
     <Compile Include="ExtensionManager\ExtensionInstaller.cs" />

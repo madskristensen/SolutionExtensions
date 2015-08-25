@@ -19,8 +19,10 @@ namespace SolutionExtensions
     {
         public const int MyMenu = 0x1010;
         public const int MyMenuGroup = 0x1020;
-        public const int MyMenuItemGroup = 0x1030;
-        public const int cmdShowDialog = 0x0100;
+        public const int MissingGroup = 0x1030;
+        public const int SuggestionGroup = 0x1040;
+        public const int cmdShowMissing = 0x0100;
         public const int cmdShowSuggestions = 0x0200;
+        public const int cmdCreateSolutionExtensions = 0x0300;
     }
 }

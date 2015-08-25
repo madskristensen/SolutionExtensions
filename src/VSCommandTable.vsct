@@ -21,33 +21,46 @@
       <Group guid="guidExtensionCmdSet" id="MyMenuGroup" priority="0x1000">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_TOOL_STANDARD"/>
       </Group>
-      <Group guid="guidExtensionCmdSet" id="MyMenuItemGroup" priority="0x1000">
+      <Group guid="guidExtensionCmdSet" id="MissingGroup" priority="0x1000">
+        <Parent guid="guidExtensionCmdSet" id="MyMenu"/>
+      </Group>
+      <Group guid="guidExtensionCmdSet" id="SuggestionGroup" priority="0x2000">
         <Parent guid="guidExtensionCmdSet" id="MyMenu"/>
       </Group>
     </Groups>
 
     <Buttons>
-      <Button guid="guidExtensionCmdSet" id="cmdShowDialog" priority="0x0100" type="Button">
-        <Parent guid="guidExtensionCmdSet" id="MyMenuItemGroup" />
+      <Button guid="guidExtensionCmdSet" id="cmdShowMissing" priority="0x0100" type="Button">
+        <Parent guid="guidExtensionCmdSet" id="MissingGroup" />
         <Icon guid="ImageCatalogGuid" id="ExtensionApplication" />
         <CommandFlag>IconIsMoniker</CommandFlag>
         <CommandFlag>DefaultDisabled</CommandFlag>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <CommandFlag>DefaultInvisible</CommandFlag>
         <Strings>
-          <ButtonText>Show missing extensions</ButtonText>
-          <ToolTipText>Show Suggested Extensions Dialog</ToolTipText>
+          <ButtonText>Show Missing Extensions</ButtonText>
+          <ToolTipText>Show Missing Extensions Dialog</ToolTipText>
+        </Strings>
+      </Button>
+      <Button guid="guidExtensionCmdSet" id="cmdCreateSolutionExtensions" priority="0x0200" type="Button">
+        <Parent guid="guidExtensionCmdSet" id="MissingGroup" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Modify Solution Extensions...</ButtonText>
+          <ToolTipText>Show Modify Solution Extensions Dialog</ToolTipText>
         </Strings>
       </Button>
       <Button guid="guidExtensionCmdSet" id="cmdShowSuggestions" priority="0x0100" type="Button">
-        <Parent guid="guidExtensionCmdSet" id="MyMenuItemGroup" />
+        <Parent guid="guidExtensionCmdSet" id="SuggestionGroup" />
         <Icon guid="ImageCatalogGuid" id="VisualStudioFeedback" />
         <CommandFlag>IconIsMoniker</CommandFlag>
         <CommandFlag>DefaultDisabled</CommandFlag>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <CommandFlag>DefaultInvisible</CommandFlag>
         <Strings>
-          <ButtonText>Show Suggested Extensions...</ButtonText>
+          <ButtonText>Show Suggested Extensions</ButtonText>
           <ToolTipText>Show Suggested Extensions Dialog</ToolTipText>
         </Strings>
       </Button>
@@ -55,8 +68,11 @@
   </Commands>
 
   <CommandPlacements>
-    <CommandPlacement guid="guidExtensionCmdSet" id="cmdShowDialog" priority="0x9000">
+    <CommandPlacement guid="guidExtensionCmdSet" id="cmdShowMissing" priority="0x9000">
       <Parent guid="guidSHLMainMenu" id="IDG_VS_TOOLS_OTHER2"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidExtensionCmdSet" id="MissingGroup" priority="0x0500">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE"/>
     </CommandPlacement>
   </CommandPlacements>
 
@@ -66,10 +82,12 @@
     <GuidSymbol name="guidExtensionCmdSet" value="{b66e17f2-a296-460f-8f86-021c91ccdc5d}">
       <IDSymbol name="MyMenu" value="0x1010" />
       <IDSymbol name="MyMenuGroup" value="0x1020" />
-      <IDSymbol name="MyMenuItemGroup" value="0x1030" />
-      
-      <IDSymbol name="cmdShowDialog" value="0x0100" />
+      <IDSymbol name="MissingGroup" value="0x1030" />
+      <IDSymbol name="SuggestionGroup" value="0x1040" />
+
+      <IDSymbol name="cmdShowMissing" value="0x0100" />
       <IDSymbol name="cmdShowSuggestions" value="0x0200" />
+      <IDSymbol name="cmdCreateSolutionExtensions" value="0x0300" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

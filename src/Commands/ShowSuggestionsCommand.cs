@@ -6,6 +6,7 @@ using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.ExtensionManager;
+using System.Windows.Forms;
 
 namespace SolutionExtensions
 {
@@ -25,26 +26,12 @@ namespace SolutionExtensions
             if (commandService != null)
             {
                 var menuCommandID = new CommandID(GuidList.guidExtensionCmdSet, PackageCommands.cmdShowSuggestions);
-                var button = new OleMenuCommand(ShowSuggestions, menuCommandID);
-                button.BeforeQueryStatus += _button_BeforeQueryStatus;
+                var button = new OleMenuCommand(async (s, e) => await ShowSuggestions(s, e), menuCommandID);
+                button.BeforeQueryStatus += BeforeQueryStatus;
                 commandService.AddCommand(button);
             }
         }
-
-        private async void _button_BeforeQueryStatus(object sender, EventArgs e)
-        {
-            var button = (OleMenuCommand)sender;
-
-            var dte = ServiceProvider.GetService(typeof(DTE)) as DTE2;
-            if (dte.ActiveDocument == null || string.IsNullOrEmpty(dte.ActiveDocument.FullName))
-                return;
-
-            string fileName = Path.GetFileName(dte.ActiveDocument.FullName);
-            var result = await SuggestionHandler.Instance.GetSuggestions(fileName);
-
-            button.Enabled = result != null && result.Extensions.Any();
-        }
-
+        
         public static ShowSuggestionsCommand Instance { get; private set; }
 
         private IServiceProvider ServiceProvider
@@ -57,16 +44,26 @@ namespace SolutionExtensions
             Instance = new ShowSuggestionsCommand(package, repository, manager);
         }
 
-        private async void ShowSuggestions(object sender, EventArgs e)
+        private void BeforeQueryStatus(object sender, EventArgs e)
+        {
+            var button = (OleMenuCommand)sender;
+            var dte = ServiceProvider.GetService(typeof(DTE)) as DTE2;
+            button.Enabled = dte.ActiveDocument != null && !string.IsNullOrEmpty(dte.ActiveDocument.FullName);
+        }
+
+        private async System.Threading.Tasks.Task ShowSuggestions(object sender, EventArgs e)
         {
             var dte = ServiceProvider.GetService(typeof(DTE)) as DTE2;
             if (dte.ActiveDocument == null || string.IsNullOrEmpty(dte.ActiveDocument.FullName))
+            {
+                MessageBox.Show("No file is open that has any suggested extensions", Constants.VSIX_NAME, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
+            }
 
             string fileName = Path.GetFileName(dte.ActiveDocument.FullName);
             var result = await SuggestionHandler.Instance.GetSuggestions(fileName);
 
-            if (result != null && result.Extensions.Any())
+            if (result != null)
             {
                 InstallerDialog dialog = new InstallerDialog(result.Extensions);
                 var test = dialog.ShowDialog();
