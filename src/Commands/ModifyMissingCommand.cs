@@ -1,5 +1,9 @@
 ﻿using System;
 using System.ComponentModel.Design;
+using System.IO;
+using System.Text;
+using EnvDTE;
+using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 
 namespace SolutionExtensions
@@ -43,7 +47,27 @@ namespace SolutionExtensions
 
         private void ShowDialog(object sender, EventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("Test");
+            string fileName = Path.ChangeExtension(VSPackage.GetSolution(), Constants.EXTENSION);
+
+            if (string.IsNullOrEmpty(fileName))
+                return;
+
+            string emptyFile = @"{
+  ""extensions"": {
+    ""mandatory"": [
+      {
+        ""name"": ""Web Compiler"",
+        ""productId"": ""148ffa77-d70a-407f-892b-9ee542346862""
+      }
+    ]
+  }
+}";
+
+            if (!File.Exists(fileName))
+                File.WriteAllText(fileName, emptyFile, new UTF8Encoding(true));
+
+            var dte = ServiceProvider.GetService(typeof(DTE)) as DTE2;
+            dte.ItemOperations.OpenFile(fileName);
         }
     }
 }

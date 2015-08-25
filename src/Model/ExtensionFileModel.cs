@@ -10,10 +10,7 @@ namespace SolutionExtensions
     {
         [JsonProperty("extensions")]
         public Dictionary<string, IEnumerable<ExtensionModel>> Extensions { get; set; }
-
-        [JsonIgnore]
-        public string FileName { get; private set; }
-
+        
         public void Save(string fileName)
         {
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
@@ -34,11 +31,10 @@ namespace SolutionExtensions
             }
 
             var fileModel = JsonConvert.DeserializeObject<ExtensionFileModel>(fileContent);
-            fileModel.FileName = fileName;
 
             foreach (string category in fileModel.Extensions.Keys)
             {
-                foreach (ExtensionModel model in fileModel.Extensions[category])
+                foreach (IExtensionModel model in fileModel.Extensions[category])
                 {
                     model.Category = category;
                 }

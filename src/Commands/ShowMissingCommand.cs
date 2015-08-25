@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.ComponentModel.Design;
 using Microsoft.VisualStudio.Shell;
+using System.IO;
 
 namespace SolutionExtensions
 {
@@ -19,7 +21,7 @@ namespace SolutionExtensions
             if (commandService != null)
             {
                 var menuCommandID = new CommandID(GuidList.guidExtensionCmdSet, PackageCommands.cmdShowMissing);
-                _button = new OleMenuCommand(ShowDialog, menuCommandID);
+                _button = new OleMenuCommand(async (s, e) => await ShowDialog(s, e), menuCommandID);
                 _button.BeforeQueryStatus += _button_BeforeQueryStatus;
                 commandService.AddCommand(_button);
             }
@@ -28,8 +30,16 @@ namespace SolutionExtensions
         private void _button_BeforeQueryStatus(object sender, EventArgs e)
         {
             var button = (OleMenuCommand)sender;
+            button.Enabled = false;
 
-            button.Enabled = SolutionHandler.Instance.GetCurrentFileModel() != null;
+            string solution = VSPackage.GetSolution();
+
+            if (string.IsNullOrEmpty(solution))
+                return;
+
+            string fileName = Path.ChangeExtension(solution, Constants.EXTENSION);
+
+            button.Enabled = File.Exists(fileName);
         }
 
         private void SolutionClosed(object sender, EventArgs e)
@@ -60,7 +70,7 @@ namespace SolutionExtensions
             Instance = new ShowMissingCommand(package);
         }
 
-        private async void ShowDialog(object sender, EventArgs e)
+        private async System.Threading.Tasks.Task ShowDialog(object sender, EventArgs e)
         {
             ExtensionFileModel fileModel = await SolutionHandler.Instance.GetCurrentFileModel();
 

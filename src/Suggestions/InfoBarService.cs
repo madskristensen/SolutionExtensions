@@ -14,6 +14,7 @@ namespace SolutionExtensions
         private IVsExtensionManager _manager;
         private IServiceProvider _serviceProvider;
         private uint _cookie;
+        private string _fileType;
         private SuggestionResult _suggestionResult;
 
         private InfoBarService(IServiceProvider serviceProvider, IVsExtensionRepository repository, IVsExtensionManager manager)
@@ -36,8 +37,13 @@ namespace SolutionExtensions
 
             if (context == "install")
             {
+                var fileModel = SuggestionHandler.Instance.GetCurrentFileModel().Filter(_fileType);
+
                 InstallerDialog dialog = new InstallerDialog(_suggestionResult.Extensions);
+                dialog.NeverShowAgainForSolution = Settings.IsFileTypeIgnored(_suggestionResult.Matches);
                 var result = dialog.ShowDialog();
+
+                Settings.IgnoreFileType(_suggestionResult.Matches, dialog.NeverShowAgainForSolution);
 
                 if (!result.HasValue || !result.Value)
                     return;
@@ -56,20 +62,23 @@ namespace SolutionExtensions
             infoBarUIElement.Unadvise(_cookie);
         }
 
-        public void ShowInfoBar(SuggestionResult result)
+        public void ShowInfoBar(SuggestionResult result, string fileType)
         {
             if (Settings.IsFileTypeIgnored(result.Matches))
                 return;
+
+            _fileType = fileType;
+            int count = result.Extensions.Count(e => e.Category != "General");
 
             var host = GetInfoBarHost();
 
             if (host != null)
             {
                 string matches = string.Join(", ", result.Matches);
-                string message = $"{result.Extensions.Count()} extensions supporting {matches} files are found";
+                string message = $"{count} extensions supporting {matches} files are found";
 
                 if (result.Extensions.Count() == 1)
-                    message = $"{result.Extensions.Count()} extension supporting {matches} files is found";
+                    message = $"{count} extension supporting {matches} files is found";
                 
                 _suggestionResult = result;
                 CreateInfoBar(host, message);

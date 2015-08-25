@@ -5,9 +5,17 @@
   "type": "object",
 
   "definitions": {
+    "extensionList": {
+      "type": "object",
+      "description": "A list of extensions",
+
+      "additionalProperties": {
+        "$ref": "#/definitions/extension"
+      }
+    },
     "extension": {
       "type": "object",
-      "required": ["productId", "description", "fileTypes"],
+      "required": [ "productId", "description" ],
 
       "properties": {
         "description": {
@@ -30,13 +38,7 @@
   },
 
   "properties": {
-    "extensions": {
-      "type": "object",
-      "description": "A list of extensions",
-
-      "additionalProperties": {
-        "$ref": "#/definitions/extension"
-      }
-    }
+    "fileBased": { "$ref": "#/definitions/extensionList" },
+    "general": { "$ref": "#/definitions/extensionList" }
   }
 }

@@ -1,5 +1,5 @@
 ﻿{
-  "extensions": {
+  "fileBased": {
     "Alloy Language Support": {
       "description": "Basic support for the Alloy modeling language.",
       "productId": "Tvl.VisualStudio.Language.Alloy.b3393cfb-8f68-44c2-b4d7-c3210467bb9d",
@@ -89,6 +89,12 @@
       "description": "Provides a complete YAML editing experience in Visual Studio, including: - Syntax highlightning - Syntax error detection - Comment / uncomment selection - Format document",
       "productId": "YamlDotNetEditor..074a7b74-655b-409c-b5ac-a028f12d6e89",
       "fileTypes": [ ".yml", ".yaml" ]
+    }
+  },
+  "general": {
+    "Add New File": {
+      "productId": "27dd9dea-6dd2-403e-929d-3ff20d896c5e",
+      "description": "The fastest and easiest way to add new files to any project - including files that start with a dot."
     }
   }
 }

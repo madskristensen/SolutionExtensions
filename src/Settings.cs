@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
@@ -80,7 +81,7 @@ namespace SolutionExtensions
         {
             SettingsStore store = _settings.GetReadOnlySettingsStore(SettingsScope.UserSettings);
 
-            foreach (string fileType in fileTypes)
+            foreach (string fileType in fileTypes.Where(f => !string.IsNullOrEmpty(f)))
             {
                 if (store.PropertyExists(Constants.VSIX_NAME, fileType.ToLowerInvariant()))
                     return true;

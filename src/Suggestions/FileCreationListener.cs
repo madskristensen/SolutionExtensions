@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.IO;
+using System.Linq;
 using System.Windows.Threading;
 using Microsoft.VisualStudio.Editor;
 using Microsoft.VisualStudio.Text;
@@ -35,21 +36,23 @@ namespace SolutionExtensions
 
             if (TextDocumentFactoryService.TryGetTextDocument(textView.TextDataModel.DocumentBuffer, out document))
             {
-                Dispatcher.CurrentDispatcher.BeginInvoke(new Action(async () =>
+                Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
                 {
-                    await HandleSuggestions(document);
+                    HandleSuggestions(document);
 
                 }), DispatcherPriority.ApplicationIdle, null);
             }
         }
 
-        private static async System.Threading.Tasks.Task HandleSuggestions(ITextDocument document)
+        private static void HandleSuggestions(ITextDocument document)
         {
             string fileType = Path.GetFileName(document.FilePath);
-            var result = await SuggestionHandler.Instance.GetSuggestions(fileType);
+            IEnumerable<string> fileTypes;
+            var result = SuggestionHandler.Instance.GetSuggestions(fileType, out fileTypes);
+            var missing = SuggestionHandler.Instance.GetMissingExtensions(result.Extensions);
 
-            if (result != null && result.Extensions.Any())
-                InfoBarService.Instance.ShowInfoBar(result);
+            if (missing.Any() && result.Extensions.Any(e => e.Category != "General"))
+                InfoBarService.Instance.ShowInfoBar(result, fileType);
         }
     }
 }

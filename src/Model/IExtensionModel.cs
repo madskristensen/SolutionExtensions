@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace SolutionExtensions
 {
     public interface IExtensionModel
     {
+        [JsonProperty("name")]
         string Name { get; }
 
+        [JsonProperty("description")]
         string Description { get; }
 
+        [JsonProperty("productId")]
         string ProductId { get; }
 
-        string Category { get; }
+        [JsonIgnore()]
+        string Category { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.ExtensionManager;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace SolutionExtensions
 {
@@ -47,8 +48,7 @@ namespace SolutionExtensions
         private void BeforeQueryStatus(object sender, EventArgs e)
         {
             var button = (OleMenuCommand)sender;
-            var dte = ServiceProvider.GetService(typeof(DTE)) as DTE2;
-            button.Enabled = dte.ActiveDocument != null && !string.IsNullOrEmpty(dte.ActiveDocument.FullName);
+            button.Enabled = true;
         }
 
         private async System.Threading.Tasks.Task ShowSuggestions(object sender, EventArgs e)
@@ -61,12 +61,17 @@ namespace SolutionExtensions
             }
 
             string fileName = Path.GetFileName(dte.ActiveDocument.FullName);
-            var result = await SuggestionHandler.Instance.GetSuggestions(fileName);
+            IEnumerable<string> fileTypes;
+            var result = SuggestionHandler.Instance.GetSuggestions(fileName, out fileTypes);
+            var fileModel = SuggestionHandler.Instance.GetCurrentFileModel().Filter(fileName);            
 
             if (result != null)
             {
                 InstallerDialog dialog = new InstallerDialog(result.Extensions);
+                dialog.NeverShowAgainForSolution = Settings.IsFileTypeIgnored(result.Matches);
                 var test = dialog.ShowDialog();
+
+                Settings.IgnoreFileType(result.Matches, dialog.NeverShowAgainForSolution);
 
                 if (!test.HasValue || !test.Value)
                     return;

@@ -39,12 +39,14 @@ namespace SolutionExtensions
 
         public async Task ShowDialog(ExtensionFileModel model)
         {
-            var missingExtensions = await GetMissingExtensions(model);
+            bool missingExtensions = await HasMissingExtensions(model);
 
-            if (!missingExtensions.Any())
+            if (!missingExtensions)
                 return;
 
-            InstallerDialog dialog = new InstallerDialog(model, missingExtensions);
+            var extensions = model.Extensions.SelectMany(e => e.Value);
+
+            InstallerDialog dialog = new InstallerDialog(extensions);
             dialog.NeverShowAgainForSolution = Settings.IsSolutionIgnored();
 
             var result = dialog.ShowDialog();
@@ -53,16 +55,16 @@ namespace SolutionExtensions
 
             if (!result.HasValue || !result.Value)
                 return;
-           
+
             ExtensionInstaller installer = new ExtensionInstaller(_repository, _manager);
             await installer.InstallExtensions(dialog.SelectedExtensions);
         }
 
-        private async Task<IEnumerable<ExtensionModel>> GetMissingExtensions(ExtensionFileModel model)
+        private async Task<bool> HasMissingExtensions(ExtensionFileModel model)
         {
             return await Task.Run(() =>
             {
-                List<ExtensionModel> models = new List<ExtensionModel>();
+                List<IExtensionModel> models = new List<IExtensionModel>();
                 var installedExtensions = GetInstalledExtensions();
 
                 var extensions = model.Extensions.Where(cat => cat.Key == "mandatory").SelectMany(e => e.Value);
@@ -72,13 +74,13 @@ namespace SolutionExtensions
                     var installed = installedExtensions.FirstOrDefault(ins => ins.Header.Identifier.Equals(extension.ProductId, StringComparison.OrdinalIgnoreCase));
 
                     if (installed == null)
-                        models.Add(extension);
+                        return true;
                 }
 
-                return models;
+                return false;
             });
         }
-        
+
         public IEnumerable<IInstalledExtension> GetInstalledExtensions()
         {
             if (_cache == null)

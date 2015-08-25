@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace SolutionExtensions
 {
@@ -21,26 +20,24 @@ namespace SolutionExtensions
             Instance = new SuggestionHandler();
         }
 
-        public async Task<SuggestionResult> GetSuggestions(string fileType)
+        public SuggestionResult GetSuggestions(string fileType, out IEnumerable<string> fileTypes)
         {
-            var fileModel = await GetCurrentFileModel();
-            IEnumerable<string> fileTypes;
+            var fileModel = GetCurrentFileModel();
             var suggestions = GetSuggestedExtensions(fileModel, fileType, out fileTypes);
 
             if (!suggestions.Any())
                 return null;
 
-            var extensions = await GetMissingExtensions(suggestions);
-
-            SuggestionResult result = new SuggestionResult {
-                Extensions = extensions,
-                Matches = fileTypes
+            SuggestionResult result = new SuggestionResult
+            {
+                Extensions = suggestions,
+                Matches = fileTypes.Where(f => !string.IsNullOrEmpty(f))
             };
 
             return result;
         }
 
-        public async Task<SuggestionFileModel> GetCurrentFileModel()
+        public SuggestionFileModel GetCurrentFileModel()
         {
             if (_model == null)
             {
@@ -48,49 +45,47 @@ namespace SolutionExtensions
                 string folder = Path.GetDirectoryName(assembly);
                 string fileName = Path.Combine(folder, "JSON\\Schema\\", Constants.SUGGESTIONS_FILENAME);
 
-                _model = await SuggestionFileModel.FromFile(fileName);
+                _model = SuggestionFileModel.FromFile(fileName);
             }
 
             return _model;
         }
 
-        private static IEnumerable<SuggestionModel> GetSuggestedExtensions(SuggestionFileModel fileModel, string fileType, out IEnumerable<string> hits)
+        public static IEnumerable<IExtensionModel> GetSuggestedExtensions(SuggestionFileModel fileModel, string fileType, out IEnumerable<string> hits)
         {
-            List<SuggestionModel> list = new List<SuggestionModel>();
+            List<IExtensionModel> list = new List<IExtensionModel>();
             List<string> matches = new List<string>();
 
-            foreach (SuggestionModel model in fileModel.Extensions)
-            {
-                string match = model.FileTypes.FirstOrDefault(ft => fileType.EndsWith(ft, StringComparison.Ordinal));
-
-                if (!string.IsNullOrEmpty(match))
+            foreach (string key in fileModel.Extensions.Keys)
+                foreach (SuggestionModel model in fileModel.Extensions[key])
                 {
-                    matches.Add(match);
-                    list.Add(model);
+                    string match = model?.FileTypes?.FirstOrDefault(ft => fileType.EndsWith(ft, StringComparison.Ordinal));
+
+                    if (!string.IsNullOrEmpty(match) || model.Category == "General")
+                    {
+                        matches.Add(match);
+                        list.Add(model);
+                    }
                 }
-            }
 
             hits = matches;
             return list;
         }
 
-        private async Task<IEnumerable<SuggestionModel>> GetMissingExtensions(IEnumerable<SuggestionModel> suggestedExtensions)
+        public IEnumerable<IExtensionModel> GetMissingExtensions(IEnumerable<IExtensionModel> suggestedExtensions)
         {
-            return await Task.Run(() =>
+            List<IExtensionModel> models = new List<IExtensionModel>();
+            var installedExtensions = ExtensionInstalledChecker.Instance.GetInstalledExtensions();
+
+            foreach (var extension in suggestedExtensions)
             {
-                List<SuggestionModel> models = new List<SuggestionModel>();
-                var installedExtensions = ExtensionInstalledChecker.Instance.GetInstalledExtensions();
+                var installed = installedExtensions.FirstOrDefault(ins => ins.Header.Identifier.Equals(extension.ProductId, StringComparison.OrdinalIgnoreCase));
 
-                foreach (var extension in suggestedExtensions)
-                {
-                    var installed = installedExtensions.FirstOrDefault(ins => ins.Header.Identifier.Equals(extension.ProductId, StringComparison.OrdinalIgnoreCase));
+                if (installed == null)
+                    models.Add(extension);
+            }
 
-                    if (installed == null)
-                        models.Add(extension);
-                }
-
-                return models;
-            });
+            return models;
         }
     }
 }

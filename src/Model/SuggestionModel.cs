@@ -18,7 +18,7 @@ namespace SolutionExtensions
         public IEnumerable<string> FileTypes { get; set; }
 
         [JsonIgnore]
-        public string Category { get;  }
+        public string Category { get; set; }
 
         public override string ToString()
         {

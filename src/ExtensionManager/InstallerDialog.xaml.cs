@@ -9,16 +9,6 @@ namespace SolutionExtensions
     public partial class InstallerDialog : Window
     {
         private IEnumerable<IExtensionModel> _missingExtensions;
-        private ExtensionFileModel _extensionFileModel;
-
-        public InstallerDialog(ExtensionFileModel fileModel, IEnumerable<IExtensionModel> missingExtensions)
-        {
-            InitializeComponent();
-            _extensionFileModel = fileModel;
-            _missingExtensions = missingExtensions;
-
-            Loaded += OnLoaded;
-        }
 
         public InstallerDialog(IEnumerable<IExtensionModel> missingExtensions)
         {
@@ -39,69 +29,65 @@ namespace SolutionExtensions
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             btnInstall.Focus();
-            if (_extensionFileModel != null)
-            {
-                AddExtensionModels();
-            }
-            else
-            {
-                AddSuggestionModels();
-            }
+            AddExtensionModels();
         }
 
         private void AddExtensionModels()
         {
-            foreach (var category in _extensionFileModel.Extensions.Keys)
+            string category = null;
+            var installed = ExtensionInstalledChecker.Instance.GetInstalledExtensions();
+            var extensions = _missingExtensions.OrderBy(e => e.Category).ThenBy(e => e.Name);
+
+            foreach (var ext in extensions)
             {
-                Label label = new Label();
-                label.Content = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(category);
-                label.FontWeight = FontWeights.Bold;
-                label.HorizontalAlignment = HorizontalAlignment.Stretch;
-                panel.Children.Add(label);
-
-                var models = _extensionFileModel.Extensions[category];
-
-                foreach (var model in models)
+                if (ext.Category != category)
                 {
-                    CheckBox box = new CheckBox();
-                    box.Content = model.Name;
-                    box.Tag = model;
-                    box.Margin = new Thickness(10, 0, 0, 5);
-                    box.IsChecked = true;
-                    box.ToolTip = model.Description;
-                    box.IsEnabled = _missingExtensions.Contains(model);
-
-                    if (!box.IsEnabled)
-                        box.Content = box.Content + " (already installed)";
-
-                    panel.Children.Add(box);
+                    Label label = new Label();
+                    label.Content = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(ext.Category);
+                    label.FontWeight = FontWeights.Bold;
+                    label.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    panel.Children.Add(label);
+                    category = ext.Category;
                 }
-            }
-        }
 
-        private void AddSuggestionModels()
-        {
-            txtNever.Text = "Never show again for this file type";
-            lblHeadline.Text = "These extensions provide features for the file type";
-
-            Label label = new Label();
-            label.Content = "Extensions";
-            label.FontWeight = FontWeights.Bold;
-            label.HorizontalAlignment = HorizontalAlignment.Stretch;
-            panel.Children.Add(label);
-
-            foreach (IExtensionModel model in _missingExtensions)
-            {
                 CheckBox box = new CheckBox();
-                box.Content = model.Name;
-                box.Tag = model;
+                box.Content = ext.Name;
+                box.Tag = ext;
                 box.Margin = new Thickness(10, 0, 0, 5);
                 box.IsChecked = true;
-                box.ToolTip = model.Description;
+                box.ToolTip = ext.Description;
+                box.IsEnabled = !installed.Any(i => i.Header.Identifier == ext.ProductId);
+
+                if (!box.IsEnabled)
+                    box.Content = box.Content + " (already installed)";
 
                 panel.Children.Add(box);
             }
         }
+
+        //private void AddSuggestionModels()
+        //{
+        //    txtNever.Text = "Never show again for this file type";
+        //    lblHeadline.Text = "These extensions provide features for the file type";
+
+        //    Label label = new Label();
+        //    label.Content = "Extensions";
+        //    label.FontWeight = FontWeights.Bold;
+        //    label.HorizontalAlignment = HorizontalAlignment.Stretch;
+        //    panel.Children.Add(label);
+
+        //    foreach (IExtensionModel model in _missingExtensions)
+        //    {
+        //        CheckBox box = new CheckBox();
+        //        box.Content = model.Name;
+        //        box.Tag = model;
+        //        box.Margin = new Thickness(10, 0, 0, 5);
+        //        box.IsChecked = true;
+        //        box.ToolTip = model.Description;
+
+        //        panel.Children.Add(box);
+        //    }
+        //}
 
         private void btnInstall_Click(object sender, RoutedEventArgs e)
         {

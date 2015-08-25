@@ -66,6 +66,7 @@
       <DependentUpon>InstallerDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExtensionManager\InstallProgressEventAgs.cs" />
+    <Compile Include="JSON\ContentType\VsExtContentTypeDefinition.cs" />
     <Compile Include="Model\IExtensionModel.cs" />
     <Compile Include="Model\SuggestionResult.cs" />
     <Compile Include="Model\SuggestionModel.cs" />
@@ -319,7 +320,11 @@
     <Error Condition="!Exists('..\packages\Microsoft.VSSDK.BuildTools.14.0.23107\build\Microsoft.VSSDK.BuildTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VSSDK.BuildTools.14.0.23107\build\Microsoft.VSSDK.BuildTools.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.VSSDK.BuildTools.14.0.23107\build\Microsoft.VSSDK.BuildTools.targets" Condition="Exists('..\packages\Microsoft.VSSDK.BuildTools.14.0.23107\build\Microsoft.VSSDK.BuildTools.targets')" />
-  <ProjectExtensions />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties JSON_4Schema_4suggestions_1json__JSONSchema="suggestions-schema.json" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
