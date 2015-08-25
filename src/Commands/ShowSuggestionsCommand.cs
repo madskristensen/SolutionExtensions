@@ -63,7 +63,6 @@ namespace SolutionExtensions
             string fileName = Path.GetFileName(dte.ActiveDocument.FullName);
             IEnumerable<string> fileTypes;
             var result = SuggestionHandler.Instance.GetSuggestions(fileName, out fileTypes);
-            var fileModel = SuggestionHandler.Instance.GetCurrentFileModel().Filter(fileName);            
 
             if (result != null)
             {

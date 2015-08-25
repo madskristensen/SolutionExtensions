@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
 namespace SolutionExtensions
@@ -10,26 +9,13 @@ namespace SolutionExtensions
     {
         public Dictionary<string, IEnumerable<IExtensionModel>> Extensions { get; set; }
 
-        public SuggestionFileModel Filter(string fileType)
-        {
-            SuggestionFileModel model = new SuggestionFileModel();
-            IEnumerable<string> hits;
-            var suggestions = SuggestionHandler.GetSuggestedExtensions(this, fileType, out hits);
-
-            model.Extensions = new Dictionary<string, IEnumerable<IExtensionModel>>();
-            model.Extensions["File Based"] = suggestions.Where(s => !Extensions["General"].Contains(s));
-            model.Extensions["General"] = Extensions["General"];
-
-            return model;
-        }
-
         public static SuggestionFileModel FromFile(string fileName)
         {
             if (!File.Exists(fileName))
                 return null;
 
             string fileContent = File.ReadAllText(fileName);
-            
+
             var obj = JObject.Parse(fileContent);
             SuggestionFileModel fileModel = new SuggestionFileModel
             {

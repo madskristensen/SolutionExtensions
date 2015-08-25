@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.Composition;
 using Microsoft.VisualStudio.Utilities;
 
-namespace SolutionExtensions.JSON.ContentType
+namespace SolutionExtensions
 {
     class VsextContentTypeDefinition
     {

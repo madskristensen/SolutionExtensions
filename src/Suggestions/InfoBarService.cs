@@ -37,8 +37,6 @@ namespace SolutionExtensions
 
             if (context == "install")
             {
-                var fileModel = SuggestionHandler.Instance.GetCurrentFileModel().Filter(_fileType);
-
                 InstallerDialog dialog = new InstallerDialog(_suggestionResult.Extensions);
                 dialog.NeverShowAgainForSolution = Settings.IsFileTypeIgnored(_suggestionResult.Matches);
                 var result = dialog.ShowDialog();
@@ -79,7 +77,7 @@ namespace SolutionExtensions
 
                 if (result.Extensions.Count() == 1)
                     message = $"{count} extension supporting {matches} files is found";
-                
+
                 _suggestionResult = result;
                 CreateInfoBar(host, message);
             }
