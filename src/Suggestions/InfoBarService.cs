@@ -55,7 +55,7 @@ namespace SolutionExtensions
                 if (!result.HasValue || !result.Value)
                     return;
 
-                ExtensionInstaller installer = new ExtensionInstaller(_repository, _manager);
+                ExtensionInstaller installer = new ExtensionInstaller(_serviceProvider, _repository, _manager);
                 await installer.InstallExtensions(dialog.SelectedExtensions);
             }
             else if (context == "ignore")

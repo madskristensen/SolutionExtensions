@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.VisualStudio.ExtensionManager;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace SolutionExtensions
 {
@@ -12,9 +13,11 @@ namespace SolutionExtensions
         private IVsExtensionRepository _repository;
         private IVsExtensionManager _manager;
         private InstallerProgress _progress;
+        private IServiceProvider _serviceProvider;
 
-        public ExtensionInstaller(IVsExtensionRepository repository, IVsExtensionManager manager)
+        public ExtensionInstaller(IServiceProvider serviceProvider, IVsExtensionRepository repository, IVsExtensionManager manager)
         {
+            _serviceProvider = serviceProvider;
             _repository = repository;
             _manager = manager;
         }
@@ -69,17 +72,16 @@ namespace SolutionExtensions
                 PromptForRestart();
         }
 
-        private static void PromptForRestart()
+        private void PromptForRestart()
         {
             string prompt = "You must restart Visual Studio for the extensions to be loaded.\r\rRestart now?";
             var result = MessageBox.Show(prompt, Constants.VSIX_NAME, MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {
-                string solutionPath = VSPackage.DTE.Solution?.FullName;
-                string argument = string.IsNullOrEmpty(solutionPath) ? "" : solutionPath;
-                System.Diagnostics.Process.Start($"\"{VSPackage.DTE.FullName}\"", $"\"{solutionPath}\"");
-                VSPackage.DTE.ExecuteCommand("File.Exit");
+                IVsShell4 shell = (IVsShell4)_serviceProvider.GetService(typeof(SVsShell));
+                shell.Restart((uint)__VSRESTARTTYPE.RESTART_Normal);
+
             }
         }
     }
