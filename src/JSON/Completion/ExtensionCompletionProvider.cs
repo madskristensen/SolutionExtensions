@@ -21,7 +21,7 @@ namespace SolutionExtensions
     [Name("ProductIdCompletionProvider")]
     internal class LicenseCompletionProvider : IJSONCompletionListProvider
     {
-        private static string[] _supported = new string[] { "productid", "name", "description" };
+        private static string[] _supported = new string[] { "productid", "name", "description", "link" };
 
         [Import]
         public ITextDocumentFactoryService TextDocumentFactoryService { get; set; }
@@ -71,6 +71,11 @@ namespace SolutionExtensions
                 else if (property == "description")
                 {
                     yield return new SimpleCompletionEntry(extension.Header.Name, Normalize(extension.Header.Description), glyph, context.Session);
+                }
+                else if (property == "link")
+                {
+                    string url = extension.Header.MoreInfoUrl?.ToString() ?? extension.Header.GettingStartedGuide?.ToString() ?? "<no link found>";
+                    yield return new SimpleCompletionEntry(extension.Header.Name, url, glyph, context.Session);
                 }
             }
         }
