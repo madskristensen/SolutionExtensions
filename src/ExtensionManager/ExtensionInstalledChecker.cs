@@ -33,20 +33,19 @@ namespace SolutionExtensions
 
             if (!Settings.IsSolutionIgnored())
             {
-                await ShowDialog(e.Model);
+                bool missingExtensions = await HasMissingExtensions(e.Model);
+
+                if (missingExtensions)
+                    await ShowDialog(e.Model);
             }
         }
 
         public async Task ShowDialog(ExtensionFileModel model)
         {
-            bool missingExtensions = await HasMissingExtensions(model);
-
-            if (!missingExtensions)
-                return;
-
             var extensions = model.Extensions.SelectMany(e => e.Value);
 
             InstallerDialog dialog = new InstallerDialog(extensions);
+            dialog.Title = "Missing extensions";
             dialog.NeverShowAgainForSolution = Settings.IsSolutionIgnored();
 
             var result = dialog.ShowDialog();
