@@ -55,6 +55,11 @@
       "productId": "HumansTxtLanguageService.Juhász Péter.14515d35-d738-42e5-b9aa-cb9630f8a9bc",
       "fileTypes": [ "humans.txt" ]
     },
+    "Java Language Support": {
+      "description": "Basic support for the Java programming language.",
+      "productId": "Tvl.VisualStudio.Language.Java.1852bf6a-fde2-4268-9e3e-dce34312bfe3",
+      "fileTypes": [ ".java" ]
+    },
     "Open Command Line": {
       "description": "Opens a command line at the root of the project. Support for all consoles such as CMD, PowerShell, Bash etc. Provides syntax highlighting, Intellisense and execution of .cmd and .bat files.",
       "productId": "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbb",
@@ -116,6 +121,10 @@
     "MultiEditing": {
       "productId": "MultiEdit..c6fb8e57-fde0-4987-8e7a-5ca9b4beddcb",
       "description": "Simultaneously edit in more than one location in the editor\n\nIf you've ever ran into a case where you wanted to quickly change variable names or multiple loop conditions - you can use Multi-Edit to set virtual carets that all behave the same."
+    },
+    "Visual Studio Spell Checker": {
+      "productId": "34482677-bc69-4bd3-8b8b-1ecd347f609d",
+      "description": "An editor extension that checks the spelling of comments, strings, and plain text as you type or interactively with a tool window. Extra options are available to control how elements and attributes in XML and MAML files are spell checked."
     }
   }
 }
