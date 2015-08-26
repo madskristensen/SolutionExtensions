@@ -12,7 +12,7 @@ namespace SolutionExtensions
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", Version, IconResourceID = 400)]
-    [Guid(GuidList.guidVSPackageString)]
+    [Guid(PackageGuids.guidVSPackageString)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class VSPackage : Package

@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.ComponentModel.Design;
-using Microsoft.VisualStudio.Shell;
 using System.IO;
+using Microsoft.VisualStudio.Shell;
 
 namespace SolutionExtensions
 {
@@ -20,7 +19,7 @@ namespace SolutionExtensions
             OleMenuCommandService commandService = this.ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if (commandService != null)
             {
-                var menuCommandID = new CommandID(GuidList.guidExtensionCmdSet, PackageCommands.cmdShowMissing);
+                var menuCommandID = new CommandID(PackageGuids.guidExtensionCmdSet, PackageIds.cmdShowMissing);
                 _button = new OleMenuCommand(async (s, e) => await ShowDialog(s, e), menuCommandID);
                 _button.BeforeQueryStatus += _button_BeforeQueryStatus;
                 commandService.AddCommand(_button);

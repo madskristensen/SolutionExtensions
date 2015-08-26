@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.IO;
 using EnvDTE;
 using EnvDTE80;
-using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.ExtensionManager;
-using System.Windows.Forms;
-using System.Collections.Generic;
+using Microsoft.VisualStudio.Shell;
 
 namespace SolutionExtensions
 {
@@ -26,9 +24,8 @@ namespace SolutionExtensions
             OleMenuCommandService commandService = this.ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if (commandService != null)
             {
-                var menuCommandID = new CommandID(GuidList.guidExtensionCmdSet, PackageCommands.cmdShowSuggestions);
+                var menuCommandID = new CommandID(PackageGuids.guidExtensionCmdSet, PackageIds.cmdShowSuggestions);
                 var button = new OleMenuCommand(async (s, e) => await ShowSuggestions(s, e), menuCommandID);
-                //button.BeforeQueryStatus += BeforeQueryStatus;
                 commandService.AddCommand(button);
             }
         }
@@ -44,21 +41,10 @@ namespace SolutionExtensions
         {
             Instance = new ShowSuggestionsCommand(package, repository, manager);
         }
-
-        //private void BeforeQueryStatus(object sender, EventArgs e)
-        //{
-        //    var button = (OleMenuCommand)sender;
-        //    button.Enabled = true;
-        //}
-
+        
         private async System.Threading.Tasks.Task ShowSuggestions(object sender, EventArgs e)
         {
             var dte = ServiceProvider.GetService(typeof(DTE)) as DTE2;
-            //if (dte.ActiveDocument == null || string.IsNullOrEmpty(dte.ActiveDocument.FullName))
-            //{
-            //    MessageBox.Show("No file is open that has any suggested extensions", Constants.VSIX_NAME, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    return;
-            //}
 
             SuggestionResult result;
 

@@ -36,8 +36,8 @@
         <CommandFlag>DynamicVisibility</CommandFlag>
         <CommandFlag>DefaultDisabled</CommandFlag>
         <Strings>
-          <ButtonText>Show Missing Extensions</ButtonText>
-          <ToolTipText>Show Missing Extensions Dialog</ToolTipText>
+          <ButtonText>Solution Specific Extensions</ButtonText>
+          <ToolTipText>Show Solution Specific Extensions Dialog</ToolTipText>
         </Strings>
       </Button>
       <Button guid="guidExtensionCmdSet" id="cmdCreateSolutionExtensions" priority="0x0200" type="Button">
@@ -55,7 +55,7 @@
         <CommandFlag>IconIsMoniker</CommandFlag>
         <CommandFlag>FixMenuController</CommandFlag>
         <Strings>
-          <ButtonText>Show Suggested Extensions</ButtonText>
+          <ButtonText>Suggested Extensions</ButtonText>
           <ToolTipText>Show Suggested Extensions Dialog</ToolTipText>
         </Strings>
       </Button>

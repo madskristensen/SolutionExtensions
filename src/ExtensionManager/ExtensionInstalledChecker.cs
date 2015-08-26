@@ -45,7 +45,7 @@ namespace SolutionExtensions
             var extensions = model.Extensions.SelectMany(e => e.Value);
 
             InstallerDialog dialog = new InstallerDialog(extensions);
-            dialog.Title = "Missing extensions";
+            dialog.Title = "Solution specific extensions";
             dialog.NeverShowAgainForSolution = Settings.IsSolutionIgnored();
 
             var result = dialog.ShowDialog();

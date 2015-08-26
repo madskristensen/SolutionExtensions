@@ -19,7 +19,7 @@ namespace SolutionExtensions
             OleMenuCommandService commandService = this.ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if (commandService != null)
             {
-                var menuCommandID = new CommandID(GuidList.guidExtensionCmdSet, PackageCommands.cmdCreateSolutionExtensions);
+                var menuCommandID = new CommandID(PackageGuids.guidExtensionCmdSet, PackageIds.cmdCreateSolutionExtensions);
                 var button = new OleMenuCommand(ShowDialog, menuCommandID);
                 button.BeforeQueryStatus += BeforeQueryStatus;
                 commandService.AddCommand(button);
