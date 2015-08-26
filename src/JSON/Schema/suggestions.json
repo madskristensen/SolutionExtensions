@@ -96,17 +96,11 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/1fd15c9f-1117-405a-baee-6472fbb65a73",
       "fileTypes": [ "robots.txt" ]
     },
-    "SQL Server Compact Toolbox": {
-      "description": "Adds a multitude of features to help your SQL Server Compact database development efforts: Code generation, scripting of tables and data, import from SQL Server and CSV files and much, much more.",
-      "productId": "0e313dfd-be80-4afb-b5e9-6e74d369f7a1",
+    "SQL Server Compact/SQLite Toolbox": {
+      "description": "This add-in adds several features to help your embedded database development efforts: Scripting of tables and data, import from SQL Server and CSV files and much, much more.",
+      "productId": "41521019-e4c7-480c-8ea8-fc4a2c6f50aa",
       "link": "https://visualstudiogallery.msdn.microsoft.com/0e313dfd-be80-4afb-b5e9-6e74d369f7a1",
-      "fileTypes": [ ".sdf" ]
-    },
-    "SQLite Toolbox": {
-      "description": "Adds a multitude of features to help your SQLitet database development efforts: Code generation, scripting of tables and data, import from SQL Server and CSV files and much, much more.",
-      "productId": "0e313dfd-be80-4afb-b5e9-6e74d369f7a1",
-      "link": "https://visualstudiogallery.msdn.microsoft.com/0e313dfd-be80-4afb-b5e9-6e74d369f7a1/",
-      "fileTypes": [ ".db", ".db3", ".sqlite", ".sqlite3", ".dat" ]
+      "fileTypes": [ ".db", ".db3", ".sqlite", ".sqlite3", ".dat", ".sdf" ]
     },
     "TypeWriter": {
       "description": "Automatic TypeScript Template generation from C# files.",
