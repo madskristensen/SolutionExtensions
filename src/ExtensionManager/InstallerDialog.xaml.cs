@@ -66,7 +66,10 @@ namespace SolutionExtensions
                 box.IsEnabled = !installed.Any(i => i.Header.Identifier == ext.ProductId);
 
                 if (!box.IsEnabled)
+                {
                     box.Content = box.Content + " (already installed)";
+                    ToolTipService.SetShowOnDisabled(box, true);
+                }
 
                 panel.Children.Add(box);
             }
