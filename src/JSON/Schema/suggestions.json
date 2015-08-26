@@ -120,6 +120,18 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/34423c06-f756-4721-8394-bc3d23b91ca7",
       "fileTypes": [ ".yml", ".yaml" ]
     }
+    "SQL Server Compact Toolbox": {
+      "description": "Adds a multitude of features to help your SQL Server Compact database development efforts: Code generation, scripting of tables and data, import from SQL Server and CSV files and much, much more.",
+      "productId": "0e313dfd-be80-4afb-b5e9-6e74d369f7a1",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/0e313dfd-be80-4afb-b5e9-6e74d369f7a1",
+      "fileTypes": [ ".sdf" ]
+    },
+    "SQLite Toolbox": {
+      "description": "Adds a multitude of features to help your SQLitet database development efforts: Code generation, scripting of tables and data, import from SQL Server and CSV files and much, much more.",
+      "productId": "0e313dfd-be80-4afb-b5e9-6e74d369f7a1",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/0e313dfd-be80-4afb-b5e9-6e74d369f7a1/",
+      "fileTypes": [ ".db", ".db3", ".sqlite", ".sqlite3", ".dat" ]
+    }
   },
   "general": {
     "Add New File": {
