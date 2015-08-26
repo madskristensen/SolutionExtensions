@@ -3,7 +3,7 @@
   <Metadata>
     <Identity Id="51b81721-cf4e-4ce0-a595-972b1ca2a186" Version="1.0" Language="en-US" Publisher="Mads Kristensen" />
     <DisplayName>Suggested Extensions</DisplayName>
-    <Description xml:space="preserve">Allows you to suggest what Visual Studio extensions should be installed to open a specific solution. This makes it easy to onboard new team members or work with open source projects.</Description>
+    <Description xml:space="preserve">Get suggestions on what extensions you need to handle various file types and projects when you need them.</Description>
     <License>Resources\LICENSE</License>
     <Icon>Resources\icon.png</Icon>
     <PreviewImage>Resources\preview.png</PreviewImage>

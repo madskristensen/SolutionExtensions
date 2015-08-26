@@ -46,7 +46,7 @@ namespace SolutionExtensions
 
         public string Name
         {
-            get { return _name; }
+            get { return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(_name); }
             set { Set(ref _name, value, StringComparer.Ordinal); }
         }
 
