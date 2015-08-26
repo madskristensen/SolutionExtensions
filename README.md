@@ -3,7 +3,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/fmu7jnie15aj48j4?svg=true)](https://ci.appveyor.com/project/madskristensen/solutionextensions)
 
 Download from the
-[Visual Studio Gallery](https://visualstudiogallery.msdn.microsoft.com/4e84e2cf-2d6b-472a-b1e2-b84932511379)
+[Visual Studio Gallery](https://visualstudiogallery.msdn.microsoft.com/3be88243-8bf1-407a-a7ca-a968d0de2d59)
 or get 
 [nightly build](http://vsixgallery.com/extension/51b81721-cf4e-4ce0-a595-972b1ca2a186/).
 
@@ -14,6 +14,8 @@ or get
   - Installs missing extensions easily
   - Show a list of generally suggested extension
 - Solution specific extensions
+  - The **.vsext** file
+  - Intellisense
 
 ## Suggested extensions
 
