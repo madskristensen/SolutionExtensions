@@ -4,7 +4,7 @@
 
 Download from the
 [Visual Studio Gallery](https://visualstudiogallery.msdn.microsoft.com/3be88243-8bf1-407a-a7ca-a968d0de2d59)
-or get 
+or get
 [nightly build](http://vsixgallery.com/extension/51b81721-cf4e-4ce0-a595-972b1ca2a186/).
 
 ## Features
@@ -81,7 +81,7 @@ said solution, this dialog automatically pops up.
 
 The user is only prompted to install extensions if any
 mandatory extensions have been specified and they have not
-already been installed. 
+already been installed.
 
 The user can always decide not to install the extensions and
 even specify not to be prompted again for a specific solution.
@@ -94,7 +94,7 @@ modify solution extensions.
 
 ![alt text](art/modify-solution-extensions.png)
 
-That will create a JSON file next to the solution with a 
+That will create a JSON file next to the solution with a
 **.vsext** extension.
 
 ![Extension solution file](art/vsext-on-disk.png)
@@ -104,27 +104,29 @@ file.
 
 After modifying the JSON file, it could look like this:
 
-```js
+```json
 {
   "extensions": {
     "mandatory": [
       {
-        "name": "Web Compiler",
-        "productId": "148ffa77-d70a-407f-892b-9ee542346862"
+        "name": "EditorConfig",
+        "productId": "EditorConfig..5cd8e6a2-be43-4fcc-a345-40f6cc1e9c9f",
+        "link": "https://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328",
+        "description": "This makes sure that everyone uses correct spaces and indentation."
       },
       {
-        "name": "Open Command Line",
-        "productId": "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbbNOOOOOO"
+        "name": "Extensibility Tools 2015",
+        "productId": "f8330d54-0469-43a7-8fc0-7f19febeb897",
+        "link": "https://visualstudiogallery.msdn.microsoft.com/ab39a092-1343-46e2-b0f1-6a3f91155aa6",
+        "description": "Used for editing the '.vsct' file in the root of this project."
       }
     ],
     "optional": [
       {
-        "name": "Yaml Editor",
-        "productId": "YamlDotNetEditor..074a7b74-655b-409c-b5ac-a028f12d6e89"
-      },
-      {
-        "name": "Glyphfriend",
-        "productId": "950d05f7-bb25-43ce-b682-44b377b5307d"
+        "name": "YAML Editor",
+        "productId": "YamlDotNetEditor..074a7b74-655b-409c-b5ac-a028f12d6e89",
+        "link": "https://visualstudiogallery.msdn.microsoft.com/34423c06-f756-4721-8394-bc3d23b91ca7",
+        "description": "This is handy for editing the 'appveyor.yml' file."
       }
     ]
   }
