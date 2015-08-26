@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Interop;
+using EnvDTE;
+using EnvDTE80;
 using Microsoft.VisualStudio.ExtensionManager;
 
 namespace SolutionExtensions
 {
     public class ExtensionInstalledChecker
     {
+        private IServiceProvider _serviceProvider;
         private IVsExtensionRepository _repository;
         private IVsExtensionManager _manager;
         private static IEnumerable<IInstalledExtension> _cache;
 
-        private ExtensionInstalledChecker(IVsExtensionRepository repository, IVsExtensionManager manager)
+        private ExtensionInstalledChecker(IServiceProvider serviceProvider, IVsExtensionRepository repository, IVsExtensionManager manager)
         {
+            _serviceProvider = serviceProvider;
             _repository = repository;
             _manager = manager;
 
@@ -22,9 +27,9 @@ namespace SolutionExtensions
 
         public static ExtensionInstalledChecker Instance { get; private set; }
 
-        public static void Initialize(IVsExtensionRepository repository, IVsExtensionManager manager)
+        public static void Initialize(IServiceProvider serviceProvider, IVsExtensionRepository repository, IVsExtensionManager manager)
         {
-            Instance = new ExtensionInstalledChecker(repository, manager);
+            Instance = new ExtensionInstalledChecker(serviceProvider, repository, manager);
         }
 
         private async void ExtensionFileFound(object sender, ExtensionFileEventArgs e)
@@ -47,6 +52,11 @@ namespace SolutionExtensions
             InstallerDialog dialog = new InstallerDialog(extensions);
             dialog.Title = "Solution specific extensions";
             dialog.NeverShowAgainForSolution = Settings.IsSolutionIgnored();
+
+            var dte = _serviceProvider.GetService(typeof(DTE)) as DTE2;
+            var hwnd = new IntPtr(dte.MainWindow.HWnd);
+            System.Windows.Window window = (System.Windows.Window)HwndSource.FromHwnd(hwnd).RootVisual;
+            dialog.Owner = window;
 
             var result = dialog.ShowDialog();
 

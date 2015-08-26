@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.IO;
+using System.Windows.Interop;
 using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.ExtensionManager;
@@ -66,6 +67,9 @@ namespace SolutionExtensions
             if (result != null)
             {
                 InstallerDialog dialog = new InstallerDialog(result.Extensions);
+                var hwnd = new IntPtr(dte.MainWindow.HWnd);
+                System.Windows.Window window = (System.Windows.Window)HwndSource.FromHwnd(hwnd).RootVisual;
+                dialog.Owner = window;
                 dialog.NeverShowAgainForSolution = Settings.IsFileTypeIgnored(result.Matches);
                 var test = dialog.ShowDialog();
 

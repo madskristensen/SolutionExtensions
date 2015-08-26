@@ -33,7 +33,7 @@ namespace SolutionExtensions
             // Initialize other components
             var repository = (IVsExtensionRepository)GetService(typeof(SVsExtensionRepository));
             var manager = (IVsExtensionManager)GetService(typeof(SVsExtensionManager));
-            ExtensionInstalledChecker.Initialize(repository, manager);
+            ExtensionInstalledChecker.Initialize(this, repository, manager);
             ShowMissingCommand.Initialize(this);
             ModifyMissingCommand.Initialize(this);
             ShowSuggestionsCommand.Initialize(this, repository, manager);

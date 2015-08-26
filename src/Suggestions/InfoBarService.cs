@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Windows.Interop;
+using EnvDTE;
+using EnvDTE80;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.ExtensionManager;
 using Microsoft.VisualStudio.Imaging;
@@ -39,6 +42,12 @@ namespace SolutionExtensions
             {
                 InstallerDialog dialog = new InstallerDialog(_suggestionResult.Extensions);
                 dialog.NeverShowAgainForSolution = Settings.IsFileTypeIgnored(_suggestionResult.Matches);
+
+                var dte = _serviceProvider.GetService(typeof(DTE)) as DTE2;
+                var hwnd = new IntPtr(dte.MainWindow.HWnd);
+                System.Windows.Window window = (System.Windows.Window)HwndSource.FromHwnd(hwnd).RootVisual;
+                dialog.Owner = window;
+
                 var result = dialog.ShowDialog();
 
                 Settings.IgnoreFileType(_suggestionResult.Matches, dialog.NeverShowAgainForSolution);
