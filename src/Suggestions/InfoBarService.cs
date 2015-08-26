@@ -91,7 +91,7 @@ namespace SolutionExtensions
 
             InfoBarTextSpan[] spans = new InfoBarTextSpan[] { text };
             InfoBarActionItem[] actions = new InfoBarActionItem[] { install, ignore };
-            InfoBarModel infoBarModel = new InfoBarModel(spans, actions, KnownMonikers.StatusInformation, isCloseButtonVisible: true);
+            InfoBarModel infoBarModel = new InfoBarModel(spans, actions, KnownMonikers.VisualStudioFeedback, isCloseButtonVisible: true);
 
             var factory = _serviceProvider.GetService(typeof(SVsInfoBarUIFactory)) as IVsInfoBarUIFactory;
             IVsInfoBarUIElement element = factory.CreateInfoBar(infoBarModel);

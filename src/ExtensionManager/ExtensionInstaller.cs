@@ -76,7 +76,9 @@ namespace SolutionExtensions
 
             if (result == MessageBoxResult.Yes)
             {
-                System.Diagnostics.Process.Start($"\"{VSPackage.DTE.FullName}\"", $"\"{VSPackage.DTE.Solution.FullName}\"");
+                string solutionPath = VSPackage.DTE.Solution?.FullName;
+                string argument = string.IsNullOrEmpty(solutionPath) ? "" : solutionPath;
+                System.Diagnostics.Process.Start($"\"{VSPackage.DTE.FullName}\"", $"\"{solutionPath}\"");
                 VSPackage.DTE.ExecuteCommand("File.Exit");
             }
         }
