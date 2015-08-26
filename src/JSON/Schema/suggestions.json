@@ -96,6 +96,18 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/1fd15c9f-1117-405a-baee-6472fbb65a73",
       "fileTypes": [ "robots.txt" ]
     },
+    "SQL Server Compact Toolbox": {
+      "description": "Adds a multitude of features to help your SQL Server Compact database development efforts: Code generation, scripting of tables and data, import from SQL Server and CSV files and much, much more.",
+      "productId": "0e313dfd-be80-4afb-b5e9-6e74d369f7a1",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/0e313dfd-be80-4afb-b5e9-6e74d369f7a1",
+      "fileTypes": [ ".sdf" ]
+    },
+    "SQLite Toolbox": {
+      "description": "Adds a multitude of features to help your SQLitet database development efforts: Code generation, scripting of tables and data, import from SQL Server and CSV files and much, much more.",
+      "productId": "0e313dfd-be80-4afb-b5e9-6e74d369f7a1",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/0e313dfd-be80-4afb-b5e9-6e74d369f7a1/",
+      "fileTypes": [ ".db", ".db3", ".sqlite", ".sqlite3", ".dat" ]
+    },
     "TypeWriter": {
       "description": "Automatic TypeScript Template generation from C# files.",
       "productId": "45b6b392-ce2f-409c-a39f-bbf90b34349e",
@@ -119,18 +131,6 @@
       "productId": "YamlDotNetEditor..074a7b74-655b-409c-b5ac-a028f12d6e89",
       "link": "https://visualstudiogallery.msdn.microsoft.com/34423c06-f756-4721-8394-bc3d23b91ca7",
       "fileTypes": [ ".yml", ".yaml" ]
-    }
-    "SQL Server Compact Toolbox": {
-      "description": "Adds a multitude of features to help your SQL Server Compact database development efforts: Code generation, scripting of tables and data, import from SQL Server and CSV files and much, much more.",
-      "productId": "0e313dfd-be80-4afb-b5e9-6e74d369f7a1",
-      "link": "https://visualstudiogallery.msdn.microsoft.com/0e313dfd-be80-4afb-b5e9-6e74d369f7a1",
-      "fileTypes": [ ".sdf" ]
-    },
-    "SQLite Toolbox": {
-      "description": "Adds a multitude of features to help your SQLitet database development efforts: Code generation, scripting of tables and data, import from SQL Server and CSV files and much, much more.",
-      "productId": "0e313dfd-be80-4afb-b5e9-6e74d369f7a1",
-      "link": "https://visualstudiogallery.msdn.microsoft.com/0e313dfd-be80-4afb-b5e9-6e74d369f7a1/",
-      "fileTypes": [ ".db", ".db3", ".sqlite", ".sqlite3", ".dat" ]
     }
   },
   "general": {
