@@ -3,127 +3,153 @@
     "Alloy Language Support": {
       "description": "Basic support for the Alloy modeling language.",
       "productId": "Tvl.VisualStudio.Language.Alloy.b3393cfb-8f68-44c2-b4d7-c3210467bb9d",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/4ae31812-f841-45c3-8052-1130775473f8",
       "fileTypes": [ ".als" ]
     },
     "ASP.NET 5 Scripts Task Runner": {
       "description": "Adds support for project.json's scripts in the Task Runner Explorer",
       "productId": "ec768980-f2de-4db0-a6e2-5e57fa612ad5",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/9397a2da-c93a-419c-8408-4e9af30d4e36",
       "fileTypes": [ "project.json" ]
     },
     "Broccoli Task Runner": {
       "description": "Adds support for Broccoli brocfile.js files as well as Ember-CLI's ember-cli-build.js build scripts based on Broccoli.",
       "productId": "e4f68b58-9df0-4878-8e7f-cba51b236f94",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/dd19e6af-a1f7-4606-a82a-46833f810865",
       "fileTypes": [ "brocfile.js" ]
     },
     "Bundler & Minifier": {
       "description": "Adds support for bundling and minifying JavaScript, CSS and HTML files in any project.",
       "productId": "a0ae318b-4f07-4f71-93cb-f21d3f03c6d3",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/9ec27da7-e24b-4d56-8064-fd7e88ac1c40",
       "fileTypes": [ "bundleconfig.json" ]
     },
     "Command Task Runner": {
       "description": "Adds support for command line batch files in Visual Studio 2015's Task Runner Explorer. Supports .cmd, .bat, .ps1 and .psm1 files.",
       "productId": "fc1aafb2-321e-41bd-ac37-03b09ea8ef31",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/e6bf6a3d-7411-4494-8a1e-28c1a8c4ce99",
       "fileTypes": [ ".cmd", ".bat", ".ps1", ".psm1" ]
     },
     "DartVS": {
       "description": "Some support for coding Dart in Visual Studio.",
       "productId": "d4032879-2378-4ea2-abc4-cb0fa4b9941e",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/69112f14-62d0-40fb-9ccc-03e3534e7121",
       "fileTypes": [ ".dart" ]
     },
     "EditorConfig": {
       "description": "Loads editor options such as indentation sizes from standard, cross-platform .editorconfig files.",
       "productId": "EditorConfig..5cd8e6a2-be43-4fcc-a345-40f6cc1e9c9f",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328",
       "fileTypes": [ ".editorconfig" ]
     },
     "Extensibility Tools": {
       "description": "An extension for making it easier to write Visual Studio extensions",
       "productId": "f8330d54-0469-43a7-8fc0-7f19febeb897",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/ab39a092-1343-46e2-b0f1-6a3f91155aa6",
       "fileTypes": [ ".pkgdef", ".vsct" ]
     },
     "Flatten Packages": {
       "description": "Flattens the node_modules folder hierarchy by using the 'flatten-packages' npm package behind the scenes. Works with long paths. Requires Node.js installed on the machine",
       "productId": "96559c66-f326-40e2-95c1-449a80387524",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/cd0b1938-4513-4e57-b9b7-c674b4a20e79",
       "fileTypes": [ "package.json" ]
     },
     "Go Language Support": {
       "description": "Basic support for the Go programming language.",
       "productId": "Tvl.VisualStudio.Language.Go.c837d3e9-5ae2-4455-a608-f6a4ae016688",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/bd7675ba-1bf5-4395-8c5a-4fc19dfc0d76",
       "fileTypes": [ ".go" ]
     },
     "Humans.txt Language Service": {
       "description": "Language service for humans.txt files.",
       "productId": "HumansTxtLanguageService.Juhász Péter.14515d35-d738-42e5-b9aa-cb9630f8a9bc",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/e44b8fc0-585b-48b5-b064-0102f9bae359",
       "fileTypes": [ "humans.txt" ]
     },
     "Java Language Support": {
       "description": "Basic support for the Java programming language.",
       "productId": "Tvl.VisualStudio.Language.Java.1852bf6a-fde2-4268-9e3e-dce34312bfe3",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/bc561769-36ff-4a40-9504-e266e8706f93",
       "fileTypes": [ ".java" ]
     },
     "Open Command Line": {
       "description": "Opens a command line at the root of the project. Support for all consoles such as CMD, PowerShell, Bash etc. Provides syntax highlighting, Intellisense and execution of .cmd and .bat files.",
       "productId": "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbb",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/4e84e2cf-2d6b-472a-b1e2-b84932511379",
       "fileTypes": [ ".cmd", ".bat" ]
     },
     "Package Installer": {
       "description": "Makes it easier, faster and more convenient than ever to install Bower, npm and JSPM packages to any project.",
       "productId": "fdd64809-376e-4542-92ce-808a8df06bcc",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/753b9720-1638-4f9a-ad8d-2c45a410fd74",
       "fileTypes": [ "package.json", "bower.json" ]
     },
     "PHP Language Support": {
       "description": "Basic support for the PHP programming language.",
       "productId": "Tvl.VisualStudio.Language.Php.ece72f50-0b6f-4363-9986-e38af13f6aa5",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/2a10ba81-26c5-47d9-939b-6bcc7bbec251",
       "fileTypes": [ ".php" ]
     },
     "Robots.txt Language Service": {
       "description": "Language service for robots.txt files.",
       "productId": "RobotsTxtLanguageService.Juhász Péter.d18b7383-8b42-4044-be51-414b20e67575",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/1fd15c9f-1117-405a-baee-6472fbb65a73",
       "fileTypes": [ "robots.txt" ]
     },
     "TypeWriter": {
       "description": "Automatic TypeScript Template generation from C# files.",
       "productId": "45b6b392-ce2f-409c-a39f-bbf90b34349e",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/e1d68248-f30e-4a5d-bf18-31399a0bcfa6",
       "fileTypes": [ ".ts", ".tst" ]
     },
     "Web Compiler": {
       "description": "The easiest and most powerful way to compile LESS, Scss and CoffeeScript files directly within Visual Studio or through MSBuild.",
       "productId": "148ffa77-d70a-407f-892b-9ee542346862",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/3b329021-cd7a-4a01-86fc-714c2d05bb6c",
       "fileTypes": [ ".less", ".scss", ".coffee", ".litcoffee", ".iced", "compilerconfig.json", "compilerconfig.json.defaults" ]
     },
     "Web Essentials 2015": {
       "productId": "5fb7364d-2e8c-44a4-95eb-2a382e30fec9",
       "description": "Intellisense and colorizing for robots.txt",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/ee6e6d8c-c837-41fb-886a-6b50ae2d06a2",
       "fileTypes": [ ".vtt", ".appcache", "robots.txt", "gulpfile.js", "gruntfile.js" ]
     },
     "Yaml Editor": {
       "description": "Provides a complete YAML editing experience in Visual Studio, including: - Syntax highlightning - Syntax error detection - Comment / uncomment selection - Format document",
       "productId": "YamlDotNetEditor..074a7b74-655b-409c-b5ac-a028f12d6e89",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/34423c06-f756-4721-8394-bc3d23b91ca7",
       "fileTypes": [ ".yml", ".yaml" ]
     }
   },
   "general": {
     "Add New File": {
       "productId": "27dd9dea-6dd2-403e-929d-3ff20d896c5e",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/3f820e99-6c0d-41db-aa74-a18d9623b1f3",
       "description": "The fastest and easiest way to add new files to any project - including files that start with a dot."
     },
     "File Nesting": {
       "productId": "6c799bc4-0d4c-4172-98bc-5d464b612dca",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/3ebde8fb-26d8-4374-a0eb-1e4e2665070c",
       "description": "Automatically nest files based on file name and enables developers to nest and unnest any file manually"
     },
     "Trailing Whitespace Visualizer": {
       "productId": "4c1a78e6-e7b8-4aa9-8812-4836e051ff6d",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/a204e29b-1778-4dae-affd-209bea658a59",
       "description": "Makes it easier than ever to identify and remove trailing whitespace in any code file"
     },
     "Image Optimizer": {
       "productId": "bf95754f-93d3-42ff-bfe3-e05d23188b08",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/a56eddd3-d79b-48ac-8c8f-2db06ade77c3",
       "description": "Lossless optimization of JPEG, PNG and Gifs - including animated Gifs"
     },
     "MultiEditing": {
       "productId": "MultiEdit..c6fb8e57-fde0-4987-8e7a-5ca9b4beddcb",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/2beb9705-b568-45d1-8550-751e181e3aef",
       "description": "Simultaneously edit in more than one location in the editor\n\nIf you've ever ran into a case where you wanted to quickly change variable names or multiple loop conditions - you can use Multi-Edit to set virtual carets that all behave the same."
     },
     "Visual Studio Spell Checker": {
       "productId": "34482677-bc69-4bd3-8b8b-1ecd347f609d",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/a23de100-31a1-405c-b4b7-d6be40c3dfff",
       "description": "An editor extension that checks the spelling of comments, strings, and plain text as you type or interactively with a tool window. Extra options are available to control how elements and attributes in XML and MAML files are spell checked."
     }
   }

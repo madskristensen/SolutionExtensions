@@ -34,6 +34,7 @@ namespace SolutionExtensions
                     Name = ((JProperty)ext).Name,
                     ProductId = ext.FirstOrDefault()?["productId"].ToString(),
                     Description = ext.FirstOrDefault()?["description"].ToString(),
+                    Link = ext.FirstOrDefault()?["link"].ToString(),
                     FileTypes = ext.FirstOrDefault()?["fileTypes"].Values<string>().ToArray(),
                     Category = FILE_BASED
                 };
@@ -51,6 +52,7 @@ namespace SolutionExtensions
                 {
                     Name = ((JProperty)ext).Name,
                     ProductId = ext.FirstOrDefault()?["productId"].ToString(),
+                    Link = ext.FirstOrDefault()?["link"].ToString(),
                     Description = ext.FirstOrDefault()?["description"].ToString(),
                     Category = GENERAL
                 };

@@ -13,6 +13,9 @@ namespace SolutionExtensions
         [JsonProperty("productId")]
         string ProductId { get; }
 
+        [JsonProperty("link")]
+        string Link { get; }
+
         [JsonIgnore()]
         string Category { get; set; }
     }

@@ -14,6 +14,9 @@ namespace SolutionExtensions
         [JsonProperty("productId")]
         public string ProductId { get; set; }
 
+        [JsonProperty("link")]
+        public string Link { get; set; }
+
         [JsonProperty("fileTypes")]
         public IEnumerable<string> FileTypes { get; set; }
 

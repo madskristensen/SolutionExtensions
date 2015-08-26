@@ -1,7 +1,43 @@
 ﻿<Window x:Class="SolutionExtensions.InstallerDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SolutionExtensions"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance d:Type=local:InstallerDialogViewModel, IsDesignTimeCreatable=False}"
         Title="Suggested extensions" Height="350" Width="500" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" ResizeMode="NoResize" BorderBrush="Black" Icon="/SolutionExtensions;component/Resources/feedback.png">
+    <Window.Resources>
+        <Style TargetType="TreeViewItem">
+            <Setter Property="IsExpanded" Value="True" />
+        </Style>
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <Style x:Key="LinkButton" TargetType="Button">
+            <Setter Property="Margin" Value="5 0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Foreground" Value="DodgerBlue" />
+        </Style>
+        <HierarchicalDataTemplate x:Key="ExtensionItemTemplate" DataType="local:ExtensionCategory" ItemsSource="{Binding Path=Extensions}">
+            <TextBlock FontWeight="Bold" Text="{Binding Path=Name, Mode=OneWay}" Margin="0 5" />
+            <HierarchicalDataTemplate.ItemTemplate>
+                <DataTemplate DataType="local:ExtensionVisualModel">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding Path=IsChecked}" Content="{Binding Path=Name}" IsEnabled="{Binding IsEnabled}" VerticalAlignment="Center" />
+                        <TextBlock Text=" (already installed)" Visibility="{Binding IsEnabled, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=false}" VerticalAlignment="Center" />
+                        <Button Style="{StaticResource LinkButton}" Content="link" Command="{Binding OpenWebSiteCommand}" VerticalAlignment="Center">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <TextBlock>
+                                        <ContentPresenter />
+                                    </TextBlock>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </DataTemplate>
+            </HierarchicalDataTemplate.ItemTemplate>
+        </HierarchicalDataTemplate>
+    </Window.Resources>
     <Grid Background="#FFF0F0F0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -20,9 +56,10 @@
         </Label>
 
         <Border Grid.Row="1" Margin="10,0" BorderBrush="Black" BorderThickness="1">
-        <ScrollViewer Background="White" VerticalScrollBarVisibility="Auto">
-            <StackPanel Name="panel" />
-        </ScrollViewer>
+            <ScrollViewer Background="White" VerticalScrollBarVisibility="Auto">
+                <!--<StackPanel Name="panel" />-->
+                <TreeView ItemTemplate="{StaticResource ExtensionItemTemplate}" ItemsSource="{Binding Path=Categories}" />
+            </ScrollViewer>
         </Border>
 
         <CheckBox Name="nevershow" Grid.Row="2" Margin="0 10 10 10" FlowDirection="RightToLeft">

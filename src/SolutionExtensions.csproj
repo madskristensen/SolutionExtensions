@@ -68,6 +68,7 @@
     <Compile Include="ExtensionManager\InstallProgressEventAgs.cs" />
     <Compile Include="JSON\ContentType\VsExtContentTypeDefinition.cs" />
     <Compile Include="Model\IExtensionModel.cs" />
+    <Compile Include="Model\InstallerDialogViewModel.cs" />
     <Compile Include="Model\SuggestionResult.cs" />
     <Compile Include="Model\SuggestionModel.cs" />
     <Compile Include="Model\SuggestionFileModel.cs" />

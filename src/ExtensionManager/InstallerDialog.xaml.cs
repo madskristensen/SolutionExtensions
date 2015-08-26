@@ -16,6 +16,13 @@ namespace SolutionExtensions
             _missingExtensions = missingExtensions;
 
             Loaded += OnLoaded;
+            ViewModel = InstallerDialogViewModel.From(missingExtensions);
+        }
+
+        public InstallerDialogViewModel ViewModel
+        {
+            get { return DataContext as InstallerDialogViewModel; }
+            set { DataContext = value; }
         }
 
         public IEnumerable<IExtensionModel> SelectedExtensions { get; private set; }
@@ -36,44 +43,44 @@ namespace SolutionExtensions
                 lblHeadline.Text = "These extensions provide features for the file type";
             }
 
-            AddExtensionModels();
+            //AddExtensionModels();
         }
 
-        private void AddExtensionModels()
-        {
-            string category = null;
-            var installed = ExtensionInstalledChecker.Instance.GetInstalledExtensions();
-            var extensions = _missingExtensions.OrderBy(e => e.Category).ThenBy(e => e.Name);
+        //private void AddExtensionModels()
+        //{
+        //    string category = null;
+        //    var installed = ExtensionInstalledChecker.Instance.GetInstalledExtensions();
+        //    var extensions = _missingExtensions.OrderBy(e => e.Category).ThenBy(e => e.Name);
 
-            foreach (var ext in extensions)
-            {
-                if (ext.Category != category)
-                {
-                    Label label = new Label();
-                    label.Content = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(ext.Category);
-                    label.FontWeight = FontWeights.Bold;
-                    label.HorizontalAlignment = HorizontalAlignment.Stretch;
-                    panel.Children.Add(label);
-                    category = ext.Category;
-                }
+        //    foreach (var ext in extensions)
+        //    {
+        //        if (ext.Category != category)
+        //        {
+        //            Label label = new Label();
+        //            label.Content = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(ext.Category);
+        //            label.FontWeight = FontWeights.Bold;
+        //            label.HorizontalAlignment = HorizontalAlignment.Stretch;
+        //            panel.Children.Add(label);
+        //            category = ext.Category;
+        //        }
 
-                CheckBox box = new CheckBox();
-                box.Content = ext.Name;
-                box.Tag = ext;
-                box.Margin = new Thickness(10, 0, 0, 5);
-                box.IsChecked = true;
-                box.ToolTip = ext.Description;
-                box.IsEnabled = !installed.Any(i => i.Header.Identifier == ext.ProductId);
+        //        CheckBox box = new CheckBox();
+        //        box.Content = ext.Name;
+        //        box.Tag = ext;
+        //        box.Margin = new Thickness(10, 0, 0, 5);
+        //        box.IsChecked = true;
+        //        box.ToolTip = ext.Description;
+        //        box.IsEnabled = !installed.Any(i => i.Header.Identifier == ext.ProductId);
 
-                if (!box.IsEnabled)
-                {
-                    box.Content = box.Content + " (already installed)";
-                    ToolTipService.SetShowOnDisabled(box, true);
-                }
+        //        if (!box.IsEnabled)
+        //        {
+        //            box.Content = box.Content + " (already installed)";
+        //            ToolTipService.SetShowOnDisabled(box, true);
+        //        }
 
-                panel.Children.Add(box);
-            }
-        }
+        //        panel.Children.Add(box);
+        //    }
+        //}
 
         //private void AddSuggestionModels()
         //{
@@ -101,15 +108,7 @@ namespace SolutionExtensions
 
         private void btnInstall_Click(object sender, RoutedEventArgs e)
         {
-            List<IExtensionModel> list = new List<IExtensionModel>();
-
-            foreach (CheckBox box in panel.Children.OfType<CheckBox>())
-            {
-                if (box == null || !box.IsEnabled || !box.IsChecked.Value)
-                    continue;
-
-                list.Add((IExtensionModel)box.Tag);
-            }
+            List<IExtensionModel> list = ViewModel.AllExtensions.Where(x => x.IsEnabled && x.IsChecked).Select(x => x.Model).ToList();
 
             SelectedExtensions = list;
 

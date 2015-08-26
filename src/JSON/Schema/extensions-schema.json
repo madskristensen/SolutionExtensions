@@ -7,6 +7,7 @@
   "definitions": {
     "extension": {
       "type": "object",
+      "required": [ "name", "productId", "link" ],
 
       "properties": {
         "name": {
@@ -20,6 +21,11 @@
         "productId": {
           "type": "string",
           "default": "This is the ID of the extension as specified in their '.vsixmanifest' file."
+        },
+        "link": {
+          "type": "string",
+          "format": "uri",
+          "default": "The URI pointing to the download location."
         }
       }
     }
