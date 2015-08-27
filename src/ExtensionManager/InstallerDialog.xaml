@@ -8,8 +8,8 @@
         d:DataContext="{d:DesignInstance d:Type=local:InstallerDialogViewModel, IsDesignTimeCreatable=False}"
         Title="Suggested extensions" Height="350" Width="500" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" ResizeMode="NoResize" BorderBrush="Black" Icon="/SolutionExtensions;component/Resources/feedback.png">
     <Window.Resources>
-        <Style TargetType="TreeViewItem">
-            <Setter Property="IsExpanded" Value="True" />
+        <Style TargetType="TreeViewItem" d:DataContext="{d:DesignInstance d:Type=local:ExtensionCategory}">
+            <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
         </Style>
         <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <Style x:Key="LinkButton" TargetType="Button">
@@ -18,7 +18,20 @@
             <Setter Property="Foreground" Value="DodgerBlue" />
         </Style>
         <HierarchicalDataTemplate x:Key="ExtensionItemTemplate" DataType="local:ExtensionCategory" ItemsSource="{Binding Path=Extensions}">
-            <TextBlock FontWeight="Bold" Text="{Binding Path=Name, Mode=OneWay}" Margin="0 5" />
+            <CheckBox IsChecked="{Binding IsChecked}" IsEnabled="{Binding IsEnabled}" Margin="0 5">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontWeight="Bold" Text="{Binding Path=Name, Mode=OneWay}" />
+                    <!--<TextBlock Margin="5 0 0 0">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="({0} already installed, {1}/{2} selected for installation)">
+                                <Binding Path="InstalledCount" />
+                                <Binding Path="CheckedCount" />
+                                <Binding Path="AvailableCount"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>-->
+                </StackPanel>
+            </CheckBox>
             <HierarchicalDataTemplate.ItemTemplate>
                 <DataTemplate DataType="local:ExtensionVisualModel">
                     <StackPanel Orientation="Horizontal">
