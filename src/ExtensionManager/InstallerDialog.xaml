@@ -35,9 +35,9 @@
             <HierarchicalDataTemplate.ItemTemplate>
                 <DataTemplate DataType="local:ExtensionVisualModel">
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox IsChecked="{Binding Path=IsChecked}" Content="{Binding Path=Name}" IsEnabled="{Binding IsEnabled}" ToolTip="{Binding Path=Model.Description}" VerticalAlignment="Center" />
+                        <CheckBox IsChecked="{Binding Path=IsChecked}" Content="{Binding Path=Name}" IsEnabled="{Binding IsEnabled}" ToolTip="{Binding Path=Model.Description}" ToolTipService.ShowOnDisabled="True" VerticalAlignment="Center" />
                         <TextBlock Text=" (already installed)" Visibility="{Binding IsEnabled, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=false}" VerticalAlignment="Center" />
-                        <Button Style="{StaticResource LinkButton}" Content="link" Command="{Binding OpenWebSiteCommand}" VerticalAlignment="Center">
+                        <Button Style="{StaticResource LinkButton}" Content="more info" Command="{Binding OpenWebSiteCommand}" VerticalAlignment="Center">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <TextBlock>
