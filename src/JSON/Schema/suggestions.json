@@ -84,12 +84,6 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/753b9720-1638-4f9a-ad8d-2c45a410fd74",
       "fileTypes": [ "package.json", "bower.json" ]
     },
-    "PHP Language Support": {
-      "description": "Basic support for the PHP programming language.",
-      "productId": "Tvl.VisualStudio.Language.Php.ece72f50-0b6f-4363-9986-e38af13f6aa5",
-      "link": "https://visualstudiogallery.msdn.microsoft.com/2a10ba81-26c5-47d9-939b-6bcc7bbec251",
-      "fileTypes": [ ".php" ]
-    },
     "Robots.txt Language Service": {
       "description": "Language service for robots.txt files.",
       "productId": "RobotsTxtLanguageService.Juhász Péter.d18b7383-8b42-4044-be51-414b20e67575",
