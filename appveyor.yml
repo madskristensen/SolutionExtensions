@@ -9,8 +9,18 @@ before_build:
   - ps: Vsix-TokenReplacement src\VSPackage.cs 'Version = "([0-9\\.]+)"' 'Version = "{version}"'
 
 build_script:
-  - nuget restore
+  - nuget restore -Verbosity quiet
   - msbuild /p:configuration=Release /p:DeployExtension=false /p:ZipPackageCompressionLevel=normal /v:m
 
 after_test:
   - ps: Vsix-PushArtifacts | Vsix-PublishToGallery
+
+before_deploy:
+  - ps: Vsix-CreateChocolatyPackage -packageId suggestedextensions
+
+deploy:
+  - provider: Environment
+    name: Chocolatey
+    on:
+      branch: master
+      appveyor_repo_commit_message_extended: /\[release\]/
