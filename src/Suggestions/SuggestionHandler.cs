@@ -59,7 +59,7 @@ namespace SolutionExtensions
             foreach (string key in fileModel.Extensions.Keys)
                 foreach (SuggestionModel model in fileModel.Extensions[key])
                 {
-                    string match = model?.FileTypes?.FirstOrDefault(ft => fileType.EndsWith(ft, StringComparison.Ordinal));
+                    string match = model?.FileTypes?.FirstOrDefault(ft => fileType.EndsWith(ft, StringComparison.OrdinalIgnoreCase));
 
                     if (!string.IsNullOrEmpty(match) || model.Category == SuggestionFileModel.GENERAL)
                     {

@@ -140,9 +140,9 @@
     },
     "Web Essentials 2015": {
       "productId": "5fb7364d-2e8c-44a4-95eb-2a382e30fec9",
-      "description": "Language support for markdown, VTT, AppCache, robots.txt and Gulp/Grunt files",
+      "description": "Adds many useful features to Visual Studio for web developers",
       "link": "https://visualstudiogallery.msdn.microsoft.com/ee6e6d8c-c837-41fb-886a-6b50ae2d06a2",
-      "fileTypes": [ ".vtt", ".appcache", "robots.txt", "gulpfile.js", "gruntfile.js", ".md" ]
+      "fileTypes": [ ".vtt", ".appcache", "robots.txt", "gulpfile.js", "gruntfile.js", ".md", "dockerfile" ]
     },
     "WebPack Task Runner": {
       "productId": "471a020e-77f5-4c77-8ff0-59e08b6c5ba3",
