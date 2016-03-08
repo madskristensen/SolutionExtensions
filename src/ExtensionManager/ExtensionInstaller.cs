@@ -75,7 +75,7 @@ namespace SolutionExtensions
         private void PromptForRestart()
         {
             string prompt = "You must restart Visual Studio for the extensions to be loaded.\r\rRestart now?";
-            var result = MessageBox.Show(prompt, Constants.VSIX_NAME, MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var result = MessageBox.Show(prompt, Vsix.Name, MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {

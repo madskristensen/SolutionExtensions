@@ -16,7 +16,13 @@
       "description": "Adds support for Broccoli brocfile.js files as well as Ember-CLI's ember-cli-build.js build scripts based on Broccoli.",
       "productId": "e4f68b58-9df0-4878-8e7f-cba51b236f94",
       "link": "https://visualstudiogallery.msdn.microsoft.com/dd19e6af-a1f7-4606-a82a-46833f810865",
-      "fileTypes": [ "brocfile.js" ]
+      "fileTypes": [ "brocfile.js", "ember-cli-build.js" ]
+    },
+    "Brunch Task Runner": {
+      "description": "Adds support for the Brunch build tool in Visual Studio 2015's Task Runner Explorer.",
+      "productId": "b4a4ad37-5a4b-4dfd-85fd-595cab6a26a9",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/de706ad0-8a73-4df3-bef5-867bb9a70d51",
+      "fileTypes": [ "brunch-config.js", "brunch-config.coffee", "config.coffee" ]
     },
     "Bundler & Minifier": {
       "description": "Adds support for bundling and minifying JavaScript, CSS and HTML files in any project.",
@@ -46,7 +52,7 @@
       "description": "An extension for making it easier to write Visual Studio extensions",
       "productId": "f8330d54-0469-43a7-8fc0-7f19febeb897",
       "link": "https://visualstudiogallery.msdn.microsoft.com/ab39a092-1343-46e2-b0f1-6a3f91155aa6",
-      "fileTypes": [ ".pkgdef", ".vsct" ]
+      "fileTypes": [ ".pkgdef", ".vsct", ".vsixmanifest" ]
     },
     "Flatten Packages": {
       "description": "Flattens the node_modules folder hierarchy by using the 'flatten-packages' npm package behind the scenes. Works with long paths. Requires Node.js installed on the machine",
@@ -71,6 +77,24 @@
       "productId": "Tvl.VisualStudio.Language.Java.1852bf6a-fde2-4268-9e3e-dce34312bfe3",
       "link": "https://visualstudiogallery.msdn.microsoft.com/bc561769-36ff-4a40-9504-e266e8706f93",
       "fileTypes": [ ".java" ]
+    },
+    "JavaScript Snippet Pack": {
+      "description": "A snippet pack to make you more productive working with JavaScript.",
+      "productId": "2a20580c-7be4-4440-bcd6-8dcf5aa2004e",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/423eb4a3-215f-4a8f-9287-1512618ffda3",
+      "fileTypes": [ ".js", ".jsx" ]
+    },
+    "React Snippet Pack": {
+      "description": "Snippet pack for use with the React JavaScript framework.",
+      "productId": "a7dff10f-3592-429c-9dc1-622fe517921d",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/234d79e9-f0fd-41e1-a926-850da8e8c7d7",
+      "fileTypes": [ ".jsx" ]
+    },
+    "Karma Test Adapter": {
+      "description": "A Visual Studio test explorer adapter for Karma.",
+      "productId": "KarmaTestAdapter.Package.8c9d6dce-b21b-4fa2-9712-1e41911d3d7c",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/4cd59e4a-82e8-4b4e-8302-d102fc81b090",
+      "fileTypes": [ "karma.conf.js", ".spec.ts" ]
     },
     "Open Command Line": {
       "description": "Opens a command line at the root of the project. Support for all consoles such as CMD, PowerShell, Bash etc. Provides syntax highlighting, Intellisense and execution of .cmd and .bat files.",
@@ -110,9 +134,15 @@
     },
     "Web Essentials 2015": {
       "productId": "5fb7364d-2e8c-44a4-95eb-2a382e30fec9",
-      "description": "Intellisense and colorizing for robots.txt",
+      "description": "Language support for markdown, VTT, AppCache, robots.txt and Gulp/Grunt files",
       "link": "https://visualstudiogallery.msdn.microsoft.com/ee6e6d8c-c837-41fb-886a-6b50ae2d06a2",
-      "fileTypes": [ ".vtt", ".appcache", "robots.txt", "gulpfile.js", "gruntfile.js" ]
+      "fileTypes": [ ".vtt", ".appcache", "robots.txt", "gulpfile.js", "gruntfile.js", ".md" ]
+    },
+    "WebPack Task Runner": {
+      "productId": "471a020e-77f5-4c77-8ff0-59e08b6c5ba3",
+      "description": "Adds support for WebPack in Visual Studio 2015's Task Runner Explorer.",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a",
+      "fileTypes": [ "webpack.config.js", "webpack.config.babel.js", "webpack.config.ts", "webpack.config.coffee" ]
     },
     "Yaml Editor": {
       "description": "Provides a complete YAML editing experience in Visual Studio, including: - Syntax highlightning - Syntax error detection - Comment / uncomment selection - Format document",
@@ -132,11 +162,6 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/3ebde8fb-26d8-4374-a0eb-1e4e2665070c",
       "description": "Automatically nest files based on file name and enables developers to nest and unnest any file manually"
     },
-    "Trailing Whitespace Visualizer": {
-      "productId": "4c1a78e6-e7b8-4aa9-8812-4836e051ff6d",
-      "link": "https://visualstudiogallery.msdn.microsoft.com/a204e29b-1778-4dae-affd-209bea658a59",
-      "description": "Makes it easier than ever to identify and remove trailing whitespace in any code file"
-    },
     "Image Optimizer": {
       "productId": "bf95754f-93d3-42ff-bfe3-e05d23188b08",
       "link": "https://visualstudiogallery.msdn.microsoft.com/a56eddd3-d79b-48ac-8c8f-2db06ade77c3",
@@ -146,6 +171,16 @@
       "productId": "MultiEdit..c6fb8e57-fde0-4987-8e7a-5ca9b4beddcb",
       "link": "https://visualstudiogallery.msdn.microsoft.com/2beb9705-b568-45d1-8550-751e181e3aef",
       "description": "Simultaneously edit in more than one location in the editor\n\nIf you've ever ran into a case where you wanted to quickly change variable names or multiple loop conditions - you can use Multi-Edit to set virtual carets that all behave the same."
+    },
+    "Open in Visual Studio Code": {
+      "productId": "e99dde0e-e023-410d-bc5d-3f76db71e3f0",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/33f6f3fd-68e8-4783-b934-ece91a08d265",
+      "description": "Adds a menu command that lets you open any solution, project, folder and file in Visual Studio Code."
+    },
+    "Trailing Whitespace Visualizer": {
+      "productId": "4c1a78e6-e7b8-4aa9-8812-4836e051ff6d",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/a204e29b-1778-4dae-affd-209bea658a59",
+      "description": "Makes it easier than ever to identify and remove trailing whitespace in any code file"
     },
     "Visual Studio Spell Checker": {
       "productId": "34482677-bc69-4bd3-8b8b-1ecd347f609d",

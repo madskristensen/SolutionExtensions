@@ -60,6 +60,7 @@ namespace SolutionExtensions
             }
             else if (context == "ignore")
             {
+                infoBarUIElement.Close();
                 Settings.IgnoreFileType(_suggestionResult.Matches, true);
             }
         }
@@ -81,7 +82,7 @@ namespace SolutionExtensions
 
             if (host != null)
             {
-                string matches = string.Join(", ", result.Matches);
+                string matches = string.Join(", ", result.Matches.Distinct());
                 string message = $"{count} extensions supporting {matches} files are found";
 
                 if (result.Extensions.Count() == 1)

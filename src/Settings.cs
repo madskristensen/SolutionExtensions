@@ -21,8 +21,8 @@ namespace SolutionExtensions
         {
             WritableSettingsStore wstore = _settings.GetWritableSettingsStore(SettingsScope.UserSettings);
 
-            if (!wstore.CollectionExists(Constants.VSIX_NAME))
-                wstore.CreateCollection(Constants.VSIX_NAME);
+            if (!wstore.CollectionExists(Vsix.Name))
+                wstore.CreateCollection(Vsix.Name);
 
             string solution = VSPackage.GetSolution();
 
@@ -33,11 +33,11 @@ namespace SolutionExtensions
 
             if (ignore)
             {
-                wstore.SetInt32(Constants.VSIX_NAME, property, 1);
+                wstore.SetInt32(Vsix.Name, property, 1);
             }
             else
             {
-                wstore.DeleteProperty(Constants.VSIX_NAME, property);
+                wstore.DeleteProperty(Vsix.Name, property);
             }
         }
 
@@ -45,20 +45,20 @@ namespace SolutionExtensions
         {
             WritableSettingsStore wstore = _settings.GetWritableSettingsStore(SettingsScope.UserSettings);
 
-            if (!wstore.CollectionExists(Constants.VSIX_NAME))
-                wstore.CreateCollection(Constants.VSIX_NAME);
+            if (!wstore.CollectionExists(Vsix.Name))
+                wstore.CreateCollection(Vsix.Name);
 
-            foreach (string fileType in fileTypes)
+            foreach (string fileType in fileTypes.Distinct())
             {
                 string property = fileType.ToLowerInvariant();
 
                 if (ignore)
                 {
-                    wstore.SetInt32(Constants.VSIX_NAME, property, 1);
+                    wstore.SetInt32(Vsix.Name, property, 1);
                 }
                 else
                 {
-                    wstore.DeleteProperty(Constants.VSIX_NAME, property);
+                    wstore.DeleteProperty(Vsix.Name, property);
                 }
             }
         }
@@ -74,7 +74,7 @@ namespace SolutionExtensions
 
             string property = GetPropertyName(solution);
 
-            return store.PropertyExists(Constants.VSIX_NAME, property);
+            return store.PropertyExists(Vsix.Name, property);
         }
 
         public static bool IsFileTypeIgnored(IEnumerable<string> fileTypes)
@@ -83,7 +83,7 @@ namespace SolutionExtensions
 
             foreach (string fileType in fileTypes.Where(f => !string.IsNullOrEmpty(f)))
             {
-                if (store.PropertyExists(Constants.VSIX_NAME, fileType.ToLowerInvariant()))
+                if (store.PropertyExists(Vsix.Name, fileType.ToLowerInvariant()))
                     return true;
             }
 

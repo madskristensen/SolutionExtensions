@@ -11,21 +11,19 @@ using Microsoft.VisualStudio.Shell.Interop;
 namespace SolutionExtensions
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
-    [InstalledProductRegistration("#110", "#112", Version, IconResourceID = 400)]
+    [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [Guid(PackageGuids.guidVSPackageString)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class VSPackage : Package
     {
-        public const string Version = "1.0";
-
         public static DTE2 DTE { get; set; }
 
         protected override void Initialize()
         {
             // Initialize shared components
             DTE = GetService(typeof(DTE)) as DTE2;
-            Logger.Initialize(this, Constants.VSIX_NAME);
+            Logger.Initialize(this, Vsix.Name);
             Settings.Initialize(this);
             SolutionHandler.Initialize(DTE);
             SuggestionHandler.Initialize();
