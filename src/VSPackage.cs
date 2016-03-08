@@ -2,9 +2,7 @@
 using System.Runtime.InteropServices;
 using EnvDTE;
 using EnvDTE80;
-using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.ExtensionManager;
-using Microsoft.VisualStudio.Imaging;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
@@ -30,6 +28,7 @@ namespace SolutionExtensions
             Settings.Initialize(this);
             SolutionHandler.Initialize(DTE);
             SuggestionHandler.Initialize();
+            DocumentOpenListener.Initialize(DTE.Events.DocumentEvents);
 
             // Initialize other components
             var repository = (IVsExtensionRepository)GetService(typeof(SVsExtensionRepository));

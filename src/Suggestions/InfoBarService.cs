@@ -81,7 +81,7 @@ namespace SolutionExtensions
             _fileType = fileType;
             int count = result.Extensions.Count(e => e.Category != SuggestionFileModel.GENERAL);
 
-            var host = GetInfoBarHost();
+            var host = GetInfoBarHost(fileType);
 
             if (host != null)
             {
@@ -112,7 +112,7 @@ namespace SolutionExtensions
             host.AddInfoBar(element);
         }
 
-        private IVsInfoBarHost GetInfoBarHost()
+        private IVsInfoBarHost GetInfoBarHost(string fileType)
         {
             IVsUIShell4 uiShell = _serviceProvider.GetService(typeof(SVsUIShell)) as IVsUIShell4;
             IEnumWindowFrames windowEnumerator;
@@ -135,9 +135,11 @@ namespace SolutionExtensions
                     {
                         // We successfully retrieved a window frame, update our lists
                         object obj;
+                        object caption;
                         frame[0].GetProperty((int)__VSFPROPID7.VSFPROPID_InfoBarHost, out obj);
+                        frame[0].GetProperty((int)__VSFPROPID.VSFPROPID_Caption, out caption);
 
-                        if (obj != null)
+                        if (obj != null && caption != null && caption.ToString().Contains(fileType))
                         {
                             return (IVsInfoBarHost)obj;
                         }
