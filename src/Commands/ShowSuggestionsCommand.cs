@@ -30,7 +30,7 @@ namespace SolutionExtensions
                 commandService.AddCommand(button);
             }
         }
-        
+
         public static ShowSuggestionsCommand Instance { get; private set; }
 
         private IServiceProvider ServiceProvider
@@ -42,12 +42,13 @@ namespace SolutionExtensions
         {
             Instance = new ShowSuggestionsCommand(package, repository, manager);
         }
-        
+
         private async System.Threading.Tasks.Task ShowSuggestions(object sender, EventArgs e)
         {
             var dte = ServiceProvider.GetService(typeof(DTE)) as DTE2;
 
             SuggestionResult result;
+            Telemetry.TrackEvent("Show suggestions");
 
             if (dte.ActiveDocument != null && !string.IsNullOrEmpty(dte.ActiveDocument.FullName))
             {

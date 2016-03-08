@@ -53,6 +53,9 @@ namespace SolutionExtensions
 
                             _manager.Install(installable, false);
                             hasInstalled = true;
+
+                            var props = new Dictionary<string, string> { { "extension", model.Name } };
+                            Telemetry.TrackEvent("Installed", props);
                         }
                     }
                     catch (Exception ex)

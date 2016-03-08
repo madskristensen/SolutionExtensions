@@ -52,6 +52,8 @@ namespace SolutionExtensions
             if (string.IsNullOrEmpty(fileName))
                 return;
 
+            Telemetry.TrackEvent("Modify solution extensions");
+
             string emptyFile = @"{
   ""extensions"": {
     ""mandatory"": [

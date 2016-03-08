@@ -31,10 +31,10 @@
       "fileTypes": [ "bundleconfig.json" ]
     },
     "Command Task Runner": {
-      "description": "Adds support for command line batch files in Visual Studio 2015's Task Runner Explorer. Supports .cmd, .bat, .ps1 and .psm1 files.",
+      "description": "Adds support for command line batch files in Visual Studio 2015's Task Runner Explorer. Supports .cmd, .bat and .ps1 files.",
       "productId": "fc1aafb2-321e-41bd-ac37-03b09ea8ef31",
       "link": "https://visualstudiogallery.msdn.microsoft.com/e6bf6a3d-7411-4494-8a1e-28c1a8c4ce99",
-      "fileTypes": [ ".cmd", ".bat", ".ps1", ".psm1" ]
+      "fileTypes": [ ".cmd", ".bat", ".ps1" ]
     },
     "DartVS": {
       "description": "Some support for coding Dart in Visual Studio.",
@@ -96,6 +96,12 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/4cd59e4a-82e8-4b4e-8302-d102fc81b090",
       "fileTypes": [ "karma.conf.js", ".spec.ts" ]
     },
+    "NPM Scripts Task Runner": {
+      "description": "Adds support for package.json's NPM scripts in the Task Runner Explorer",
+      "productId": "d7f89ba3-815c-4feb-89b9-68d1654e2138",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/8f2f2cbc-4da5-43ba-9de2-c9d08ade4941",
+      "fileTypes": [ "package.json" ]
+    },
     "Open Command Line": {
       "description": "Opens a command line at the root of the project. Support for all consoles such as CMD, PowerShell, Bash etc. Provides syntax highlighting, Intellisense and execution of .cmd and .bat files.",
       "productId": "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbb",
@@ -153,39 +159,44 @@
   },
   "general": {
     "Add New File": {
-      "productId": "27dd9dea-6dd2-403e-929d-3ff20d896c5e",
+      "description": "The fastest and easiest way to add new files to any project - including files that start with a dot.",
       "link": "https://visualstudiogallery.msdn.microsoft.com/3f820e99-6c0d-41db-aa74-a18d9623b1f3",
-      "description": "The fastest and easiest way to add new files to any project - including files that start with a dot."
+      "productId": "27dd9dea-6dd2-403e-929d-3ff20d896c5e"
+    },
+    "Dummy Text Generator": {
+      "description": "Easily insert dummy text into the editor in Visual Studio. Lorem Ipsum and other vocabularies are supported.",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/4d809607-87dd-445c-8cd4-585da67c6beb",
+      "productId": "0007e9e3-b11a-4d10-8565-9c6ce2ccc286"
     },
     "File Nesting": {
-      "productId": "6c799bc4-0d4c-4172-98bc-5d464b612dca",
+      "description": "Automatically nest files based on file name and enables developers to nest and unnest any file manually",
       "link": "https://visualstudiogallery.msdn.microsoft.com/3ebde8fb-26d8-4374-a0eb-1e4e2665070c",
-      "description": "Automatically nest files based on file name and enables developers to nest and unnest any file manually"
+      "productId": "6c799bc4-0d4c-4172-98bc-5d464b612dca"
     },
     "Image Optimizer": {
-      "productId": "bf95754f-93d3-42ff-bfe3-e05d23188b08",
+      "description": "Lossless optimization of JPEG, PNG and Gifs - including animated Gifs",
       "link": "https://visualstudiogallery.msdn.microsoft.com/a56eddd3-d79b-48ac-8c8f-2db06ade77c3",
-      "description": "Lossless optimization of JPEG, PNG and Gifs - including animated Gifs"
+      "productId": "bf95754f-93d3-42ff-bfe3-e05d23188b08"
     },
     "MultiEditing": {
-      "productId": "MultiEdit..c6fb8e57-fde0-4987-8e7a-5ca9b4beddcb",
+      "description": "Simultaneously edit in more than one location in the editor\n\nIf you've ever ran into a case where you wanted to quickly change variable names or multiple loop conditions - you can use Multi-Edit to set virtual carets that all behave the same.",
       "link": "https://visualstudiogallery.msdn.microsoft.com/2beb9705-b568-45d1-8550-751e181e3aef",
-      "description": "Simultaneously edit in more than one location in the editor\n\nIf you've ever ran into a case where you wanted to quickly change variable names or multiple loop conditions - you can use Multi-Edit to set virtual carets that all behave the same."
+      "productId": "MultiEdit..c6fb8e57-fde0-4987-8e7a-5ca9b4beddcb"
     },
     "Open in Visual Studio Code": {
-      "productId": "e99dde0e-e023-410d-bc5d-3f76db71e3f0",
+      "description": "Adds a menu command that lets you open any solution, project, folder and file in Visual Studio Code.",
       "link": "https://visualstudiogallery.msdn.microsoft.com/33f6f3fd-68e8-4783-b934-ece91a08d265",
-      "description": "Adds a menu command that lets you open any solution, project, folder and file in Visual Studio Code."
+      "productId": "e99dde0e-e023-410d-bc5d-3f76db71e3f0"
     },
     "Trailing Whitespace Visualizer": {
-      "productId": "4c1a78e6-e7b8-4aa9-8812-4836e051ff6d",
+      "description": "Makes it easier than ever to identify and remove trailing whitespace in any code file",
       "link": "https://visualstudiogallery.msdn.microsoft.com/a204e29b-1778-4dae-affd-209bea658a59",
-      "description": "Makes it easier than ever to identify and remove trailing whitespace in any code file"
+      "productId": "4c1a78e6-e7b8-4aa9-8812-4836e051ff6d"
     },
     "Visual Studio Spell Checker": {
-      "productId": "34482677-bc69-4bd3-8b8b-1ecd347f609d",
+      "description": "An editor extension that checks the spelling of comments, strings, and plain text as you type or interactively with a tool window. Extra options are available to control how elements and attributes in XML and MAML files are spell checked.",
       "link": "https://visualstudiogallery.msdn.microsoft.com/a23de100-31a1-405c-b4b7-d6be40c3dfff",
-      "description": "An editor extension that checks the spelling of comments, strings, and plain text as you type or interactively with a tool window. Extra options are available to control how elements and attributes in XML and MAML files are spell checked."
+      "productId": "34482677-bc69-4bd3-8b8b-1ecd347f609d"
     }
   }
 }

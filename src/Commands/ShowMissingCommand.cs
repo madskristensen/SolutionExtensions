@@ -75,6 +75,7 @@ namespace SolutionExtensions
 
             if (fileModel != null)
             {
+                Telemetry.TrackEvent("Show solution specific");
                 await ExtensionInstalledChecker.Instance.ShowDialog(fileModel);
             }
         }

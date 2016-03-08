@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Interop;
 using EnvDTE;
@@ -60,6 +61,8 @@ namespace SolutionExtensions
             }
             else if (context == "ignore")
             {
+                var props = new Dictionary<string, string> { { "matches", string.Join(", ", _suggestionResult.Matches) } };
+                Telemetry.TrackEvent("Ignore", props);
                 infoBarUIElement.Close();
                 Settings.IgnoreFileType(_suggestionResult.Matches, true);
             }
