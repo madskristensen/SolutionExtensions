@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Media;
 
 namespace SolutionExtensions
 {
@@ -15,11 +14,10 @@ namespace SolutionExtensions
 
             InitializeComponent();
         }
-        
+
         public void SetMessage(string message)
         {
             lblText.Content = message;
-            //bar.Value += 1;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

@@ -153,3 +153,6 @@ The more relevant extension suggestions there are, the better
 this extension becomes. Please feel free to send pull requests
 with additional extensions to
 [this JSON file](https://github.com/madskristensen/SolutionExtensions/blob/master/src/JSON/Schema/suggestions.json).
+
+## License
+[Apache 2.0](LICENSE)
