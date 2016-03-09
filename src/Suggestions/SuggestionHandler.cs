@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace SolutionExtensions
 {
@@ -20,10 +21,10 @@ namespace SolutionExtensions
             Instance = new SuggestionHandler();
         }
 
-        public SuggestionResult GetSuggestions(string fileType, out IEnumerable<string> fileTypes)
+        public SuggestionResult GetSuggestions(string filePath, out IEnumerable<string> fileTypes)
         {
             var fileModel = GetCurrentFileModel();
-            var suggestions = GetSuggestedExtensions(fileModel, fileType, out fileTypes);
+            var suggestions = GetSuggestedExtensions(fileModel, filePath, out fileTypes);
 
             if (!suggestions.Any())
                 return null;
@@ -51,10 +52,11 @@ namespace SolutionExtensions
             return _model;
         }
 
-        public static IEnumerable<IExtensionModel> GetSuggestedExtensions(SuggestionFileModel fileModel, string fileType, out IEnumerable<string> hits)
+        private static IEnumerable<IExtensionModel> GetSuggestedExtensions(SuggestionFileModel fileModel, string filePath, out IEnumerable<string> hits)
         {
             List<IExtensionModel> list = new List<IExtensionModel>();
             List<string> matches = new List<string>();
+            string fileType = Path.GetFileName(filePath);
 
             foreach (string key in fileModel.Extensions.Keys)
                 foreach (SuggestionModel model in fileModel.Extensions[key])
@@ -63,6 +65,13 @@ namespace SolutionExtensions
 
                     if (!string.IsNullOrEmpty(match) || model.Category == SuggestionFileModel.GENERAL)
                     {
+                        if (!string.IsNullOrEmpty(model.TextMatch) && File.Exists(filePath))
+                        {
+                            string content = File.ReadAllText(filePath);
+                            if (!Regex.IsMatch(content, model.TextMatch))
+                                continue;
+                        }
+
                         matches.Add(match);
                         list.Add(model);
                     }

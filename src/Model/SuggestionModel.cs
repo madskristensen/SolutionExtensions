@@ -20,6 +20,9 @@ namespace SolutionExtensions
         [JsonProperty("fileTypes")]
         public IEnumerable<string> FileTypes { get; set; }
 
+        [JsonProperty("textMatch")]
+        public string TextMatch { get; set; }
+
         [JsonIgnore]
         public string Category { get; set; }
 

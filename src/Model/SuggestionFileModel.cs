@@ -36,6 +36,7 @@ namespace SolutionExtensions
                     Description = ext.FirstOrDefault()?["description"].ToString(),
                     Link = ext.FirstOrDefault()?["link"].ToString(),
                     FileTypes = ext.FirstOrDefault()?["fileTypes"].Values<string>().ToArray(),
+                    TextMatch = ext.FirstOrDefault()?["textMatch"]?.ToString(),
                     Category = FILE_BASED
                 };
 

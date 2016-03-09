@@ -32,7 +32,7 @@ namespace SolutionExtensions
             Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
            {
                IEnumerable<string> fileTypes;
-               var result = SuggestionHandler.Instance.GetSuggestions(document.Name, out fileTypes);
+               var result = SuggestionHandler.Instance.GetSuggestions(document.FullName, out fileTypes);
                result.Extensions = result.Extensions.Where(e => e.Category != SuggestionFileModel.GENERAL);
                var missing = SuggestionHandler.Instance.GetMissingExtensions(result.Extensions);
 

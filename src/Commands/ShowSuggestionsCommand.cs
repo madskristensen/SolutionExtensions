@@ -52,9 +52,8 @@ namespace SolutionExtensions
 
             if (dte.ActiveDocument != null && !string.IsNullOrEmpty(dte.ActiveDocument.FullName))
             {
-                string fileName = Path.GetFileName(dte.ActiveDocument.FullName);
                 IEnumerable<string> fileTypes;
-                result = SuggestionHandler.Instance.GetSuggestions(fileName, out fileTypes);
+                result = SuggestionHandler.Instance.GetSuggestions(dte.ActiveDocument.FullName, out fileTypes);
             }
             else
             {

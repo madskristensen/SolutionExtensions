@@ -5,12 +5,27 @@
   "type": "object",
 
   "definitions": {
-    "extensionList": {
+    "general": {
       "type": "object",
       "description": "A list of extensions",
 
       "additionalProperties": {
         "$ref": "#/definitions/extension"
+      }
+    },
+    "fileBased": {
+      "allOf": [ { "$ref": "#/definitions/general" } ],
+
+      "additionalProperties": {
+        "type": "object",
+
+        "properties": {
+          "textMatch": {
+            "type": "string",
+            "format": "regex",
+            "description": "A regex that must match in the content of the file to filter suggestion hits."
+          }
+        }
       }
     },
     "extension": {
@@ -20,20 +35,20 @@
       "properties": {
         "description": {
           "type": "string",
-          "default": "The description of the extension as specified in their '.vsixmanifest' file."
+          "description": "The description of the extension as specified in their '.vsixmanifest' file."
         },
         "productId": {
           "type": "string",
-          "default": "This is the ID of the extension as specified in their '.vsixmanifest' file."
+          "description": "This is the ID of the extension as specified in their '.vsixmanifest' file."
         },
         "link": {
           "type": "string",
           "format": "uri",
-          "default": "The URI pointing to the download location."
+          "description": "The URI pointing to the download location."
         },
         "fileTypes": {
           "type": "array",
-          "default": "The file types (extensions or file names) that is supported by the extension.",
+          "description": "The file types (extensions or file names) that is supported by the extension.",
           "items": {
             "type": "string"
           }
@@ -43,7 +58,7 @@
   },
 
   "properties": {
-    "fileBased": { "$ref": "#/definitions/extensionList" },
-    "general": { "$ref": "#/definitions/extensionList" }
+    "fileBased": { "$ref": "#/definitions/fileBased" },
+    "general": { "$ref": "#/definitions/general" }
   }
 }
