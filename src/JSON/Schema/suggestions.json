@@ -96,6 +96,13 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/423eb4a3-215f-4a8f-9287-1512618ffda3",
       "fileTypes": [ ".js", ".jsx" ]
     },
+    "jQuery Code Snippets": {
+      "description": "A collection of 130+ JavaScript code snippets for jQuery.",
+      "productId": "0610c27c-b2d5-4d52-87fb-9dc9a0e20d53",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/577b9c03-71fb-417b-bcbb-94b6d3d326b8",
+      "fileTypes": [ ".js" ],
+      "textMatch": "\\$\\.|\\$\\("
+    },
     "React Snippet Pack": {
       "description": "Snippet pack for use with the React JavaScript framework.",
       "productId": "a7dff10f-3592-429c-9dc1-622fe517921d",
