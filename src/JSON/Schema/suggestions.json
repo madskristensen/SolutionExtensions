@@ -60,12 +60,6 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/ab39a092-1343-46e2-b0f1-6a3f91155aa6",
       "fileTypes": [ ".pkgdef", ".vsct", ".vsixmanifest" ]
     },
-    "Flatten Packages": {
-      "description": "Flattens the node_modules folder hierarchy by using the 'flatten-packages' npm package behind the scenes. Works with long paths. Requires Node.js installed on the machine",
-      "productId": "96559c66-f326-40e2-95c1-449a80387524",
-      "link": "https://visualstudiogallery.msdn.microsoft.com/cd0b1938-4513-4e57-b9b7-c674b4a20e79",
-      "fileTypes": [ "package.json" ]
-    },
     "Go Language Support": {
       "description": "Basic support for the Go programming language.",
       "productId": "Tvl.VisualStudio.Language.Go.c837d3e9-5ae2-4455-a608-f6a4ae016688",
