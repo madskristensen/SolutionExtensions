@@ -6,12 +6,6 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/4ae31812-f841-45c3-8052-1130775473f8",
       "fileTypes": [ ".als" ]
     },
-    "ASP.NET 5 Scripts Task Runner": {
-      "description": "Adds support for project.json's scripts in the Task Runner Explorer",
-      "productId": "ec768980-f2de-4db0-a6e2-5e57fa612ad5",
-      "link": "https://visualstudiogallery.msdn.microsoft.com/9397a2da-c93a-419c-8408-4e9af30d4e36",
-      "fileTypes": [ "project.json" ]
-    },
     "Broccoli Task Runner": {
       "description": "Adds support for Broccoli brocfile.js files as well as Ember-CLI's ember-cli-build.js build scripts based on Broccoli.",
       "productId": "e4f68b58-9df0-4878-8e7f-cba51b236f94",
@@ -114,19 +108,19 @@
       "productId": "d7f89ba3-815c-4feb-89b9-68d1654e2138",
       "link": "https://visualstudiogallery.msdn.microsoft.com/8f2f2cbc-4da5-43ba-9de2-c9d08ade4941",
       "fileTypes": [ "package.json" ],
-      "textMatch": "scripts"
+      "textMatch": "\"scripts\""
     },
     "Open Command Line": {
       "description": "Opens a command line at the root of the project. Support for all consoles such as CMD, PowerShell, Bash etc. Provides syntax highlighting, Intellisense and execution of .cmd and .bat files.",
       "productId": "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbb",
       "link": "https://visualstudiogallery.msdn.microsoft.com/4e84e2cf-2d6b-472a-b1e2-b84932511379",
-      "fileTypes": [ ".cmd", ".bat" ]
+      "fileTypes": [ ".cmd", ".bat", ".ps1" ]
     },
     "Package Installer": {
       "description": "Makes it easier, faster and more convenient than ever to install Bower, npm and JSPM packages to any project.",
       "productId": "fdd64809-376e-4542-92ce-808a8df06bcc",
       "link": "https://visualstudiogallery.msdn.microsoft.com/753b9720-1638-4f9a-ad8d-2c45a410fd74",
-      "fileTypes": [ "package.json", "bower.json" ]
+      "fileTypes": [ "package.json", "bower.json", "packages.config", "tsd.json"]
     },
     "Rebracer": {
       "description": "Saves editor formatting settings as part of each solution.",
@@ -150,13 +144,13 @@
       "description": "Automatic TypeScript Template generation from C# files.",
       "productId": "45b6b392-ce2f-409c-a39f-bbf90b34349e",
       "link": "https://visualstudiogallery.msdn.microsoft.com/e1d68248-f30e-4a5d-bf18-31399a0bcfa6",
-      "fileTypes": [ ".ts", ".tst" ]
+      "fileTypes": [ ".tst" ]
     },
     "Web Compiler": {
       "description": "The easiest and most powerful way to compile LESS, Scss and CoffeeScript files directly within Visual Studio or through MSBuild.",
       "productId": "148ffa77-d70a-407f-892b-9ee542346862",
       "link": "https://visualstudiogallery.msdn.microsoft.com/3b329021-cd7a-4a01-86fc-714c2d05bb6c",
-      "fileTypes": [ ".less", ".scss", ".coffee", ".litcoffee", ".iced", "compilerconfig.json", "compilerconfig.json.defaults" ]
+      "fileTypes": [ ".less", ".scss", ".sass", ".styl", ".coffee", ".litcoffee", ".iced", "compilerconfig.json", "compilerconfig.json.defaults" ]
     },
     "Web Essentials 2015": {
       "productId": "5fb7364d-2e8c-44a4-95eb-2a382e30fec9",
