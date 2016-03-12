@@ -4,6 +4,7 @@
         <Identity Id="51b81721-cf4e-4ce0-a595-972b1ca2a186" Version="1.1" Language="en-US" Publisher="Mads Kristensen" />
         <DisplayName>Suggested Extensions</DisplayName>
         <Description xml:space="preserve">Get suggestions on what extensions you need to handle various file types and projects when you need them.</Description>
+        <MoreInfo>https://visualstudiogallery.msdn.microsoft.com/3be88243-8bf1-407a-a7ca-a968d0de2d59</MoreInfo>
         <License>Resources\LICENSE</License>
         <Icon>Resources\icon.png</Icon>
         <PreviewImage>Resources\preview.png</PreviewImage>
