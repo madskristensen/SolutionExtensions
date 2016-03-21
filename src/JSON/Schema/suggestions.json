@@ -60,6 +60,12 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/bd7675ba-1bf5-4395-8c5a-4fc19dfc0d76",
       "fileTypes": [ ".go" ]
     },
+    "Gulp Snippet Pack": {
+      "description": "A snippet pack to make you more productive working with the Gulp task runner",
+      "productId": "17c6719c-d92f-4bdb-a145-ea2d6dd70900",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/9e26d1f9-1baf-4983-8c25-f5f769998d4f",
+      "fileTypes": [ "gulpfile.js" ]
+    },
     "Humans.txt Language Service": {
       "description": "Language service for humans.txt files.",
       "productId": "HumansTxtLanguageService.Juhász Péter.14515d35-d738-42e5-b9aa-cb9630f8a9bc",
@@ -71,6 +77,12 @@
       "productId": "bf95754f-93d3-42ff-bfe3-e05d23188b08",
       "link": "https://visualstudiogallery.msdn.microsoft.com/a56eddd3-d79b-48ac-8c8f-2db06ade77c3",
       "fileTypes": [ ".png", ".gif", ".jpg", ".jpeg" ]
+    },
+    "Jasmine Snippet Pack": {
+      "description": "A snippet pack to make you more productive working with Jasmine unit testing library.",
+      "productId": "4b57f448-ba2e-4404-a0f7-ab1fac14daba",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/5d11e28f-0f7c-4f6e-ae50-699fcd5a3500",
+      "fileTypes": [ "spec.js" ]
     },
     "Java Language Support": {
       "description": "Basic support for the Java programming language.",
@@ -108,7 +120,7 @@
       "productId": "d7f89ba3-815c-4feb-89b9-68d1654e2138",
       "link": "https://visualstudiogallery.msdn.microsoft.com/8f2f2cbc-4da5-43ba-9de2-c9d08ade4941",
       "fileTypes": [ "package.json" ],
-      "textMatch": "\"scripts\""
+      "textMatch": "scripts"
     },
     "Open Command Line": {
       "description": "Opens a command line at the root of the project. Support for all consoles such as CMD, PowerShell, Bash etc. Provides syntax highlighting, Intellisense and execution of .cmd and .bat files.",
@@ -120,7 +132,7 @@
       "description": "Makes it easier, faster and more convenient than ever to install Bower, npm and JSPM packages to any project.",
       "productId": "fdd64809-376e-4542-92ce-808a8df06bcc",
       "link": "https://visualstudiogallery.msdn.microsoft.com/753b9720-1638-4f9a-ad8d-2c45a410fd74",
-      "fileTypes": [ "package.json", "bower.json", "packages.config", "tsd.json"]
+      "fileTypes": [ "package.json", "bower.json", "packages.config", "tsd.json" ]
     },
     "Rebracer": {
       "description": "Saves editor formatting settings as part of each solution.",
