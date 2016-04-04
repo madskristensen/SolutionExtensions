@@ -66,6 +66,12 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/9e26d1f9-1baf-4983-8c25-f5f769998d4f",
       "fileTypes": [ "gulpfile.js" ]
     },
+    "Grunt Snippet Pack": {
+      "description": "A snippet pack to make you more productive working with the Grunt task runner",
+      "productId": "09fdacb9-6989-453c-9504-6dd52cb46313",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/e88222de-b491-4d15-abf5-db4326200e78",
+      "fileTypes": [ "gruntfile.js" ]
+    },
     "Humans.txt Language Service": {
       "description": "Language service for humans.txt files.",
       "productId": "HumansTxtLanguageService.Juhász Péter.14515d35-d738-42e5-b9aa-cb9630f8a9bc",
