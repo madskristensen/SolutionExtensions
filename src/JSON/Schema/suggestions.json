@@ -121,6 +121,12 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/4cd59e4a-82e8-4b4e-8302-d102fc81b090",
       "fileTypes": [ "karma.conf.js", ".spec.ts" ]
     },
+    "Node.js Tools for Visual Studio 2015": {
+      "description": "Syntax highlightning for Jade",
+      "productId": "??? don't know it's msi extension",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/7f82bb38-ce36-4004-bf36-6d783e2ee9d2",
+      "fileTypes": [ ".jade" ]
+    },
     "NPM Scripts Task Runner": {
       "description": "Adds support for package.json's NPM scripts in the Task Runner Explorer",
       "productId": "d7f89ba3-815c-4feb-89b9-68d1654e2138",
