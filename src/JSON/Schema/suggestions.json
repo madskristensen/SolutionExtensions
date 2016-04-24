@@ -72,6 +72,12 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/e88222de-b491-4d15-abf5-db4326200e78",
       "fileTypes": [ "gruntfile.js" ]
     },
+    "HLSL Tools": {
+      "description": "Enhanced support for editing High Level Shading Language (HLSL) files",
+      "productId": "7def6c01-a05e-42e6-953d-3fdea1891737",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/75ddd3be-6eda-4433-a850-458b51186658",
+      "fileTypes": [ ".hlsl", ".hlsli", ".fx", ".fxh", ".vsh", ".psh" ]
+    },
     "Humans.txt Language Service": {
       "description": "Language service for humans.txt files.",
       "productId": "HumansTxtLanguageService.Juhász Péter.14515d35-d738-42e5-b9aa-cb9630f8a9bc",
