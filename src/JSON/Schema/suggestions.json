@@ -170,6 +170,12 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/e1d68248-f30e-4a5d-bf18-31399a0bcfa6",
       "fileTypes": [ ".tst" ]
     },
+    "Vue.js Pack": {
+      "description": "Contains HTML Intellisense and code snippets for the Vue.js JavaScript library",
+      "productId": "6ac8e91a-ade2-4e25-a8e1-a779dd6aeca3",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/30fd019a-7b90-4f75-bb54-b8f49f18fbe1",
+      "fileTypes": [ ".vue" ]
+    },
     "Web Compiler": {
       "description": "The easiest and most powerful way to compile LESS, Scss and CoffeeScript files directly within Visual Studio or through MSBuild.",
       "productId": "148ffa77-d70a-407f-892b-9ee542346862",
@@ -205,6 +211,11 @@
       "description": "Easily insert dummy text into the editor in Visual Studio. Lorem Ipsum and other vocabularies are supported.",
       "link": "https://visualstudiogallery.msdn.microsoft.com/4d809607-87dd-445c-8cd4-585da67c6beb",
       "productId": "0007e9e3-b11a-4d10-8565-9c6ce2ccc286"
+    },
+    "Editor Enhancements": {
+      "description": "Provides additional features such as HTML and URL encodings, transformations and sorting of selected text the editor.",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/4f64e542-3772-4136-8f87-0113441c7aa1",
+      "productId": "a3112f81-e423-4f88-9f2c-e089a309e48e"
     },
     "File Nesting": {
       "description": "Automatically nest files based on file name and enables developers to nest and unnest any file manually",
