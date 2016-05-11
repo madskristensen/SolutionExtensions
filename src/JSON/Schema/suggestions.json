@@ -1,5 +1,11 @@
 ﻿{
   "fileBased": {
+    ".ignore": {
+      "description": "A lanuage service for dealing with all types of .ignore files such as .gitignore, .tfignore etc.",
+      "productId": "7ac24965-ea21-4108-9cac-6e46394aaaef",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/d0eba56d-603b-45ab-a680-edfda585f7f3",
+      "fileTypes": [ ".gitignore", ".tfignore", ".hgignore", ".npmignore", ".dockerignore", ".chefignore", ".cvsignore", ".bzrignore", ".jshintignore", ".eslintignore", ".cfignore" ]
+    },
     "Alloy Language Support": {
       "description": "Basic support for the Alloy modeling language.",
       "productId": "Tvl.VisualStudio.Language.Alloy.b3393cfb-8f68-44c2-b4d7-c3210467bb9d",
