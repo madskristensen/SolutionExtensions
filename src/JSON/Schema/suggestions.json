@@ -164,6 +164,12 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/1fd15c9f-1117-405a-baee-6472fbb65a73",
       "fileTypes": [ "robots.txt" ]
     },
+    "ServiceStackVS": {
+      "description": "Tools for adding and updating ServiceStack Reference files as well as project templates.",
+      "productId": "97413fa1-bad9-4cfb-a91c-c8d7b2c3c844",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/5bd40817-0986-444d-a77d-482e43a48da7",
+      "fileTypes": [ ".dtos.cs",".dtos.fs",".dtos.vb",".dtos.d.ts",".dtos.ts" ]
+    }, 
     "SQL Server Compact/SQLite Toolbox": {
       "description": "This add-in adds several features to help your embedded database development efforts: Scripting of tables and data, import from SQL Server and CSV files and much, much more.",
       "productId": "41521019-e4c7-480c-8ea8-fc4a2c6f50aa",
