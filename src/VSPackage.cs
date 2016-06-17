@@ -23,7 +23,6 @@ namespace SolutionExtensions
             DTE = GetService(typeof(DTE)) as DTE2;
 
             Logger.Initialize(this, Vsix.Name);
-            Telemetry.Initialize(this, Vsix.Version, "0364592f-01ac-4bfa-991d-01055eb36102");
 
             Settings.Initialize(this);
             SolutionHandler.Initialize(DTE);

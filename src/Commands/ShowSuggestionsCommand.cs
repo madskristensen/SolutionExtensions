@@ -48,7 +48,6 @@ namespace SolutionExtensions
             var dte = ServiceProvider.GetService(typeof(DTE)) as DTE2;
 
             SuggestionResult result;
-            Telemetry.TrackEvent("Show suggestions");
 
             if (dte.ActiveDocument != null && !string.IsNullOrEmpty(dte.ActiveDocument.FullName))
             {
