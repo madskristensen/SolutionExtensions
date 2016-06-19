@@ -140,6 +140,12 @@
       "fileTypes": [ "package.json" ],
       "textMatch": "scripts"
     },
+    "Markdown Editor": {
+      "description": "A full featured Markdown editor with live preview and syntax highligting. Supports GitHub flavored Markdown.",
+      "productId": "9ca64947-e9ca-4543-bfb8-6cce9be19fd6",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/eaab33c3-437b-4918-8354-872dfe5d1bfe",
+      "fileTypes": [ ".md", ".markdown", ".mdown" ]
+    },
     "Open Command Line": {
       "description": "Opens a command line at the root of the project. Support for all consoles such as CMD, PowerShell, Bash etc. Provides syntax highlighting, Intellisense and execution of .cmd and .bat files.",
       "productId": "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbb",
@@ -168,8 +174,8 @@
       "description": "Tools for adding and updating ServiceStack Reference files as well as project templates.",
       "productId": "97413fa1-bad9-4cfb-a91c-c8d7b2c3c844",
       "link": "https://visualstudiogallery.msdn.microsoft.com/5bd40817-0986-444d-a77d-482e43a48da7",
-      "fileTypes": [ ".dtos.cs",".dtos.fs",".dtos.vb",".dtos.d.ts",".dtos.ts" ]
-    }, 
+      "fileTypes": [ ".dtos.cs", ".dtos.fs", ".dtos.vb", ".dtos.d.ts", ".dtos.ts" ]
+    },
     "SQL Server Compact/SQLite Toolbox": {
       "description": "This add-in adds several features to help your embedded database development efforts: Scripting of tables and data, import from SQL Server and CSV files and much, much more.",
       "productId": "41521019-e4c7-480c-8ea8-fc4a2c6f50aa",
@@ -198,7 +204,7 @@
       "productId": "5fb7364d-2e8c-44a4-95eb-2a382e30fec9",
       "description": "Adds many useful features to Visual Studio for web developers",
       "link": "https://visualstudiogallery.msdn.microsoft.com/ee6e6d8c-c837-41fb-886a-6b50ae2d06a2",
-      "fileTypes": [ ".vtt", ".appcache", "robots.txt", "gulpfile.js", "gruntfile.js", ".md", "dockerfile" ]
+      "fileTypes": [ ".vtt", ".appcache", "robots.txt", "gulpfile.js", "gruntfile.js", "dockerfile" ]
     },
     "WebPack Task Runner": {
       "productId": "471a020e-77f5-4c77-8ff0-59e08b6c5ba3",
