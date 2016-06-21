@@ -54,12 +54,6 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328",
       "fileTypes": [ ".editorconfig" ]
     },
-    "Extensibility Tools": {
-      "description": "An extension for making it easier to write Visual Studio extensions",
-      "productId": "f8330d54-0469-43a7-8fc0-7f19febeb897",
-      "link": "https://visualstudiogallery.msdn.microsoft.com/ab39a092-1343-46e2-b0f1-6a3f91155aa6",
-      "fileTypes": [ ".pkgdef", ".vsct", ".vsixmanifest" ]
-    },
     "Go Language Support": {
       "description": "Basic support for the Go programming language.",
       "productId": "Tvl.VisualStudio.Language.Go.c837d3e9-5ae2-4455-a608-f6a4ae016688",
