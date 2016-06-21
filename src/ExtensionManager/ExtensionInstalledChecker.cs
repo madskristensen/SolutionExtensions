@@ -94,7 +94,7 @@ namespace SolutionExtensions
         {
             if (_cache == null)
             {
-                _cache = _manager.GetInstalledExtensions().Where(e => !e.Header.SystemComponent && !e.Header.AllUsers && !e.Header.InstalledByMsi);
+                _cache = _manager.GetInstalledExtensions().Where(e => !e.Header.SystemComponent && !e.Header.InstalledByMsi);
             }
 
             return _cache;
