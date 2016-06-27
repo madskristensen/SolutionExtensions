@@ -24,12 +24,6 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/de706ad0-8a73-4df3-bef5-867bb9a70d51",
       "fileTypes": [ "brunch-config.js", "brunch-config.coffee", "config.coffee" ]
     },
-    "Bundler & Minifier": {
-      "description": "Adds support for bundling and minifying JavaScript, CSS and HTML files in any project.",
-      "productId": "a0ae318b-4f07-4f71-93cb-f21d3f03c6d3",
-      "link": "https://visualstudiogallery.msdn.microsoft.com/9ec27da7-e24b-4d56-8064-fd7e88ac1c40",
-      "fileTypes": [ "bundleconfig.json" ]
-    },
     "Chutzpah Test Adapter": {
       "description": "Chutzpah adapter for the Visual Studio Unit Test Explorer. Chutzpah is an open source JavaScript test runner which enables you to run JavaScript unit tests from the command line and from inside of Visual Studio.",
       "productId": "VS11.Plugin.Chutzpah.67f38ef0-909a-40b5-b183-9477ad8c266a",
