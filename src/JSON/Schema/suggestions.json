@@ -258,8 +258,8 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/5e1762e8-a88b-417c-8467-6a65d771cc4e",
       "productId": "3a7b4930-a5fb-46ec-a9b8-9610c8f953b8"
     },
-    "Visual Studio Language Pack": {
-      "description": "Adds basic language support for a wide variety of programming languages such as Clojure, Go, Jade, Lua, Swift, Ruby and many more...",
+    "Syntax Highlighting Pack": {
+      "description": "Adds syntax highlighting and snippet support for a wide variety of programming languages such as Clojure, Go, Jade, Lua, Swift, Ruby and many more...",
       "link": "https://visualstudiogallery.msdn.microsoft.com/d92fd742-bab3-4314-b866-50b871d679ee",
       "productId": "4773ce75-6f30-4269-9557-1f7c30a47be2"
     }
