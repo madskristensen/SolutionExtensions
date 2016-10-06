@@ -26,7 +26,7 @@ namespace SolutionExtensions
 
         private void DocumentOpened(Document document)
         {
-            if (!Path.IsPathRooted(document.FullName))
+            if (!IsDocumentValid(document))
                 return;
 
             Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
@@ -40,6 +40,21 @@ namespace SolutionExtensions
                    InfoBarService.Instance.ShowInfoBar(result, document.Name);
 
            }), DispatcherPriority.ApplicationIdle, null);
+        }
+
+        private static bool IsDocumentValid(Document document)
+        {
+            try
+            {
+                if (document == null || string.IsNullOrEmpty(document.FullName) || !Path.IsPathRooted(document.FullName))
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
