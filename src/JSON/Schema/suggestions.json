@@ -155,7 +155,7 @@
     "ResX Resource Manager": {
       "description": "Manage localization of all ResX-Based resources in one place",
       "productId": "43b35fe0-1f30-48de-887a-68256474202a",
-      "link": "https://visualstudiogallery.msdn.microsoft.com/3b64e04c-e8de-4b97-8358-06c73a97cc68",
+      "link": "https://marketplace.visualstudio.com/items?itemName=TomEnglert.ResXManager",
       "fileTypes": [ ".resx", ".resw" ]
     },
     "Robots.txt Language Service": {
@@ -267,7 +267,7 @@
     },
     "ResX Resource Manager": {
       "description": "Manage localization of all ResX-Based resources in one place",
-      "link": "https://visualstudiogallery.msdn.microsoft.com/3b64e04c-e8de-4b97-8358-06c73a97cc68",
+      "link": "https://marketplace.visualstudio.com/items?itemName=TomEnglert.ResXManager",
       "productId": "43b35fe0-1f30-48de-887a-68256474202a"
     },
     "Trailing Whitespace Visualizer": {
