@@ -188,6 +188,12 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/30fd019a-7b90-4f75-bb54-b8f49f18fbe1",
       "fileTypes": [ ".vue" ]
     },
+    "Wax": {
+      "description": "An interactive WiX-Setup editor; easily maintain the files to be installed.",
+      "productId": "6b9b0621-c739-4ee5-9834-a0ba2a8d3596",
+      "link": "https://marketplace.visualstudio.com/items?itemName=TomEnglert.Wax",
+      "fileTypes": [ ".wxs", ".wxi", ".wixproj" ]
+    },
     "Web Compiler": {
       "description": "The easiest and most powerful way to compile LESS, Scss and CoffeeScript files directly within Visual Studio or through MSBuild.",
       "productId": "148ffa77-d70a-407f-892b-9ee542346862",
