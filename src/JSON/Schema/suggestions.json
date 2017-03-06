@@ -152,6 +152,12 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/410e9b9f-65f3-4495-b68e-15567e543c58",
       "fileTypes": [ "Rebracer.xml" ]
     },
+    "ResX Resource Manager": {
+      "description": "Manage localization of all ResX-Based resources in one place",
+      "productId": "43b35fe0-1f30-48de-887a-68256474202a",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/3b64e04c-e8de-4b97-8358-06c73a97cc68",
+      "fileTypes": [ ".resx", ".resw" ]
+    },
     "Robots.txt Language Service": {
       "description": "Language service for robots.txt files.",
       "productId": "RobotsTxtLanguageService.Juhász Péter.d18b7383-8b42-4044-be51-414b20e67575",
