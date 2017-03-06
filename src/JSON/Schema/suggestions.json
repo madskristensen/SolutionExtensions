@@ -264,8 +264,13 @@
       "description": "A Visual Studio extension to ease management of solution and project configurations.",
       "link": "https://marketplace.visualstudio.com/items?itemName=TomEnglert.ProjectConfigurationManager",
       "productId": "e31595c9-3e0c-4f5c-b35c-dd8d61e364d1"
-   },
-   "Trailing Whitespace Visualizer": {
+    },
+    "ResX Resource Manager": {
+      "description": "Manage localization of all ResX-Based resources in one place",
+      "link": "https://visualstudiogallery.msdn.microsoft.com/3b64e04c-e8de-4b97-8358-06c73a97cc68",
+      "productId": "43b35fe0-1f30-48de-887a-68256474202a"
+    },
+    "Trailing Whitespace Visualizer": {
       "description": "Makes it easier than ever to identify and remove trailing whitespace in any code file",
       "link": "https://visualstudiogallery.msdn.microsoft.com/a204e29b-1778-4dae-affd-209bea658a59",
       "productId": "4c1a78e6-e7b8-4aa9-8812-4836e051ff6d"
@@ -274,6 +279,11 @@
       "description": "An editor extension that checks the spelling of comments, strings, and plain text as you type or interactively with a tool window. Extra options are available to control how elements and attributes in XML and MAML files are spell checked.",
       "link": "https://visualstudiogallery.msdn.microsoft.com/a23de100-31a1-405c-b4b7-d6be40c3dfff",
       "productId": "34482677-bc69-4bd3-8b8b-1ecd347f609d"
+    },
+    "Wax": {
+      "description": "An interactive WiX-Setup editor; easily maintain the files to be installed.",
+      "link": "https://marketplace.visualstudio.com/items?itemName=TomEnglert.Wax",
+      "productId": "6b9b0621-c739-4ee5-9834-a0ba2a8d3596"
     },
     "File Icons": {
       "description": "Adds icons for files that are not recognized by Solution Explorer",
