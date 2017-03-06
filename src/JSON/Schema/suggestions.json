@@ -249,7 +249,12 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/33f6f3fd-68e8-4783-b934-ece91a08d265",
       "productId": "e99dde0e-e023-410d-bc5d-3f76db71e3f0"
     },
-    "Trailing Whitespace Visualizer": {
+    "Project Configuration Manager": {
+      "description": "A Visual Studio extension to ease management of solution and project configurations.",
+      "link": "https://marketplace.visualstudio.com/items?itemName=TomEnglert.ProjectConfigurationManager",
+      "productId": "e31595c9-3e0c-4f5c-b35c-dd8d61e364d1"
+   },
+   "Trailing Whitespace Visualizer": {
       "description": "Makes it easier than ever to identify and remove trailing whitespace in any code file",
       "link": "https://visualstudiogallery.msdn.microsoft.com/a204e29b-1778-4dae-affd-209bea658a59",
       "productId": "4c1a78e6-e7b8-4aa9-8812-4836e051ff6d"
