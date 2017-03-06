@@ -245,6 +245,11 @@
       "link": "https://visualstudiogallery.msdn.microsoft.com/a56eddd3-d79b-48ac-8c8f-2db06ade77c3",
       "productId": "bf95754f-93d3-42ff-bfe3-e05d23188b08"
     },
+    "ITweakMyBuild": {
+      "description": "ITweakMyBuild let's you customize your build on the fly.",
+      "link": "https://marketplace.visualstudio.com/items?itemName=TomEnglert.ITweakMyBuild",
+      "productId": "ITweakMyBuild.tom-englert.de.92edc38f-1498-4327-8078-6ff3cec52067"
+    },
     "MultiEditing": {
       "description": "Simultaneously edit in more than one location in the editor\n\nIf you've ever ran into a case where you wanted to quickly change variable names or multiple loop conditions - you can use Multi-Edit to set virtual carets that all behave the same.",
       "link": "https://visualstudiogallery.msdn.microsoft.com/2beb9705-b568-45d1-8550-751e181e3aef",
